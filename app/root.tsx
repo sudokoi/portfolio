@@ -1,3 +1,4 @@
+import { captureRemixErrorBoundaryError, withSentry } from "@sentry/remix";
 import { LinksFunction } from "@remix-run/cloudflare";
 import {
   Links,
@@ -5,6 +6,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteError,
 } from "@remix-run/react";
 import stylesheet from "~/tailwind.css?url";
 import { Nav } from "./components/nav";
@@ -32,7 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
+function App() {
   return (
     <div className="m-0 h-svh w-svw p-0 font-mono text-primary">
       <div className="relative mx-auto flex h-full w-full flex-col">
@@ -47,3 +49,11 @@ export default function App() {
     </div>
   );
 }
+
+export const ErrorBoundary = () => {
+  const error = useRouteError();
+  captureRemixErrorBoundaryError(error);
+  return <div>Something went wrong</div>;
+};
+
+export default withSentry(App);

@@ -2,15 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --scrollbar-track: #f3f2f8;
+  --scrollbar-thumb: #e54f6d;
+  --scrollbar-thumb-hover: #2646ba;
+  --scrollbar-thumb-border: #ffffff;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* Chromium, Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #e54f6d 0%, #363681 100%);
+  border-radius: 999px;
+  border: 2px solid var(--scrollbar-thumb-border);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #e54f6d 0%, #2646ba 100%);
+}
+
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 .black-gradient {
   background: #000000;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right,
-      #434343,
-      #000000);
+  background: -webkit-linear-gradient(to right, #434343, #000000);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right,
-      #434343,
-      #000000);
+  background: linear-gradient(to right, #434343, #000000);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

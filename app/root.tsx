@@ -13,6 +13,7 @@ import { Nav } from "./components/nav";
 import { Footer } from "./components/footer";
 
 export const links: LinksFunction = () => [
+  { rel: "preload", href: stylesheet, as: "style" },
   { rel: "stylesheet", href: stylesheet },
 ];
 
@@ -23,6 +24,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
+        <style>{"body{background:#F3F2F8;color:#363681;}"}</style>
         <Links />
       </head>
       <body className="bg-tertiary">

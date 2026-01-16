@@ -21,11 +21,11 @@ export function Intro() {
           products. I focus on frontend architecture, cross-browser behavior,
           and shipping features end-to-end with product, design, and backend
           teams. Outside of work, I enjoy video games, anime, and reading.
-          <blockquote className="my-2 block border-l-4 border-accent py-2 pl-4 italic text-secondary">
-            Ask me about iframes or forms &mdash; I&apos;ve solved my fair share
-            of tricky problems there.
-          </blockquote>
         </p>
+        <blockquote className="my-2 block border-l-4 border-accent py-2 pl-4 italic text-secondary">
+          Ask me about iframes or forms &mdash; I&apos;ve solved my fair share
+          of tricky problems there.
+        </blockquote>
         <p>
           I&apos;m currently working as a senior software engineer (frontend
           lead) at{" "}
@@ -44,6 +44,8 @@ export function Intro() {
           For a detailed overview, you can download my{" "}
           <a
             href="/resume"
+            title="Download resume"
+            aria-label="Download resume"
             className="text-secondary hover:text-accent focus:rounded focus:outline-none focus:ring-[1px] focus:ring-accent focus:ring-offset-2"
           >
             resume

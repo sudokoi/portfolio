@@ -4,6 +4,7 @@
  */
 
 import { HTMLAttributes, ReactNode, SVGAttributes, useState } from "react";
+import { ClientOnly } from "~/components/client-only";
 import { useRandomInterval } from "~/utils/useRandomInterval";
 
 const DEFAULT_COLOR = "#E54F6D";
@@ -96,14 +97,18 @@ export function Sparkles({
 
   return (
     <span className="relative inline-block" {...rest}>
-      {sparkles.map((sparkle) => (
-        <SparkleInstance
-          key={sparkle.id}
-          color={sparkle.color}
-          size={sparkle.size}
-          style={sparkle.style}
-        />
-      ))}
+      <ClientOnly>
+        {() =>
+          sparkles.map((sparkle) => (
+            <SparkleInstance
+              key={sparkle.id}
+              color={sparkle.color}
+              size={sparkle.size}
+              style={sparkle.style}
+            />
+          ))
+        }
+      </ClientOnly>
       <strong className="relative z-[1] font-bold">{children}</strong>
     </span>
   );

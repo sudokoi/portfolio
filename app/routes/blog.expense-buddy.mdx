@@ -2,20 +2,85 @@
 title: Expense Buddy — Local-first expense tracking with GitHub sync
 description: Expense Buddy is a privacy-first, local-first expense tracker built with React Native (Expo), now in internal testing on Google Play.
 date: Jan 16, 2026
+tags:
+  - expense-tracker
+  - privacy-first
+  - local-first
+  - personal finance
+  - react-native
+  - expo
+  - product
+  - release
 ---
 
 import { BlogTimestamp } from "../components/blog-timestamp";
+import { BlogTags } from "../components/blog-tags";
+
+export const links = () => [
+  {
+    rel: "preload",
+    href: "/assets/expense-buddy/expense-buddy-dashboard.jpeg",
+    as: "image",
+  },
+  {
+    rel: "preload",
+    href: "/assets/expense-buddy/expense-buddy-add-new-expense.jpeg",
+    as: "image",
+  },
+  {
+    rel: "preload",
+    href: "/assets/expense-buddy/expense-buddy-analytics.jpeg",
+    as: "image",
+  },
+  {
+    rel: "preload",
+    href: "/assets/expense-buddy/expense-buddy-analytics-2.jpeg",
+    as: "image",
+  },
+  {
+    rel: "preload",
+    href: "/assets/expense-buddy/expense-buddy-history.jpeg",
+    as: "image",
+  },
+  {
+    rel: "preload",
+    href: "/assets/expense-buddy/expense-buddy-settings.jpeg",
+    as: "image",
+  },
+  {
+    rel: "preload",
+    href: "/assets/expense-buddy/expense-buddy-settings-2.jpeg",
+    as: "image",
+  },
+];
 
 export const meta = () => [
   { title: "Expense Buddy — Release" },
   {
-    description:
+    name: "description",
+    content:
       "Expense Buddy is a privacy-first, local-first expense tracker built with React Native (Expo), now in internal testing on Google Play.",
   },
-  { date: "Jan 16, 2026" },
+  { name: "date", content: "Jan 16, 2026" },
+  {
+    property: "og:title",
+    content: "Expense Buddy — Release",
+  },
+  {
+    property: "og:description",
+    content:
+      "Expense Buddy is a privacy-first, local-first expense tracker built with React Native (Expo), now in internal testing on Google Play.",
+  },
   { property: "og:type", content: "article" },
   { property: "og:image", content: "/og/expense-buddy.jpeg" },
-  { property: "twitter:image", content: "/og/expense-buddy.jpeg" },
+  { name: "twitter:card", content: "summary_large_image" },
+  { name: "twitter:title", content: "Expense Buddy — Release" },
+  {
+    name: "twitter:description",
+    content:
+      "Expense Buddy is a privacy-first, local-first expense tracker built with React Native (Expo), now in internal testing on Google Play.",
+  },
+  { name: "twitter:image", content: "/og/expense-buddy.jpeg" },
 ];
 
 <BlogTimestamp timestamp={frontmatter.date} />
@@ -43,8 +108,8 @@ Expense Buddy is a privacy‑first expense tracker for people who want a fast, r
     className="h-auto w-full max-w-[200px] rounded-lg border border-secondary"
   />
   <img
-    src="/assets/expense-buddy/expense-buddy-analytics-2.jpeg"
-    alt="Expense Buddy analytics charts"
+    src="/assets/expense-buddy/expense-buddy-history.jpeg"
+    alt="Expense Buddy history"
     className="h-auto w-full max-w-[200px] rounded-lg border border-secondary"
   />
   <img
@@ -52,6 +117,7 @@ Expense Buddy is a privacy‑first expense tracker for people who want a fast, r
     alt="Expense Buddy settings"
     className="h-auto w-full max-w-[200px] rounded-lg border border-secondary"
   />
+
 </div>
 
 ## Why Expense Buddy exists
@@ -66,6 +132,7 @@ Most expense trackers either feel slow, intrusive, or opaque about where your da
 ## Feature highlights
 
 - **Daily expense tracking** with category and payment method tags
+- **Edit expenses** anytime with a full **history view** to revisit and update past entries
 - **Smart GitHub sync** with incremental, differential, and batched commits
 - **Analytics that go deeper**: category and payment method breakdowns, instrument‑level splits, plus a spending trend chart
 - **Custom categories** with colors and icons
@@ -74,37 +141,75 @@ Most expense trackers either feel slow, intrusive, or opaque about where your da
 - **Issue reporting** directly from Settings
 - **Light and dark mode** with theme‑aware styling
 
+## Dashboard
+
+The dashboard gives you quick insights into recent transactions, total spend, and the last 7‑day trend. Tapping the 7‑day graph jumps straight into the day‑view expenses.
+
 <div className="my-6 flex flex-wrap items-start justify-center gap-4">
   <img
     src="/assets/expense-buddy/expense-buddy-dashboard.jpeg"
     alt="Expense Buddy dashboard"
-    className="h-auto w-full max-w-[200px] rounded-lg border border-secondary"
+    className="h-auto w-full max-w-[240px] rounded-lg border border-secondary"
   />
+</div>
+
+## Add expense
+
+Adding an expense is a one‑screen flow with quick category and payment method picks, designed to stay out of your way while you’re on the go.
+
+<div className="my-6 flex flex-wrap items-start justify-center gap-4">
   <img
     src="/assets/expense-buddy/expense-buddy-add-new-expense.jpeg"
     alt="Expense Buddy add expense screen"
-    className="h-auto w-full max-w-[200px] rounded-lg border border-secondary"
+    className="h-auto w-full max-w-[240px] rounded-lg border border-secondary"
   />
+</div>
+
+## Analytics you can trust
+
+The analytics tab is built for quick answers: see where money goes by **category**, **payment method**, and **saved instrument**, then zoom out with a **spending trend** view. You can also filter by multiple **time windows** to compare recent weeks vs. longer‑term habits.
+
+<div className="my-6 flex flex-wrap items-start justify-center gap-4">
   <img
     src="/assets/expense-buddy/expense-buddy-analytics.jpeg"
     alt="Expense Buddy analytics"
-    className="h-auto w-full max-w-[200px] rounded-lg border border-secondary"
+    className="h-auto w-full max-w-[240px] rounded-lg border border-secondary"
   />
   <img
     src="/assets/expense-buddy/expense-buddy-analytics-2.jpeg"
     alt="Expense Buddy analytics charts"
-    className="h-auto w-full max-w-[200px] rounded-lg border border-secondary"
+    className="h-auto w-full max-w-[240px] rounded-lg border border-secondary"
   />
+</div>
+
+## History and edits
+
+Need to fix a mistake? The history view lets you browse past entries, open any expense, and edit it in place.
+
+<div className="my-6 flex flex-wrap items-start justify-center gap-4">
   <img
-    src="/assets/expense-buddy/expense-buddy-settings.jpeg"
-    alt="Expense Buddy settings"
-    className="h-auto w-full max-w-[200px] rounded-lg border border-secondary"
+    src="/assets/expense-buddy/expense-buddy-history.jpeg"
+    alt="Expense Buddy history"
+    className="h-auto w-full max-w-[240px] rounded-lg border border-secondary"
   />
 </div>
 
 ## Settings that stay out of your way
 
-The Settings screen is meant to be practical, not noisy. You can set a **default payment method**, add **custom categories** (the app ships with 8 defaults you can edit), manage **saved payment instruments** for deeper analytics, and enable **GitHub sync** to keep everything in sync across devices.
+The Settings screen is meant to be practical, not noisy. You can set a **default payment method**, add **custom categories** (the app ships with 8 defaults you can edit), manage **saved payment instruments** for deeper analytics, and enable **GitHub sync** to keep everything in sync across devices. Auto‑sync can run **on change** or **on app launch**.
+
+<div className="my-6 flex flex-wrap items-start justify-center gap-4">
+  <img
+    src="/assets/expense-buddy/expense-buddy-settings.jpeg"
+    alt="Expense Buddy settings"
+    className="h-auto w-full max-w-[240px] rounded-lg border border-secondary"
+  />
+  <img
+    src="/assets/expense-buddy/expense-buddy-settings-2.jpeg"
+    alt="Expense Buddy settings auto-sync"
+    className="h-auto w-full max-w-[240px] rounded-lg border border-secondary"
+  />
+</div>
 
 ## How GitHub sync works (optional)
 
@@ -119,16 +224,6 @@ GitHub sync is designed to be safe, predictable, and in your control. Your data 
 ## Built for speed
 
 Expense Buddy stays snappy even with large histories thanks to virtualized lists, memoized components, and a lightweight state layer. The UI is intentionally minimal so adding an expense takes seconds, not minutes.
-
-## Analytics you can trust
-
-The analytics tab is built for quick answers: see where money goes by **category**, **payment method**, and **saved instrument**, then zoom out with a **spending trend** view. You can also filter by multiple **time windows** to compare recent weeks vs. longer‑term habits.
-
-## What’s new in the latest release
-
-- Added GitHub issue templates and a **Report an Issue** button in Settings
-- Improved settings UX with modular sections
-- More reliable sync and error handling improvements
 
 ## Privacy notes
 
@@ -146,3 +241,5 @@ If you want to dig deeper, check out the repo, changelog, and privacy policy:
 ## Get access
 
 Expense Buddy is currently in internal testing on Google Play. To get access, DM @sudokaii on X (Twitter) or email perfectsudh@gmail.com.
+
+<BlogTags tags={frontmatter.tags} />

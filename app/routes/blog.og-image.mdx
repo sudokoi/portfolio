@@ -2,9 +2,14 @@
 title: Adding an OG Image to my site
 description: OG (Open Graph) images help in social sharing of a site. This is a view into my experience while implementing it for my site.
 date: Sep 04, 2024
+tags:
+  - seo
+  - open-graph
+  - remix
 ---
 
 import { BlogTimestamp } from "../components/blog-timestamp";
+import { BlogTags } from "../components/blog-tags";
 
 export const links = () => [
   {
@@ -16,10 +21,20 @@ export const links = () => [
 export const meta = () => [
   { title: "Adding an OG Image to my site" },
   {
-    description:
+    name: "description",
+    content:
       "OG (Open Graph) images help in social sharing of a site. This is a view into my experience while implementing it for my site.",
   },
-  { date: "Aug 31, 2024" },
+  { name: "date", content: "Aug 31, 2024" },
+  {
+    property: "og:title",
+    content: "Adding an OG Image to my site",
+  },
+  {
+    property: "og:description",
+    content:
+      "OG (Open Graph) images help in social sharing of a site. This is a view into my experience while implementing it for my site.",
+  },
   {
     property: "og:type",
     content: "article",
@@ -29,10 +44,23 @@ export const meta = () => [
     content: "/og/og-image.jpeg",
   },
   {
-    property: "twitter:image",
-    content: "/og/og-image.jpeg"
-  }
-]
+    name: "twitter:card",
+    content: "summary_large_image",
+  },
+  {
+    name: "twitter:title",
+    content: "Adding an OG Image to my site",
+  },
+  {
+    name: "twitter:description",
+    content:
+      "OG (Open Graph) images help in social sharing of a site. This is a view into my experience while implementing it for my site.",
+  },
+  {
+    name: "twitter:image",
+    content: "/og/og-image.jpeg",
+  },
+];
 
 <BlogTimestamp timestamp={frontmatter.date} />
 
@@ -237,3 +265,5 @@ And that's it! It worked like a charm and the OG images of this site are being g
 I'm quite happy with the current setup. The only thing I may still experiment with is to change the quality of the images to reduce the size of the generated images. But that's a story for another day.
 
 All the images are generated automatically during the build. The entire code for this lives in the same repo. I don't have to worry about OG images for a while now. And that makes me happy! 😊
+
+<BlogTags tags={frontmatter.tags} />

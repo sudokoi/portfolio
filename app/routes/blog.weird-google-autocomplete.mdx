@@ -2,9 +2,14 @@
 title: Weird Google Autocomplete + MUI
 date: May 07, 2024
 description: Google Maps API + Material UI is even weirder. A tale of how I solved the autocomplete suggestions not showing up issue.
+tags:
+  - google-maps
+  - mui
+  - react
 ---
 
 import { BlogTimestamp } from "../components/blog-timestamp";
+import { BlogTags } from "../components/blog-tags";
 
 export const links = () => [
   { rel: "preload", href: "/assets/autocomplete-works.png", as: "image" },
@@ -20,10 +25,20 @@ export const links = () => [
 export const meta = () => [
   { title: "Weird Google Autocomplete + MUI" },
   {
-    description:
+    name: "description",
+    content:
       "Google Maps API + Material UI is even weirder. A tale of how I solved the autocomplete suggestions not showing up issue.",
   },
-  { date: "May 7, 2024" },
+  { name: "date", content: "May 7, 2024" },
+  {
+    property: "og:title",
+    content: "Weird Google Autocomplete + MUI",
+  },
+  {
+    property: "og:description",
+    content:
+      "Google Maps API + Material UI is even weirder. A tale of how I solved the autocomplete suggestions not showing up issue.",
+  },
   {
     property: "og:type",
     content: "article",
@@ -33,7 +48,20 @@ export const meta = () => [
     content: "/og/weird-google-autocomplete.jpeg",
   },
   {
-    property: "twitter:image",
+    name: "twitter:card",
+    content: "summary_large_image",
+  },
+  {
+    name: "twitter:title",
+    content: "Weird Google Autocomplete + MUI",
+  },
+  {
+    name: "twitter:description",
+    content:
+      "Google Maps API + Material UI is even weirder. A tale of how I solved the autocomplete suggestions not showing up issue.",
+  },
+  {
+    name: "twitter:image",
     content: "/og/weird-google-autocomplete.jpeg",
   },
 ];
@@ -183,3 +211,5 @@ And that's how I solved the issue. A hacky solution, but a solution nonetheless.
 
 Sometimes, the official documentation might not be enough, and you might have to resort to some hacky solutions to get things working.
 And that's okay. As long as it works, it's fine.
+
+<BlogTags tags={frontmatter.tags} />

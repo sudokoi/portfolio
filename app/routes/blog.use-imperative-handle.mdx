@@ -2,9 +2,14 @@
 title: Why useImperativeHandle?
 description: useImperativeHandle is a React Hook that lets you customize the handle exposed as a ref.
 date: May 13, 2024
+tags:
+  - react
+  - hooks
+  - patterns
 ---
 
 import { BlogTimestamp } from "../components/blog-timestamp";
+import { BlogTags } from "../components/blog-tags";
 
 export const links = () => [
   { rel: "preload", href: "/assets/hooks-ranking.png", as: "image" },
@@ -17,10 +22,20 @@ export const links = () => [
 export const meta = () => [
   { title: "Why useImperativeHandle?" },
   {
-    description:
+    name: "description",
+    content:
       "useImperativeHandle is a React Hook that lets you customize the handle exposed as a ref.",
   },
-  { date: "May 13, 2024" },
+  { name: "date", content: "May 13, 2024" },
+  {
+    property: "og:title",
+    content: "Why useImperativeHandle?",
+  },
+  {
+    property: "og:description",
+    content:
+      "useImperativeHandle is a React Hook that lets you customize the handle exposed as a ref.",
+  },
   {
     property: "og:type",
     content: "article",
@@ -30,9 +45,22 @@ export const meta = () => [
     content: "/og/use-imperative-handle.jpeg",
   },
   {
-    property: "twitter:image",
+    name: "twitter:card",
+    content: "summary_large_image",
+  },
+  {
+    name: "twitter:title",
+    content: "Why useImperativeHandle?",
+  },
+  {
+    name: "twitter:description",
+    content:
+      "useImperativeHandle is a React Hook that lets you customize the handle exposed as a ref.",
+  },
+  {
+    name: "twitter:image",
     content: "/og/use-imperative-handle.jpeg",
-  }
+  },
 ];
 
 <BlogTimestamp timestamp={frontmatter.date} />
@@ -154,3 +182,5 @@ This approach does the following:
 
 `useImperativeHandle` is a powerful hook and can be used to solve a particular set of problems that are not easily solvable using the declarative APIs.
 It is not a hook that you would use every day, but when you need it, you would be glad that it exists.
+
+<BlogTags tags={frontmatter.tags} />

@@ -2,9 +2,14 @@
 title: Improving LCP for your page
 description: Largest Contentful Paint (LCP) is a Core Web Vitals metric that measures perceived loading performance. Improving LCP can help improve user experience.
 date: May 16, 2024
+tags:
+  - performance
+  - web-vitals
+  - frontend
 ---
 
 import { BlogTimestamp } from "../components/blog-timestamp";
+import { BlogTags } from "../components/blog-tags";
 
 export const links = () => [
   { rel: "preload", href: "/assets/critical-rendering-path.svg", as: "image" },
@@ -17,10 +22,20 @@ export const links = () => [
 export const meta = () => [
   { title: "Improving LCP for your page" },
   {
-    description:
+    name: "description",
+    content:
       "Largest Contentful Paint (LCP) is a Core Web Vitals metric that measures perceived loading performance. Improving LCP can help improve user experience.",
   },
-  { date: "May 16, 2024" },
+  { name: "date", content: "May 16, 2024" },
+  {
+    property: "og:title",
+    content: "Improving LCP for your page",
+  },
+  {
+    property: "og:description",
+    content:
+      "Largest Contentful Paint (LCP) is a Core Web Vitals metric that measures perceived loading performance. Improving LCP can help improve user experience.",
+  },
   {
     property: "og:type",
     content: "article",
@@ -30,9 +45,22 @@ export const meta = () => [
     content: "/og/improving-lcp.jpeg",
   },
   {
-    property: "twitter:image",
+    name: "twitter:card",
+    content: "summary_large_image",
+  },
+  {
+    name: "twitter:title",
+    content: "Improving LCP for your page",
+  },
+  {
+    name: "twitter:description",
+    content:
+      "Largest Contentful Paint (LCP) is a Core Web Vitals metric that measures perceived loading performance. Improving LCP can help improve user experience.",
+  },
+  {
+    name: "twitter:image",
     content: "/og/improving-lcp.jpeg",
-  }
+  },
 ];
 
 <BlogTimestamp timestamp={frontmatter.date} />
@@ -143,3 +171,5 @@ been implemented. Using the platform to do the heavy lifting for you is often
 the easiest and simplest solution that can get the job done.
 
 Also, don't forget to ask for help. You never know who might be able to help you out.
+
+<BlogTags tags={frontmatter.tags} />

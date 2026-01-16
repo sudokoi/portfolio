@@ -2,9 +2,15 @@
 title: Halo Effect for Images
 description: Adding a halo effect to an image can be tricky. This blog post explores a particular way to add a halo effect to an image (or anything).
 date: May 16, 2024
+tags:
+  - css
+  - tailwindcss
+  - ui
+  - animation
 ---
 
 import { BlogTimestamp } from "../components/blog-timestamp";
+import { BlogTags } from "../components/blog-tags";
 import { HaloEffect } from "../components/blogs/halo-effect/halo-effect";
 import { WrongHaloEffect } from "../components/blogs/halo-effect/wrong-halo-effect";
 import { WrongHaloEffect2 } from "../components/blogs/halo-effect/wrong-halo-effect-2";
@@ -20,10 +26,20 @@ export const links = () => [
 export const meta = () => [
   { title: "Halo Effect for Images" },
   {
-    description:
+    name: "description",
+    content:
       "Adding a halo effect to an image can be tricky. This blog post explores a particular way to add a halo effect to an image (or anything).",
   },
-  { date: "May 16, 2024" },
+  { name: "date", content: "May 16, 2024" },
+  {
+    property: "og:title",
+    content: "Halo Effect for Images",
+  },
+  {
+    property: "og:description",
+    content:
+      "Adding a halo effect to an image can be tricky. This blog post explores a particular way to add a halo effect to an image (or anything).",
+  },
   {
     property: "og:type",
     content: "article",
@@ -33,9 +49,22 @@ export const meta = () => [
     content: "/og/halo-effect.jpeg",
   },
   {
-    property: "twitter:image",
+    name: "twitter:card",
+    content: "summary_large_image",
+  },
+  {
+    name: "twitter:title",
+    content: "Halo Effect for Images",
+  },
+  {
+    name: "twitter:description",
+    content:
+      "Adding a halo effect to an image can be tricky. This blog post explores a particular way to add a halo effect to an image (or anything).",
+  },
+  {
+    name: "twitter:image",
     content: "/og/halo-effect.jpeg",
-  }
+  },
 ];
 
 <BlogTimestamp timestamp={frontmatter.date} />
@@ -48,6 +77,8 @@ Recently, I was working on a project where I was trying to add a halo effect to 
 
 The final output was supposed to look like this:
 <HaloEffect className="[--spread-radius:50px]" />
+
+<BlogTags tags={frontmatter.tags} />
 
 Here's the effect with a more prominient color for emphasis:
 <HaloEffect haloClassName="![box-shadow:0px_0px_150px_100px_hotpink]"/>

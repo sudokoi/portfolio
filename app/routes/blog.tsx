@@ -29,8 +29,8 @@ export const meta: MetaFunction = () => {
       name: "description",
       content: "Sudhanshu's corner of the internet.",
     },
-    { name: "twitter:site", content: "@tsuki42_" },
-    { name: "twitter:creator", content: "@tsuki42_" },
+    { name: "twitter:site", content: TWITTER_HANDLE },
+    { name: "twitter:creator", content: TWITTER_HANDLE },
     { property: "og:site_name", content: "Sudhanshu's Corner" },
     { property: "og:locale", content: "en_US" },
     {

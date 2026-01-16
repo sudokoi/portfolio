@@ -3,9 +3,9 @@ import { json, useLoaderData } from "@remix-run/react";
 import { isOpenGraphImageRequest, OpenGraphImageData } from "remix-og-image";
 import invariant from "tiny-invariant";
 import logoUrl from "~/assets/images/logo.png";
+import { TWITTER_HANDLE } from "~/utils/contants";
 
 const WEBSITE_URL = "https://sudh.online";
-const TWITTER_HANDLE = "@tsuki42_";
 
 const getBlogDetails = async () => {
   return Object.entries(
@@ -110,7 +110,7 @@ export default function Template() {
       </section>
       <div className="flex px-4">
         <div className="mr-auto text-lg">{WEBSITE_URL}</div>
-        <div className="ml-auto text-lg">{TWITTER_HANDLE}</div>
+        <div className="ml-auto text-lg">{`@${TWITTER_HANDLE}`}</div>
       </div>
     </div>
   );

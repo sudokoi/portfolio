@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from "@remix-run/react";
 import { cn } from "~/lib/utils";
 import { parse } from "date-fns/parse";
+import { TWITTER_HANDLE } from "~/utils/contants";
 
 function BlogCard({
   link,
@@ -84,8 +85,8 @@ export const meta = () => {
       title: "Sudhanshu's Blogs",
       description: "A collection of blogs written by me.",
     },
-    { name: "twitter:site", content: "@tsuki42_" },
-    { name: "twitter:creator", content: "@tsuki42_" },
+    { name: "twitter:site", content: TWITTER_HANDLE },
+    { name: "twitter:creator", content: TWITTER_HANDLE },
     { property: "og:site_name", content: "Sudhanshu's Corner" },
     { property: "og:locale", content: "en_US" },
     {

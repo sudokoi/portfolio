@@ -1,5 +1,5 @@
-import { LoaderFunctionArgs } from "@remix-run/cloudflare";
-import { json, useLoaderData } from "@remix-run/react";
+import { json, LoaderFunctionArgs } from "@remix-run/cloudflare";
+import { useLoaderData } from "@remix-run/react";
 import { isOpenGraphImageRequest, OpenGraphImageData } from "remix-og-image";
 import invariant from "tiny-invariant";
 import logoUrl from "~/assets/images/logo.png";
@@ -69,8 +69,10 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
   invariant(params, "Params should be defined for this route");
   invariant(params.slug, "Slug should be defined for this route");
 
+  const normalizedSlug = params.slug.replace(/\.jpe?g$/i, "");
+
   const currentBlog = (await getBlogDetails()).find(([filePath]) =>
-    filePath.includes(params.slug!),
+    filePath.includes(normalizedSlug),
   );
 
   if (currentBlog) {

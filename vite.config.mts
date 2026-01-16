@@ -13,6 +13,10 @@ import remarkGfm from "remark-gfm";
 import { openGraphImage } from "remix-og-image/plugin";
 
 export default defineConfig({
+  ssr: {
+    noExternal: ["hoist-non-react-statics"],
+    external: ["@sentry/remix", "@sentry/cloudflare"],
+  },
   plugins: [
     {
       enforce: "pre",

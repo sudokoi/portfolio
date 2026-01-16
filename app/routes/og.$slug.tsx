@@ -57,13 +57,7 @@ export async function loader({ request, params }: LoaderFunctionArgs) {
   // check if the incoming request is a meta request
   // from the plugin. Use the `isOpenGraphImageRequest` utility from the library.
   if (isOpenGraphImageRequest(request)) {
-    /**
-     * @note Throw the OG image response instead of returning it.
-     * This way, you don't have to deal with the `loader` function
-     * returning a union of OG image data and the actual data
-     * returned to the UI component.
-     */
-    throw json(await openGraphImage());
+    return Response.json(await openGraphImage());
   }
 
   invariant(params, "Params should be defined for this route");

@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pull-requests: write
@@ -47,16 +51,13 @@ jobs:
         run: pnpm build
 
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: >-
-            pages deploy ./build/client
-            --project-name ${{ vars.CF_PAGES_PROJECT }}
-            --branch ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
-            --commit-hash ${{ github.sha }}
-            --functions-directory ./functions
+          projectName: ${{ secrets.CF_PAGES_PROJECT }}
+          directory: ./build/client
+          branch: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref_name }}
 
       - name: Comment PR with preview URL
         if: ${{ github.event_name == 'pull_request' }}
@@ -75,4 +76,4 @@ jobs:
               body,
             });
         env:
-          CF_PAGES_PROJECT: ${{ vars.CF_PAGES_PROJECT }}
+          CF_PAGES_PROJECT: ${{ secrets.CF_PAGES_PROJECT }}

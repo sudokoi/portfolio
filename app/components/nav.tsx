@@ -13,6 +13,7 @@ export function Nav() {
       <div className="mx-auto flex w-full items-center justify-between">
         <Link
           to="/"
+          reloadDocument
           className="flex items-center gap-2 focus:rounded-lg focus:outline-none focus:ring focus:ring-accent focus:ring-offset-2"
         >
           <img
@@ -29,6 +30,7 @@ export function Nav() {
 
         <Link
           to="/blogs"
+          reloadDocument
           className="cursor-pointer text-lg text-accent underline-offset-2 hover:underline focus:rounded-lg focus:outline-none focus:ring focus:ring-accent focus:ring-offset-2"
         >
           /blogs

@@ -1,4 +1,10 @@
-import { Link, Outlet, useLoaderData } from "@remix-run/react";
+import {
+  Link,
+  Outlet,
+  isRouteErrorResponse,
+  useLoaderData,
+  useRouteError,
+} from "@remix-run/react";
 import Giscus from "@giscus/react";
 import {
   LoaderFunctionArgs,
@@ -9,6 +15,7 @@ import {
 import { ShareOnTwitter } from "~/components/share-twitter";
 import { TWITTER_HANDLE } from "~/utils/contants";
 import { parse } from "date-fns/parse";
+import { NotFoundPage } from "~/components/not-found";
 
 type BlogMeta = { title: string; description: string; date: string };
 
@@ -145,6 +152,20 @@ export default function Blog() {
           theme="dark_dimmed"
         />
       </div>
+    </div>
+  );
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  if (isRouteErrorResponse(error) && error.status === 404) {
+    return <NotFoundPage />;
+  }
+
+  return (
+    <div className="flex h-full w-full flex-col items-center justify-center py-16 text-primary">
+      <h1 className="text-2xl font-bold">Something went wrong</h1>
     </div>
   );
 }

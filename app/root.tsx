@@ -6,23 +6,32 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
   useRouteError,
 } from "@remix-run/react";
 import stylesheet from "~/tailwind.css?url";
 import { Nav } from "./components/nav";
 import { Footer } from "./components/footer";
 
+const WEBSITE_URL = "https://sudh.online";
+
 export const links: LinksFunction = () => [
   { rel: "preload", href: stylesheet, as: "style" },
   { rel: "stylesheet", href: stylesheet },
+  { rel: "sitemap", href: "/sitemap.xml", type: "application/xml" },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+  const canonicalUrl = `${WEBSITE_URL}${location.pathname}`;
+
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="index,follow" />
+        <link rel="canonical" href={canonicalUrl} />
         <Meta />
         <style>{"body{background:#F3F2F8;color:#363681;}"}</style>
         <Links />

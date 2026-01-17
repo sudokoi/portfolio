@@ -3,6 +3,11 @@ import { cn } from "~/lib/utils";
 import { parse } from "date-fns/parse";
 import { TWITTER_HANDLE } from "~/utils/contants";
 
+const BUILD_DATE =
+  process.env.BUILD_DATE ?? new Date().toISOString().split("T")[0];
+
+export const lastmod = BUILD_DATE;
+
 function BlogCard({
   link,
   title,

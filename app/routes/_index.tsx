@@ -2,6 +2,11 @@ import type { MetaFunction } from "@remix-run/cloudflare";
 import { Intro } from "~/components/intro";
 import { TWITTER_HANDLE } from "~/utils/contants";
 
+const BUILD_DATE =
+  process.env.BUILD_DATE ?? new Date().toISOString().split("T")[0];
+
+export const lastmod = BUILD_DATE;
+
 export const meta: MetaFunction = () => {
   return [
     { title: "Sudhanshu's Corner" },

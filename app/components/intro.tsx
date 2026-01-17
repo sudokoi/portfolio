@@ -193,7 +193,7 @@ export function Intro() {
             <a
               href={`https://www.linkedin.com/in/${LINKEDIN_HANDLE}/`}
               target="_blank"
-              rel="noreferrer"
+              rel="me noreferrer"
               className="text-accent hover:underline focus:outline-offset-2 focus:outline-accent"
             >
               <LinkedinIcon className="size-6 fill-accent" />
@@ -203,7 +203,7 @@ export function Intro() {
             <a
               href={`https://twitter.com/${TWITTER_HANDLE}`}
               target="_blank"
-              rel="noreferrer"
+              rel="me noreferrer"
               className="text-accent hover:underline focus:outline-offset-2 focus:outline-accent"
             >
               <TwitterIcon className="size-6 fill-accent" />
@@ -213,7 +213,7 @@ export function Intro() {
             <a
               href={`https://github.com/${GITHUB_HANDLE}`}
               target="_blank"
-              rel="noreferrer"
+              rel="me noreferrer"
               className="text-accent hover:underline focus:outline-offset-2 focus:outline-accent"
             >
               <GithubIcon className="size-6 fill-accent" />
@@ -223,7 +223,7 @@ export function Intro() {
             <a
               href={`https://instagram.com/${INSTAGRAM_HANDLE}`}
               target="_blank"
-              rel="noreferrer"
+              rel="me noreferrer"
               className="text-accent hover:underline focus:outline-offset-2 focus:outline-accent"
             >
               <InstagramIcon className="size-6 fill-accent" />

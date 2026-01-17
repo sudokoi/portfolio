@@ -87,7 +87,9 @@ export const meta = () => [
 
 # {frontmatter.title}
 
-Expense Buddy is a privacy‑first expense tracker for people who want a fast, reliable way to log daily spending without ads or hidden data collection. It’s built with React Native (Expo), stores everything locally by default, and offers optional GitHub sync if you want a personal backup you control.
+I’ve tried a bunch of expense trackers over the years, and I kept running into the same problems: slow flows, cluttered screens, and a nagging feeling that I was handing over more data than I should. So I built my own.
+
+Expense Buddy is a privacy‑first, local‑first expense tracker that stays out of your way. It’s built with React Native (Expo), keeps everything on‑device by default, and gives you **optional GitHub sync** if you want a personal backup you control.
 
 ## Screenshots
 
@@ -122,7 +124,7 @@ Expense Buddy is a privacy‑first expense tracker for people who want a fast, r
 
 ## Why Expense Buddy exists
 
-Most expense trackers either feel slow, intrusive, or opaque about where your data goes. Expense Buddy is the opposite—focused on clarity, speed, and ownership:
+Most expense trackers either felt slow, intrusive, or vague about where my data lived. I wanted something simple enough to open daily, fast enough to never frustrate me, and honest about storage. Expense Buddy is the result—focused on clarity, speed, and ownership:
 
 - **Local-first** by default (your data stays on-device)
 - **Private** by design (no analytics, ads, or data selling)
@@ -143,7 +145,7 @@ Most expense trackers either feel slow, intrusive, or opaque about where your da
 
 ## Dashboard
 
-The dashboard gives you quick insights into recent transactions, total spend, and the last 7‑day trend. Tapping the 7‑day graph jumps straight into the day‑view expenses.
+The dashboard is my “daily check‑in” screen. It gives me a quick view of recent spending and a simple 7‑day trend. I made the graph tappable because I kept wanting to jump straight into that day’s entries.
 
 <div className="my-6 flex flex-wrap items-start justify-center gap-4">
   <img
@@ -155,7 +157,7 @@ The dashboard gives you quick insights into recent transactions, total spend, an
 
 ## Add expense
 
-Adding an expense is a one‑screen flow with quick category and payment method picks, designed to stay out of your way while you’re on the go.
+Adding an expense should be boring—in a good way. It’s a one‑screen flow with quick category and payment method picks so I can log something in a few seconds and move on.
 
 <div className="my-6 flex flex-wrap items-start justify-center gap-4">
   <img
@@ -167,7 +169,7 @@ Adding an expense is a one‑screen flow with quick category and payment method 
 
 ## Analytics you can trust
 
-The analytics tab is built for quick answers: see where money goes by **category**, **payment method**, and **saved instrument**, then zoom out with a **spending trend** view. You can also filter by multiple **time windows** to compare recent weeks vs. longer‑term habits.
+I wanted answers, not charts for the sake of charts. The analytics tab helps me see where money goes by **category**, **payment method**, and **saved instrument**, then zoom out with a **spending trend** view. I also added multiple **time windows** so I can compare “this week” vs. “the last 3 months” without leaving the screen.
 
 <div className="my-6 flex flex-wrap items-start justify-center gap-4">
   <img
@@ -184,7 +186,7 @@ The analytics tab is built for quick answers: see where money goes by **category
 
 ## History and edits
 
-Need to fix a mistake? The history view lets you browse past entries, open any expense, and edit it in place.
+I mess up entries all the time. The history view lets me browse past entries, open any expense, and fix it in place—no weird edit mode, no hunting.
 
 <div className="my-6 flex flex-wrap items-start justify-center gap-4">
   <img
@@ -196,7 +198,7 @@ Need to fix a mistake? The history view lets you browse past entries, open any e
 
 ## Settings that stay out of your way
 
-The Settings screen is meant to be practical, not noisy. You can set a **default payment method**, add **custom categories** (the app ships with 8 defaults you can edit), manage **saved payment instruments** for deeper analytics, and enable **GitHub sync** to keep everything in sync across devices. Auto‑sync can run **on change** or **on app launch**.
+Settings are intentionally boring. You can set a **default payment method**, add **custom categories** (the app ships with 8 defaults you can edit), manage **saved payment instruments** for deeper analytics, and enable **GitHub sync** to keep everything in sync across devices. Auto‑sync can run **on change** or **on app launch**.
 
 <div className="my-6 flex flex-wrap items-start justify-center gap-4">
   <img
@@ -213,7 +215,7 @@ The Settings screen is meant to be practical, not noisy. You can set a **default
 
 ## How GitHub sync works (optional)
 
-GitHub sync is designed to be safe, predictable, and in your control. Your data stays local unless you explicitly enable sync.
+I designed GitHub sync to be safe, predictable, and fully optional. Your data stays local unless you explicitly turn this on.
 
 - **Daily CSV files**: expenses are stored as `expenses-YYYY-MM-DD.csv` in your repo
 - **Merge‑first workflow**: fetch → merge → push, to avoid accidental data loss
@@ -223,7 +225,7 @@ GitHub sync is designed to be safe, predictable, and in your control. Your data 
 
 ## Built for speed
 
-Expense Buddy stays snappy even with large histories thanks to virtualized lists, memoized components, and a lightweight state layer. The UI is intentionally minimal so adding an expense takes seconds, not minutes.
+I’m allergic to janky lists, so performance was a first‑class goal. Virtualized lists, memoized components, and a lightweight state layer keep things snappy even with long histories. The UI stays minimal so logging an expense takes seconds, not minutes.
 
 ## Privacy notes
 
@@ -231,7 +233,7 @@ Expense Buddy stays snappy even with large histories thanks to virtualized lists
 - GitHub sync is **opt‑in** and stores files in your own repository (daily CSVs)
 - No selling of data
 
-If you want to dig deeper, check out the repo, changelog, and privacy policy:
+If you want to dig deeper, here are the links I keep updated:
 
 - [GitHub repo](https://github.com/sudokoi/expense-buddy)
 - [Changelog](https://github.com/sudokoi/expense-buddy/blob/main/CHANGELOG.md)

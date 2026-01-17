@@ -1,6 +1,11 @@
 import type { LoaderFunction } from "@remix-run/cloudflare";
 import resumeUrl from "~/assets/resume/Sudhanshu_Ranjan____Resume____Dec_2025.pdf";
 
+const BUILD_DATE =
+  process.env.BUILD_DATE ?? new Date().toISOString().split("T")[0];
+
+export const lastmod = BUILD_DATE;
+
 export const loader: LoaderFunction = async ({ request }) => {
   const assetUrl = new URL(resumeUrl, request.url);
   const response = await fetch(assetUrl.toString());

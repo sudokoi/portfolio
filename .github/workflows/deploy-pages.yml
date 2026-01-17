@@ -47,8 +47,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Set build date
+        run: echo "BUILD_DATE=$(date -u +'%Y-%m-%d')" >> $GITHUB_ENV
+
       - name: Build
         run: pnpm build
+        env:
+          BUILD_DATE: ${{ env.BUILD_DATE }}
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1

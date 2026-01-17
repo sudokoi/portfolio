@@ -1,4 +1,4 @@
-import { Outlet, useLoaderData } from "@remix-run/react";
+import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import Giscus from "@giscus/react";
 import {
   LoaderFunctionArgs,
@@ -8,6 +8,38 @@ import {
 } from "@remix-run/cloudflare";
 import { ShareOnTwitter } from "~/components/share-twitter";
 import { TWITTER_HANDLE } from "~/utils/contants";
+import { parse } from "date-fns/parse";
+
+type BlogMeta = { title: string; description: string; date: string };
+
+const getBlogEntries = () => {
+  return Object.entries(
+    import.meta.glob("./blog.*.mdx", {
+      import: "frontmatter",
+      eager: true,
+    }),
+  )
+    .map(([filePath, contents]) => {
+      const path = filePath
+        .replace("./", "/")
+        .replace(".", "/")
+        .replace(/\.mdx$/, "");
+
+      return {
+        path,
+        ...(contents as BlogMeta),
+      };
+    })
+    .sort((a, b) => {
+      try {
+        const aDate = parse(a.date, "MMM dd, yyyy", new Date());
+        const bDate = parse(b.date, "MMM dd, yyyy", new Date());
+        return aDate.getTime() - bDate.getTime();
+      } catch (e) {
+        return 0;
+      }
+    });
+};
 
 export const loader = ({ request }: LoaderFunctionArgs) => {
   // check if the request has subpath
@@ -19,7 +51,16 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
     return redirect("/blogs");
   }
 
-  return json({ pageUrl: request.url });
+  const pathname = new URL(request.url).pathname;
+  const entries = getBlogEntries();
+  const currentIndex = entries.findIndex((entry) => entry.path === pathname);
+  const previous = currentIndex > 0 ? entries[currentIndex - 1] : null;
+  const next =
+    currentIndex >= 0 && currentIndex < entries.length - 1
+      ? entries[currentIndex + 1]
+      : null;
+
+  return json({ pageUrl: request.url, previous, next });
 };
 
 export const meta: MetaFunction = () => {
@@ -49,13 +90,39 @@ export default function Blog() {
         <Outlet />
       </div>
       <hr className="my-4 inline-block" />
+      {(loaderData.previous || loaderData.next) && (
+        <nav className="my-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          {loaderData.previous ? (
+            <Link
+              to={loaderData.previous.path}
+              reloadDocument
+              className="text-accent underline underline-offset-4 focus:rounded focus:outline-none focus:ring-[1px] focus:ring-accent focus:ring-offset-2"
+            >
+              ← Previous: {loaderData.previous.title}
+            </Link>
+          ) : (
+            <span />
+          )}
+          {loaderData.next ? (
+            <Link
+              to={loaderData.next.path}
+              reloadDocument
+              className="text-accent underline underline-offset-4 focus:rounded focus:outline-none focus:ring-[1px] focus:ring-accent focus:ring-offset-2"
+            >
+              Next: {loaderData.next.title} →
+            </Link>
+          ) : (
+            <span />
+          )}
+        </nav>
+      )}
       <div className="py-4">
         <aside className="border border-l-0 border-r-0 border-dotted border-b-accent border-t-accent p-4">
           If you like what you read, consider{" "}
           <a
             href={`https://twitter.com/${TWITTER_HANDLE}`}
             target="_blank"
-            rel="noreferrer"
+            rel="me noreferrer"
             className="text-accent underline underline-offset-4 focus:rounded focus:no-underline focus:outline-none focus:ring-[1px] focus:ring-accent focus:ring-offset-2"
           >
             following

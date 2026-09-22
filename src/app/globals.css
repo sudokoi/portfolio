@@ -18,7 +18,7 @@
   box-sizing: border-box;
 }
 html {
-  scroll-padding-top: 2rem;
+  scroll-padding-top: 7rem;
 }
 body {
   margin: 0;
@@ -86,6 +86,10 @@ img {
   padding-inline: clamp(1.25rem, 5vw, 4rem);
 }
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--color-paper);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -115,9 +119,6 @@ img {
 .site-header nav a {
   text-decoration: none;
 }
-.site-header nav a:last-child {
-  color: var(--accent);
-}
 main {
   min-height: calc(100dvh - 190px);
   padding-block: 3.5rem 5rem;
@@ -138,7 +139,8 @@ main {
   gap: 1.25rem;
 }
 .skip-link {
-  position: absolute;
+  position: fixed;
+  top: 0;
   transform: translateY(-200%);
   padding: 0.5rem 1rem;
   background: #f3f2f8;
@@ -175,6 +177,9 @@ main {
   }
 }
 @media (max-width: 640px) {
+  html {
+    scroll-padding-top: 8.5rem;
+  }
   .site-header {
     align-items: flex-start;
     justify-content: center;

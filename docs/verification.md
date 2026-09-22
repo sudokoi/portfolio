@@ -6,13 +6,14 @@ Implementation date: 2026-09-22. Local environment: macOS arm64, Node 24.12.0, p
 
 - Strict peer dependency installation passed; a frozen-lockfile install is part of release validation and CI.
 - Next.js production build passed with static home, blog index, all six articles, all seven OG images, resume PDF, RSS, robots and sitemap. `/mcp` and legacy image redirects are small route handlers.
-- Studio typecheck/build passed. This proves the editor compiles; a real Sanity account connection and authoring round-trip remain pending.
+- Studio typecheck/build and hosted schema deployment passed. Signed-in browser authoring remains pending; authenticated CLI publishing is verified below.
 - Vitest covers schema rejection, drafts/versions, deterministic export, missing/truncated media, stable slugs, unpublishing, content-only Git commits, stale bases, restore remapping, original MDX dates/code/galleries/tables/demos, and search.
 - Production browser checks cover all six articles without JavaScript, canonical/OG/JSON-LD data, real PNG image dimensions, feed/sitemap membership, 404s/redirects, lazy search, PDF bytes, tracking attributes, and a standards-shaped WebMCP test adapter.
-- All 14 production browser tests passed. axe checks passed on home, index, all six articles, and agent instructions at 320, 390, 768, and 1440 CSS pixels. Keyboard skip navigation, reduced motion, and document overflow checks passed. Code uses GitHub’s high-contrast dark theme; long article titles wrap at narrow widths.
+- All 18 unit/pipeline tests and 15 production browser tests passed after the profile/project update. axe checks passed on home, projects, index, all six articles, and agent instructions at 320, 390, 768, and 1440 CSS pixels. Keyboard skip navigation, reduced motion, and document overflow checks passed. Code uses GitHub’s high-contrast dark theme; long article titles wrap at narrow widths.
 - The actual MCP v2 client connected over HTTP, listed the four read-only tools, fetched profile/article/resume data, and exercised invalid IDs/input and origin rejection.
 - Native Chrome 153 through agent-browser discovered `search_posts` and `open_article`; search returned the halo article and the navigation tool opened its canonical local route. This is native browser evidence in addition to mocked lifecycle checks. Production origin-trial setup is pending.
 - Desktop homepage, mobile blog index, halo demonstrations, and the long Expense Buddy OG card were visually inspected. Temporary screenshots and browser traces live under ignored `test-results/`.
+- The populated project showcase was visually inspected at 1440px and 390px. Its published content, optional external links, screenshots, canonical URL, sitemap entry, and no-JavaScript navigation passed browser checks. The optional portrait was exercised with a local-only generated-content fixture: 176px beside the introduction on desktop and 96px above the copy on mobile, with no horizontal overflow. The fixture was removed; no portrait has been published.
 
 ## Fixed-profile mobile lab sample
 
@@ -36,11 +37,12 @@ These are local lab results, not deployed CDN measurements or field INP. JavaScr
 - A live authenticated export passed byte-size and SHA-1/SHA-256 validation with digest `aa854ddd145cd6d4fe52bc3f5687e20a0a5906219d81bf8c636dcd2cc7b4524c`. Raw asset downloads use `dlRaw`; ordinary CDN image URLs may strip original metadata.
 - GitHub publishing/author secrets and a Sanity viewer-role export token are configured. [Publication run 35698527190](https://github.com/sudokoi/portfolio/actions/runs/35698527190) exported, validated, built, and pushed snapshot commit `063ae16` with the imported Sanity asset IDs. Original media files did not change.
 - The published-only Sanity webhook is configured for create/update/delete. A semantic no-op update to the profile triggered [repository dispatch run 35698767887](https://github.com/sudokoi/portfolio/actions/runs/35698767887), which passed and reported “Published content unchanged; no commit or build needed.” The [content commit's CI run 35698623964](https://github.com/sudokoi/portfolio/actions/runs/35698623964) also passed. Vercel is not connected yet.
+- Project/photo support was pushed as `c649ceb` and the updated Studio schema deployed. The latest resume-backed profile, PDF, and four project entries were published through Sanity; [publication run 35699984603](https://github.com/sudokoi/portfolio/actions/runs/35699984603) created snapshot commit `00840ce`. [Its CI run 35700079006](https://github.com/sudokoi/portfolio/actions/runs/35700079006) passed. The snapshot contains six articles and 19 original assets. The replacement PDF matches `../resume/Sudhanshu_Ranjan_Resume.pdf` byte-for-byte (56,840 bytes; SHA-256 `4e7a40105b98b357c194b4033b5f36fa8991c3c13e6bc8dba77c5729aa88d849`).
 
 The owner supplied Sanity project `7vbp91cq`, Umami website `9c1d80c6-2a8e-4925-b2a4-fbdbea343dae`, and the GitHub publishing credential; these are configured locally. The repository is pushed and ready for Vercel connection; the owner will perform DNS migration after deployment. Do not interpret local checks as proof of the following:
 
 - Real Studio draft/save/reopen/manual-publish behavior in a signed-in browser.
-- Direct Sanity webhook acceptance, owner-PAT publication, automatic Vercel deployment, no-op replay, unpublish propagation and resume replacement.
+- Automatic Vercel deployment and live unpublish propagation. Webhook acceptance, owner-PAT publication, no-op replay, and resume replacement through Sanity are verified above.
 - Failed deployment retention and hosted rollback/reconciliation rehearsal.
 - Vercel Hobby/domain binding, HTTPS, Cloudflare Pages account-side shutdown, and production indexing flag.
 - Actual Umami page-view deduplication/custom events, search property ownership, sitemap submission, and indexing.

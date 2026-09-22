@@ -1,14 +1,19 @@
 import { expect, test } from '@playwright/test';
 
-test('Sentry captures browser errors through an intercepted envelope', async ({ page }) => {
+test('Sentry sends browser errors through the same-origin tunnel', async ({ page }) => {
   test.skip(
     process.env.VERCEL_ENV !== 'production' ||
-      process.env.NEXT_PUBLIC_SENTRY_DSN !== 'https://public@example.invalid/1',
+      process.env.NEXT_PUBLIC_SENTRY_DSN !== 'https://public@o0.ingest.sentry.io/1',
     'Run against the documented production-mode build with the dummy DSN.',
   );
 
   const envelopes: string[] = [];
-  await page.route('https://example.invalid/**', async (route) => {
+  const directRequests: string[] = [];
+  await page.route('https://*.sentry.io/**', async (route) => {
+    directRequests.push(route.request().url());
+    await route.abort();
+  });
+  await page.route('**/monitoring?*', async (route) => {
     envelopes.push(route.request().postData() ?? '');
     await route.fulfill({ status: 200, contentType: 'application/json', body: '{}' });
   });
@@ -29,5 +34,6 @@ test('Sentry captures browser errors through an intercepted envelope', async ({ 
   expect(event.exception.values[0].type).toBe('Error');
   expect(event.exception.values[0].stacktrace.frames.length).toBeGreaterThan(0);
   expect(event.user).toBeUndefined();
+  expect(directRequests).toEqual([]);
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
 });

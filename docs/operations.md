@@ -44,13 +44,15 @@ Use Sentry's suggested organization auth token for source-map uploads (`org:ci` 
 
 Browser exceptions, unhandled rejections, React render failures, and server request errors are captured. The environment comes from `VERCEL_ENV`; previews, local development, and builds without a DSN do not initialize reporting. Tracing, session replay, logs, and metrics are disabled. Automatic user identity, cookies, HTTP headers/bodies, and URL query parameters are excluded from SDK collection.
 
+Browser events use Sentry's built-in Next.js tunnel at `https://sudh.online/monitoring`. Vercel rewrites those requests to Sentry's ingestion endpoint, reducing interference from blockers targeting Sentry domains. This requires a Sentry SaaS DSN and no extra environment variable, subdomain, or DNS record. Server events and build-time source-map uploads go directly to Sentry. If middleware/proxy is added later, exclude `/monitoring` from authentication and redirects.
+
 Authenticated builds upload source maps and delete the uploaded maps from the output. Without an upload token, the build still succeeds and error reporting can work with the DSN, but minified browser stack traces may lack original-source context. Source-map upload failures fail the configured build so missing maps are visible during deployment.
 
 Check the Sentry Issues dashboard after a controlled test error and confirm its environment is `production` and its stack resolves to source. Use the intercepted-envelope browser smoke test below before enabling the live DSN; it sends no event to Sentry:
 
 ```sh
-VERCEL_ENV=production NEXT_PUBLIC_SENTRY_DSN=https://public@example.invalid/1 pnpm build
-VERCEL_ENV=production NEXT_PUBLIC_SENTRY_DSN=https://public@example.invalid/1 pnpm test:e2e tests/e2e/sentry.spec.ts --project=chromium
+VERCEL_ENV=production NEXT_PUBLIC_SENTRY_DSN=https://public@o0.ingest.sentry.io/1 pnpm build
+VERCEL_ENV=production NEXT_PUBLIC_SENTRY_DSN=https://public@o0.ingest.sentry.io/1 pnpm test:e2e tests/e2e/sentry.spec.ts --project=chromium
 ```
 
 ## Google and Bing

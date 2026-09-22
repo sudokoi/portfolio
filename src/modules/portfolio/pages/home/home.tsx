@@ -31,7 +31,7 @@ export function HomePage() {
         className={`${styles.intro} ${photo ? styles.withPhoto : ''}`}
         aria-labelledby="intro-title"
       >
-        <h1 id="intro-title">A small corner of the internet.</h1>
+        <h1 id="intro-title">My small corner of the internet.</h1>
         <div className={styles.introLayout}>
           {photo && profile.photo ? (
             <Image

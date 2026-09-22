@@ -65,7 +65,7 @@
           "_type": "image",
           "alt": "Expense Buddy dashboard",
           "asset": {
-            "_ref": "legacy-3e40ec51adebe6b00143e15f",
+            "_ref": "image-2d4d1f2b439770c3a5c8a0668f70f50734d421f5-784x1600-jpg",
             "_type": "reference"
           }
         },
@@ -74,7 +74,7 @@
           "_type": "image",
           "alt": "Expense Buddy add expense screen",
           "asset": {
-            "_ref": "legacy-f1a4be4d9173e5ee9c0ccbca",
+            "_ref": "image-78c8c4c463e618ee368a0e57d92661fb228c543c-784x1600-jpg",
             "_type": "reference"
           }
         },
@@ -83,7 +83,7 @@
           "_type": "image",
           "alt": "Expense Buddy analytics",
           "asset": {
-            "_ref": "legacy-fabb884b0de3d028db2f9ad5",
+            "_ref": "image-66566f1cc2df270a4570f7d181143bcce6b3df75-784x1600-jpg",
             "_type": "reference"
           }
         },
@@ -92,7 +92,7 @@
           "_type": "image",
           "alt": "Expense Buddy history",
           "asset": {
-            "_ref": "legacy-5554814d3246bf23a19d404b",
+            "_ref": "image-a899aa3eae09144b14ca682fdf2fbab014966561-784x1600-jpg",
             "_type": "reference"
           }
         },
@@ -101,7 +101,7 @@
           "_type": "image",
           "alt": "Expense Buddy settings",
           "asset": {
-            "_ref": "legacy-6ff4084321bbf962bdfeca18",
+            "_ref": "image-f3a182a0f4e5dde5091c98fd91617f0f3dc2aa1a-784x1600-jpg",
             "_type": "reference"
           }
         }
@@ -512,7 +512,7 @@
           "_type": "image",
           "alt": "Expense Buddy dashboard",
           "asset": {
-            "_ref": "legacy-3e40ec51adebe6b00143e15f",
+            "_ref": "image-2d4d1f2b439770c3a5c8a0668f70f50734d421f5-784x1600-jpg",
             "_type": "reference"
           }
         }
@@ -555,7 +555,7 @@
           "_type": "image",
           "alt": "Expense Buddy add expense screen",
           "asset": {
-            "_ref": "legacy-f1a4be4d9173e5ee9c0ccbca",
+            "_ref": "image-78c8c4c463e618ee368a0e57d92661fb228c543c-784x1600-jpg",
             "_type": "reference"
           }
         }
@@ -668,7 +668,7 @@
           "_type": "image",
           "alt": "Expense Buddy analytics",
           "asset": {
-            "_ref": "legacy-fabb884b0de3d028db2f9ad5",
+            "_ref": "image-66566f1cc2df270a4570f7d181143bcce6b3df75-784x1600-jpg",
             "_type": "reference"
           }
         },
@@ -677,7 +677,7 @@
           "_type": "image",
           "alt": "Expense Buddy analytics charts",
           "asset": {
-            "_ref": "legacy-e339ee44d640f0b46a055019",
+            "_ref": "image-605a1775e12ea052a9f8e1ae430a3ea35b6ae547-784x1600-jpg",
             "_type": "reference"
           }
         }
@@ -720,7 +720,7 @@
           "_type": "image",
           "alt": "Expense Buddy history",
           "asset": {
-            "_ref": "legacy-5554814d3246bf23a19d404b",
+            "_ref": "image-a899aa3eae09144b14ca682fdf2fbab014966561-784x1600-jpg",
             "_type": "reference"
           }
         }
@@ -847,7 +847,7 @@
           "_type": "image",
           "alt": "Expense Buddy settings",
           "asset": {
-            "_ref": "legacy-6ff4084321bbf962bdfeca18",
+            "_ref": "image-f3a182a0f4e5dde5091c98fd91617f0f3dc2aa1a-784x1600-jpg",
             "_type": "reference"
           }
         },
@@ -856,7 +856,7 @@
           "_type": "image",
           "alt": "Expense Buddy settings auto-sync",
           "asset": {
-            "_ref": "legacy-971260aef4bd5f5fca6a88e2",
+            "_ref": "image-1b84edb1d99758e5855ebbdf2d0e3d47f49b07be-784x1600-jpg",
             "_type": "reference"
           }
         }
@@ -1287,7 +1287,7 @@
       "_type": "image",
       "alt": "Get it on Google Play",
       "asset": {
-        "_ref": "legacy-81c1e8c07f28c8f8ead3d5c2",
+        "_ref": "image-cb8126b32c2274e0394246b40bd0b7f9f847e44c-646x250-png",
         "_type": "reference"
       },
       "href": "https://play.google.com/store/apps/details?id=com.sudokoi.expensebuddy"

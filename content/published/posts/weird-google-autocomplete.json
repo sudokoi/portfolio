@@ -61,7 +61,7 @@
       "_type": "image",
       "alt": "Working autocomplete suggestions",
       "asset": {
-        "_ref": "legacy-44568001856976a4dc3e6d5a",
+        "_ref": "image-e786c31e657f4843fb9f0a924eb8a2fca10c977d-476x262-png",
         "_type": "reference"
       },
       "caption": "Working autocomplete suggestions"
@@ -85,7 +85,7 @@
       "_type": "image",
       "alt": "Not working autocomplete suggestions",
       "asset": {
-        "_ref": "legacy-e6037e03ca7b1018b20ec2cf",
+        "_ref": "image-badc53b0a9492c7808a0b573c102bae434069117-476x262-png",
         "_type": "reference"
       },
       "caption": "Not working autocomplete suggestions"
@@ -109,7 +109,7 @@
       "_type": "image",
       "alt": "No suggestions, no progress",
       "asset": {
-        "_ref": "legacy-fe62a2b52e36bbdb5a24b692",
+        "_ref": "image-7f64b2c13e5a2aeed3d638dd7cc9d5fc97a97b1a-476x262-png",
         "_type": "reference"
       },
       "caption": "No suggestions, no progress"
@@ -359,7 +359,7 @@
       "_type": "image",
       "alt": "The hack that worked",
       "asset": {
-        "_ref": "legacy-014d651add55db74b5131ff6",
+        "_ref": "image-6423c9c0bfbff0de411ddd005c7aa54c3b56efe9-861x182-png",
         "_type": "reference"
       },
       "caption": "The hack that worked"

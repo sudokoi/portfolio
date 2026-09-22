@@ -1,5 +1,5 @@
 {
-  "digest": "d10fd75dd807042eca861b4bd5ae384145e925176eca67a6c98125efe245b0ee",
+  "digest": "aa854ddd145cd6d4fe52bc3f5687e20a0a5906219d81bf8c636dcd2cc7b4524c",
   "posts": [
     "posts/expense-buddy.json",
     "posts/halo-effect.json",
@@ -9,6 +9,14 @@
     "posts/weird-google-autocomplete.json"
   ],
   "profile": "profile.json",
-  "revisions": {},
+  "revisions": {
+    "post-expense-buddy": "81PXpUg2CMOFSiTnuoeISw",
+    "post-halo-effect": "81PXpUg2CMOFSiTnuoeISw",
+    "post-improving-lcp": "81PXpUg2CMOFSiTnuoeISw",
+    "post-og-image": "81PXpUg2CMOFSiTnuoeISw",
+    "post-use-imperative-handle": "81PXpUg2CMOFSiTnuoeISw",
+    "post-weird-google-autocomplete": "81PXpUg2CMOFSiTnuoeISw",
+    "profile": "81PXpUg2CMOFSiTnuoeISw"
+  },
   "schemaVersion": 1
 }

@@ -75,6 +75,12 @@ Verify delete/unpublish notifications with Sanity’s webhook test/history UI. A
 
 ## Publication behavior
 
+### Profile photo and project showcase
+
+In **Portfolio profile**, the optional **Profile photo** appears as a 176px rounded square beside the introduction on desktop and 96px above the introduction on mobile. Use a square head-and-shoulders image at least 400 × 400 pixels and add alternative text. Other aspect ratios are center-cropped. Removing the photo restores the text-only layout.
+
+The **Projects** array controls `/projects` and the first three homepage previews. Each entry supports a stable section slug, description, release status, platform, highlights, technology list, icon, screenshot, public source URL, and Google Play URL. External links are optional so unreleased apps and private repositories can be showcased accurately. Icons, screenshots, and the profile photo are included in original-media backups.
+
 `Publish Sanity content` handles `repository_dispatch`, manual `workflow_dispatch`, and daily reconciliation at 06:17 UTC. It serializes executions with cancellation disabled. GitHub may coalesce pending runs; every run exports the latest published state, ignoring event document payloads.
 
 Each attempt:

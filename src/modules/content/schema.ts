@@ -98,10 +98,31 @@ export const postSchema = z
     'Update date precedes publication',
   );
 const link = z.object({ label: text, href: safeHref });
+const portfolioImage = z.object({ _type: z.literal('image'), asset: reference, alt: text });
+const project = z.object({
+  name: text,
+  description: text,
+  slug: z
+    .string()
+    .regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/)
+    .optional(),
+  href: safeHref.optional(),
+  playStoreUrl: z
+    .url()
+    .refine((value) => new URL(value).origin === 'https://play.google.com')
+    .optional(),
+  status: z.enum(['released', 'in-development']).optional(),
+  platform: text.optional(),
+  highlights: z.array(text).optional(),
+  stack: z.array(text).optional(),
+  icon: portfolioImage.optional(),
+  screenshot: portfolioImage.optional(),
+});
 export const profileSchema = z.object({
   id,
   name: text,
   role: text,
+  photo: portfolioImage.optional(),
   introduction: z.array(text).min(1),
   aside: text,
   experience: z.array(
@@ -113,7 +134,7 @@ export const profileSchema = z.object({
       highlights: z.array(text),
     }),
   ),
-  projects: z.array(z.object({ name: text, description: text, href: safeHref })),
+  projects: z.array(project),
   skills: z.array(text),
   links: z.array(link),
   resume: reference,
@@ -180,5 +201,16 @@ export function validateSnapshot(input: unknown): Snapshot {
     if (!assets.has(ref)) throw new Error(`Missing asset: ${ref}`);
   if (assets.get(data.profile.resume._ref)?.mimeType !== 'application/pdf')
     throw new Error('Resume must reference a PDF asset');
+  if (
+    data.profile.photo &&
+    !assets.get(data.profile.photo.asset._ref)?.mimeType.startsWith('image/')
+  )
+    throw new Error('Profile photo must reference an image asset');
+  for (const project of data.profile.projects) {
+    for (const image of [project.icon, project.screenshot]) {
+      if (image && !assets.get(image.asset._ref)?.mimeType.startsWith('image/'))
+        throw new Error('Project media must reference an image asset');
+    }
+  }
   return data;
 }

@@ -54,6 +54,7 @@ export function normalizeDocuments(documents: PublishedDocument[]) {
     ...profileDocument,
     id: profileDocument._id,
     resume: resume?.asset,
+    photo: profileDocument.photo ?? undefined,
   });
   return { posts, profile };
 }
@@ -107,7 +108,7 @@ export function liveSource(): ExportSource {
   return {
     documents: () =>
       client.fetch<PublishedDocument[]>(
-        `*[_type in ["post", "profile"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))]{_id,_type,_rev,title,slug,description,publishedAt,updatedAt,tags,body,name,role,introduction,aside,experience,projects,skills,links,resume}`,
+        `*[_type in ["post", "profile"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))]{_id,_type,_rev,title,slug,description,publishedAt,updatedAt,tags,body,name,role,photo,introduction,aside,experience,projects,skills,links,resume}`,
       ),
     assets: (ids) =>
       client.fetch<SourceAsset[]>(

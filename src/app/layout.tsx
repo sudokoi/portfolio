@@ -41,6 +41,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               Sudhanshu
             </Link>
             <nav aria-label="Main navigation">
+              <Link href="/projects" prefetch={false}>
+                /projects
+              </Link>
               <Link href="/blogs" prefetch={false}>
                 /blogs
               </Link>

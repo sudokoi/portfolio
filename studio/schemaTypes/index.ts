@@ -192,6 +192,16 @@ const profile = defineType({
     requiredText('name'),
     requiredText('role'),
     defineField({
+      name: 'photo',
+      title: 'Profile photo (optional)',
+      type: 'image',
+      description:
+        'Shown beside your introduction. A square head-and-shoulders portrait, at least 400 × 400 pixels, works best. Non-square images are center-cropped on the website. Remove this field to use the text-only layout.',
+      options: { hotspot: false, accept: 'image/jpeg,image/png,image/webp,image/avif' },
+      fields: [requiredText('alt', 'Alternative text')],
+      validation: (rule) => rule.assetRequired(),
+    }),
+    defineField({
       name: 'introduction',
       type: 'array',
       of: [{ type: 'text' }],
@@ -222,7 +232,73 @@ const profile = defineType({
         {
           type: 'object',
           name: 'project',
-          fields: [requiredText('name'), requiredText('description'), url()],
+          fields: [
+            requiredText('name'),
+            defineField({
+              name: 'slug',
+              type: 'string',
+              description: 'Stable section link, such as expense-buddy.',
+              validation: (rule) => rule.regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
+            }),
+            defineField({
+              name: 'description',
+              type: 'text',
+              rows: 3,
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'status',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Released', value: 'released' },
+                  { title: 'In development', value: 'in-development' },
+                ],
+              },
+            }),
+            defineField({ name: 'platform', type: 'string' }),
+            defineField({
+              name: 'highlights',
+              title: 'What makes it useful',
+              type: 'array',
+              of: [{ type: 'string' }],
+            }),
+            defineField({
+              name: 'stack',
+              title: 'Built with',
+              type: 'array',
+              of: [{ type: 'string' }],
+            }),
+            defineField({
+              name: 'href',
+              title: 'Public source URL (optional)',
+              type: 'url',
+              validation: (rule) => rule.uri({ scheme: ['https'] }),
+            }),
+            defineField({
+              name: 'playStoreUrl',
+              title: 'Google Play URL (optional)',
+              type: 'url',
+              validation: (rule) =>
+                rule
+                  .uri({ scheme: ['https'] })
+                  .custom(
+                    (value) =>
+                      !value ||
+                      new URL(value).origin === 'https://play.google.com' ||
+                      'Use a Google Play URL',
+                  ),
+            }),
+            ...['icon', 'screenshot'].map((name) =>
+              defineField({
+                name,
+                type: 'image',
+                options: { hotspot: false },
+                fields: [requiredText('alt', 'Alternative text')],
+                validation: (rule) => rule.assetRequired(),
+              }),
+            ),
+          ],
         },
       ],
     }),

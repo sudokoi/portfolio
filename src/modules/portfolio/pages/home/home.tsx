@@ -1,11 +1,13 @@
 import Link from 'next/link';
-import { getProfile, listPosts } from '@/modules/content';
+import Image from 'next/image';
+import { getAsset, getProfile, listPosts } from '@/modules/content';
 import { JsonLd } from '@/modules/seo';
 import { canonical } from '@/shared/config/site';
 import styles from './home.module.css';
 
 export function HomePage() {
   const profile = getProfile();
+  const photo = profile.photo ? getAsset(profile.photo.asset._ref) : undefined;
   return (
     <>
       <JsonLd
@@ -17,6 +19,7 @@ export function HomePage() {
             '@type': 'Person',
             name: profile.name,
             jobTitle: profile.role,
+            ...(photo ? { image: canonical(photo.path) } : {}),
             url: canonical(),
             sameAs: profile.links
               .filter((link) => link.href.startsWith('https:'))
@@ -24,20 +27,38 @@ export function HomePage() {
           },
         }}
       />
-      <section className={styles.intro} aria-labelledby="intro-title">
+      <section
+        className={`${styles.intro} ${photo ? styles.withPhoto : ''}`}
+        aria-labelledby="intro-title"
+      >
         <h1 id="intro-title">A small corner of the internet.</h1>
-        <p>{profile.introduction[0]}</p>
-        <blockquote>{profile.aside}</blockquote>
-        {profile.introduction.slice(1).map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
-        ))}
-        <p>
-          For a detailed overview,{' '}
-          <a href="/resume" data-umami-event="resume_link_click">
-            download my resume
-          </a>
-          .
-        </p>
+        <div className={styles.introLayout}>
+          {photo && profile.photo ? (
+            <Image
+              className={styles.portrait}
+              src={photo.path}
+              alt={profile.photo.alt}
+              width={photo.width}
+              height={photo.height}
+              sizes="(max-width: 768px) 96px, 176px"
+              preload
+            />
+          ) : null}
+          <div className={styles.introCopy}>
+            <p>{profile.introduction[0]}</p>
+            <blockquote>{profile.aside}</blockquote>
+            {profile.introduction.slice(1).map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+            <p>
+              For a detailed overview,{' '}
+              <a href="/resume" data-umami-event="resume_link_click">
+                download my resume
+              </a>
+              .
+            </p>
+          </div>
+        </div>
       </section>
       <div className={styles.sections}>
         <section aria-labelledby="experience">
@@ -61,15 +82,25 @@ export function HomePage() {
         <div>
           <section aria-labelledby="projects">
             <h2 id="projects">Projects</h2>
-            {profile.projects.map((project) => (
+            {profile.projects.slice(0, 3).map((project) => (
               <article className={styles.project} key={project.name}>
                 <h3>{project.name}</h3>
                 <p>{project.description}</p>
-                <a href={project.href} data-umami-event="project_link_click">
-                  View source ↗<span className="sr-only"> for {project.name}</span>
-                </a>
+                <Link
+                  href={`/projects${project.slug ? `#${project.slug}` : ''}`}
+                  prefetch={false}
+                  data-umami-event="project_link_click"
+                  data-umami-event-project={project.name}
+                >
+                  Explore {project.name} →
+                </Link>
               </article>
             ))}
+            <p>
+              <Link href="/projects" prefetch={false}>
+                All projects →
+              </Link>
+            </p>
           </section>
           <section aria-labelledby="skills">
             <h2 id="skills">Skills</h2>

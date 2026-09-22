@@ -71,4 +71,46 @@ describe('published snapshot contract', () => {
       }),
     ).toThrow();
   });
+  it('requires real image assets and alt text for optional portfolio media', () => {
+    const portrait = {
+      _type: 'image',
+      asset: { _type: 'reference', _ref: 'photo' },
+      alt: 'Sudhanshu Ranjan',
+    };
+    const imageAsset = {
+      ...asset,
+      sourceId: 'photo',
+      mimeType: 'image/png',
+      path: `/media/${asset.sha256}.png`,
+      width: 400,
+      height: 400,
+    };
+    const data = {
+      ...seed(),
+      profile: {
+        ...profile,
+        photo: portrait,
+        projects: [
+          {
+            name: 'Private project',
+            slug: 'private-project',
+            description: 'In development',
+            icon: portrait,
+          },
+        ],
+      },
+      assets: [asset, imageAsset],
+    };
+    expect(validateSnapshot(data).profile.photo?.alt).toBe('Sudhanshu Ranjan');
+    expect(() => validateSnapshot({ ...data, assets: [asset] })).toThrow(/Missing asset/);
+    expect(() =>
+      validateSnapshot({ ...data, profile: { ...data.profile, photo: { ...portrait, alt: '' } } }),
+    ).toThrow();
+    expect(() =>
+      validateSnapshot({
+        ...data,
+        profile: { ...data.profile, photo: { ...portrait, asset: profile.resume } },
+      }),
+    ).toThrow(/image asset/);
+  });
 });

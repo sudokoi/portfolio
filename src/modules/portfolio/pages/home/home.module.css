@@ -4,6 +4,35 @@
 .intro h1 {
   margin-block: 0 1.4rem;
 }
+.withPhoto {
+  max-width: none;
+}
+.introLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+.withPhoto .introLayout {
+  grid-template-columns: minmax(0, 74ch) 176px;
+  gap: 3rem;
+  align-items: start;
+}
+.introCopy {
+  min-width: 0;
+  grid-row: 1;
+  grid-column: 1;
+}
+.introCopy > p:first-child {
+  margin-top: 0;
+}
+.portrait {
+  grid-row: 1;
+  grid-column: 2;
+  width: 176px;
+  height: 176px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
 .intro blockquote {
   margin: 1.6rem 0;
   border-left: 3px solid var(--accent);
@@ -84,6 +113,18 @@
   padding-top: 2rem;
 }
 @media (max-width: 768px) {
+  .withPhoto .introLayout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+  .withPhoto .introCopy {
+    grid-row: 2;
+  }
+  .portrait {
+    grid-column: 1;
+    width: 96px;
+    height: 96px;
+  }
   .sections {
     grid-template-columns: 1fr;
     gap: 2rem;

@@ -32,11 +32,14 @@ const handler = createMcpHandler(
         annotations,
       },
       async () => {
-        const { name, role, introduction, aside, experience, projects, skills, links } =
+        const { name, role, photo, introduction, aside, experience, projects, skills, links } =
           getProfile();
         return result({
           name,
           role,
+          ...(photo
+            ? { photo: { url: canonical(getAsset(photo.asset._ref).path), alt: photo.alt } }
+            : {}),
           introduction,
           aside,
           experience,

@@ -5,7 +5,13 @@ const { posts } = await readSnapshot();
 for (const width of [320, 390, 768, 1440])
   test(`readable layouts at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
-    for (const path of ['/', '/blogs', ...posts.map((post) => `/blog/${post.slug}`), '/agents']) {
+    for (const path of [
+      '/',
+      '/projects',
+      '/blogs',
+      ...posts.map((post) => `/blog/${post.slug}`),
+      '/agents',
+    ]) {
       await page.goto(path);
       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
         true,

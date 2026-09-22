@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Script from 'next/script';
 import { SITE_ORIGIN, SITE_TITLE, indexable } from '@/shared/config/site';
 import { WebMcpBridge } from '@/shared/components/WebMcpBridge';
+import { MainNavigation } from '@/shared/components/MainNavigation';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -40,17 +41,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <Image src="/assets/logo.png" width={26} height={36} alt="" priority />
               Sudhanshu
             </Link>
-            <nav aria-label="Main navigation">
-              <Link href="/projects" prefetch={false}>
-                /projects
-              </Link>
-              <Link href="/blogs" prefetch={false}>
-                /blogs
-              </Link>
-              <a href="/resume" data-umami-event="resume_link_click">
-                /resume
-              </a>
-            </nav>
+            <MainNavigation />
           </header>
           <main id="main">{children}</main>
           <footer className="site-footer">

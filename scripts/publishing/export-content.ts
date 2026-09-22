@@ -103,7 +103,7 @@ export async function exportContent(root: string, source: ExportSource, previous
 
 export function liveSource(): ExportSource {
   const client = sanityClient();
-  const { projectId, dataset } = client.config();
+  const { projectId, dataset, token } = client.config();
   return {
     documents: () =>
       client.fetch<PublishedDocument[]>(
@@ -126,7 +126,14 @@ export function liveSource(): ExportSource {
         asset.size > 50 * 1024 * 1024
       )
         throw new Error('Unexpected asset origin or size');
-      const response = await fetch(url, { redirect: 'error', signal: AbortSignal.timeout(60_000) });
+      if (!token) throw new Error('SANITY_READ_TOKEN is required to back up original asset bytes.');
+      // The normal image CDN may strip metadata; dlRaw preserves the uploaded binary.
+      url.searchParams.set('dlRaw', path.basename(url.pathname));
+      const response = await fetch(url, {
+        headers: { Authorization: `Bearer ${token}` },
+        redirect: 'error',
+        signal: AbortSignal.timeout(60_000),
+      });
       if (!response.ok || !response.body)
         throw new Error(`Asset request failed: ${response.status}`);
       const reader = response.body.getReader();

@@ -28,9 +28,17 @@ These are local lab results, not deployed CDN measurements or field INP. JavaScr
 
 ## Pending hosted evidence
 
-The owner supplied Sanity project `7vbp91cq`, Umami website `9c1d80c6-2a8e-4925-b2a4-fbdbea343dae`, and the GitHub publishing credential; these are configured locally. Vercel connection is deferred until the repository is pushed, and the owner will perform DNS migration after deployment. Sanity authoring access remains to be verified. Do not interpret local checks as proof of the following:
+### Completed service setup
 
-- Sanity project/dataset creation, imported content, hosted Studio, and real draft/save/publish behavior.
+- Initial implementation pushed as `f042f67`; [GitHub CI run 35697905758](https://github.com/sudokoi/portfolio/actions/runs/35697905758) passed all gates on Linux, including production browser tests.
+- Sanity `production` dataset imported with all six posts, the profile singleton, and 15 original assets. The dataset originally contained only reserved Sanity system documents; those were preserved.
+- Studio deployed with schema validation to <https://sudh-portfolio.sanity.studio/> (application ID `bywe25l4l1yblljr29x5mop6`).
+- A live authenticated export passed byte-size and SHA-1/SHA-256 validation with digest `aa854ddd145cd6d4fe52bc3f5687e20a0a5906219d81bf8c636dcd2cc7b4524c`. Raw asset downloads use `dlRaw`; ordinary CDN image URLs may strip original metadata.
+- GitHub publishing/author secrets and a Sanity viewer-role export token are configured. Webhook-driven publication and Vercel deployment remain to be verified.
+
+The owner supplied Sanity project `7vbp91cq`, Umami website `9c1d80c6-2a8e-4925-b2a4-fbdbea343dae`, and the GitHub publishing credential; these are configured locally. The repository is pushed and ready for Vercel connection; the owner will perform DNS migration after deployment. Do not interpret local checks as proof of the following:
+
+- Real Studio draft/save/reopen/manual-publish behavior in a signed-in browser.
 - Direct Sanity webhook acceptance, owner-PAT publication, automatic Vercel deployment, no-op replay, unpublish propagation and resume replacement.
 - Failed deployment retention and hosted rollback/reconciliation rehearsal.
 - Vercel Hobby/domain binding, HTTPS, Cloudflare Pages account-side shutdown, and production indexing flag.

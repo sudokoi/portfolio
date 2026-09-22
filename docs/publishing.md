@@ -12,6 +12,15 @@
 
 `studio:build` can compile without a project connection using an explicit `unconfigured` project ID. That is a configuration placeholder, not a working hosted CMS. Fill in the IDs before using/deploying Studio.
 
+For initial import using an existing local Sanity CLI login instead of a separate write token:
+
+```sh
+pnpm --filter portfolio-studio exec sanity exec scripts/restore-content.ts --with-user-token
+pnpm --filter portfolio-studio exec sanity exec scripts/restore-content.ts --with-user-token -- --apply
+```
+
+The first command is a dry run. The second imports only into a dataset without user documents; Sanity's reserved internal system documents are left intact. The wrapper passes the authenticated credential in process memory without writing it to disk.
+
 ## GitHub automation setup
 
 The new public repository is **`sudokoi/portfolio`**, repository ID **1380945820**. Configure tokens and service integrations for this ID, not the preserved repository ID 795814629.
@@ -20,14 +29,14 @@ Create fine-grained owner tokens scoped only to the new repository, with **Conte
 
 Repository Actions configuration:
 
-| Name                    | Kind             | Use                                                     |
-| ----------------------- | ---------------- | ------------------------------------------------------- |
-| `SANITY_PROJECT_ID`     | Variable         | Enables publishing and selects the project              |
-| `SANITY_DATASET`        | Variable         | Usually `production`                                    |
-| `CONTENT_GIT_NAME`      | Variable         | Owner Git author name                                   |
-| `CONTENT_GIT_EMAIL`     | Secret           | Verified owner Git email                                |
-| `CONTENT_PUBLISH_TOKEN` | Secret           | Owner PAT used for checkout and ordinary content pushes |
-| `SANITY_READ_TOKEN`     | Secret, optional | Read-only token for a private dataset                   |
+| Name                    | Kind     | Use                                                        |
+| ----------------------- | -------- | ---------------------------------------------------------- |
+| `SANITY_PROJECT_ID`     | Variable | Enables publishing and selects the project                 |
+| `SANITY_DATASET`        | Variable | Usually `production`                                       |
+| `CONTENT_GIT_NAME`      | Variable | Owner Git author name                                      |
+| `CONTENT_GIT_EMAIL`     | Secret   | Verified owner Git email                                   |
+| `CONTENT_PUBLISH_TOKEN` | Secret   | Owner PAT used for checkout and ordinary content pushes    |
+| `SANITY_READ_TOKEN`     | Secret   | Read-only token for authenticated original-asset downloads |
 
 Allow direct content pushes to `main` from the configured owner token. The accepted publishing flow does not require a PR or manual approval. The workflow commits only `content/published/**` and `public/media/**`. PR verification jobs have no publication secret.
 

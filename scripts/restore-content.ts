@@ -18,10 +18,12 @@ if (!apply) {
   );
 } else {
   const client = sanityClient(true);
-  // Refuse even draft collisions; restoration is designed for a new dataset.
+  // Refuse even draft collisions; Sanity's reserved internal documents exist in fresh datasets.
   const existing = await client
     .withConfig({ perspective: 'raw' })
-    .fetch<number>('count(*[!(_type in ["sanity.imageAsset","sanity.fileAsset"])])');
+    .fetch<number>(
+      'count(*[!(_id in path("_.**")) && !(_type in ["sanity.imageAsset","sanity.fileAsset"])])',
+    );
   if (existing)
     throw new Error(
       'Restore requires a fresh dataset. Existing documents will not be overwritten.',

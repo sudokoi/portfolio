@@ -23,7 +23,7 @@ Source baseline: `main` at `86c4bd5a0d284fd696861e027b86ecbdf3d75611`, GitHub re
 - [x] Record the plan's relocated path under `portfolio-backup-remix`; work from the new checkout.
 - [x] Copy this checklist to `docs/implementation-todos.md` in the new repository, retaining the plan ID.
 - [x] Scaffold current stable Next.js App Router, React, Tailwind, strict TypeScript, and flat ESLint configuration.
-- [ ] Resolve latest compatible dependencies; pin Node LTS and pnpm; commit the lockfile.
+- [x] Resolve latest compatible dependencies; pin Node LTS and pnpm; commit the lockfile.
 - [x] Add scripts, test harnesses, README, `.env.example`, and source-content inventory.
 - [x] Establish green lint, typecheck, production build, and browser smoke checks.
 
@@ -38,7 +38,7 @@ Source baseline: `main` at `86c4bd5a0d284fd696861e027b86ecbdf3d75611`, GitHub re
 
 ## 3. Sanity editor and export
 
-- [ ] Create the free Sanity project/dataset and separately hosted Studio workspace.
+- [x] Create the free Sanity project/dataset and separately hosted Studio workspace.
 - [x] Add post/profile schemas and code, image/caption, table, gallery, linked-image, and demo blocks.
 - [ ] Verify draft save/reopen, manual publishing, and date editing.
 - [x] Implement deterministic published-only document export with explicit projections.
@@ -54,7 +54,7 @@ Source baseline: `main` at `86c4bd5a0d284fd696861e027b86ecbdf3d75611`, GitHub re
 - [x] Configure a serialized export that validates/builds before committing.
 - [x] Prevent stale pushes, partial commits, arbitrary staged files, and export recursion.
 - [ ] Configure the direct Sanity webhook to GitHub repository_dispatch for published create/update/delete.
-- [ ] Configure the repository-scoped dispatch/push credentials and verified owner Git identity.
+- [x] Configure the repository-scoped dispatch/push credentials and verified owner Git identity.
 - [ ] Connect Vercel Hobby to the NEW repository ID and `main`, with the validation build command.
 - [ ] Prove a real publish automatically reaches GitHub and Vercel without a PR.
 - [ ] Prove duplicate notifications produce no unnecessary commit/deployment.
@@ -69,10 +69,10 @@ Source baseline: `main` at `86c4bd5a0d284fd696861e027b86ecbdf3d75611`, GitHub re
 - [x] Recreate the halo demonstrations as approved CSS demo presets.
 - [x] Migrate screenshots/galleries, logo, diagrams, linked badge, and resume originals.
 - [x] Preserve old public asset paths where needed.
-- [ ] Seed profile/experience/projects/skills/links/resume in Sanity, or document the permitted code-authored fallback.
+- [x] Seed profile/experience/projects/skills/links/resume in Sanity, or document the permitted code-authored fallback.
 - [x] Add migration fixtures/inventory so CI does not depend on the backup checkout.
 - [x] Compare every migrated post against the source and record pre-existing editorial inconsistencies.
-- [ ] Verify import/export round-trip and a media-inclusive restore dry run.
+- [x] Verify import/export round-trip and a media-inclusive restore dry run.
 
 ## 6. Design, reading experience, and accessibility
 
@@ -124,7 +124,7 @@ Source baseline: `main` at `86c4bd5a0d284fd696861e027b86ecbdf3d75611`, GitHub re
 
 ## 10. Release and operational handoff
 
-- [ ] Run strict frozen install, content validation, restore dry run, lint, typecheck, tests, Studio build, and Next production build.
+- [x] Run strict frozen install, content validation, restore dry run, lint, typecheck, tests, Studio build, and Next production build.
 - [ ] Run the full production-route/browser suite and inspect public client bundles.
 - [x] Measure three-run mobile medians with the plan's fixed CPU/network/viewport profile.
 - [x] Meet LCP/CLS targets, inspect interaction responsiveness, and record transfer/JS sizes and environment.
@@ -146,8 +146,8 @@ Source baseline: `main` at `86c4bd5a0d284fd696861e027b86ecbdf3d75611`, GitHub re
 
 - [x] GitHub account can rename/create the two personal public repositories.
 - [ ] Legacy Cloudflare deployment is disabled by the owner or verified during bootstrap.
-- [ ] Sanity Free account/project/dataset and included Studio hosting are available.
-- [ ] One-time Sanity import authorization is available; write credentials stay out of public delivery/export.
+- [x] Sanity Free account/project/dataset and included Studio hosting are available.
+- [x] One-time Sanity import authorization is available; write credentials stay out of public delivery/export.
 - [ ] Fine-grained GitHub token(s) are scoped to the NEW repo and permit dispatch/content publication.
 - [ ] GitHub Actions and unattended content commits are permitted by repository rules.
 - [ ] Vercel Hobby account is connected to the correct GitHub identity and NEW repository.

@@ -1,0 +1,43 @@
+name: Publish Sanity content
+on:
+  repository_dispatch:
+    types: [sanity-published]
+  workflow_dispatch:
+  schedule:
+    - cron: '17 6 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: publish-sanity-content
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: vars.SANITY_PROJECT_ID != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.CONTENT_PUBLISH_TOKEN }}
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --strict-peer-dependencies
+      - name: Attribute the content commit to the repository owner
+        env:
+          CONTENT_GIT_NAME: ${{ vars.CONTENT_GIT_NAME }}
+          CONTENT_GIT_EMAIL: ${{ secrets.CONTENT_GIT_EMAIL }}
+        run: |
+          test -n "$CONTENT_GIT_NAME"
+          test -n "$CONTENT_GIT_EMAIL"
+          git config user.name "$CONTENT_GIT_NAME"
+          git config user.email "$CONTENT_GIT_EMAIL"
+      - name: Export, validate, commit, and push current published state
+        env:
+          SANITY_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
+          SANITY_DATASET: ${{ vars.SANITY_DATASET }}
+          SANITY_READ_TOKEN: ${{ secrets.SANITY_READ_TOKEN }}
+        run: pnpm content:publish

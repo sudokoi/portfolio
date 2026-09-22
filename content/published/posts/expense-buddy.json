@@ -1,0 +1,1311 @@
+{
+  "body": [
+    {
+      "_key": "k1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k2",
+          "_type": "span",
+          "marks": [],
+          "text": "I’ve tried a bunch of expense trackers over the years, and I kept running into the same problems: slow flows, cluttered screens, and a nagging feeling that I was handing over more data than I should. So I built my own."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k3",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k4",
+          "_type": "span",
+          "marks": [],
+          "text": "Expense Buddy is a privacy‑first, local‑first expense tracker that stays out of your way. It’s built with React Native (Expo), keeps everything on‑device by default, and gives you "
+        },
+        {
+          "_key": "k5",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "optional GitHub sync"
+        },
+        {
+          "_key": "k6",
+          "_type": "span",
+          "marks": [],
+          "text": " if you want a personal backup you control."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k7",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k8",
+          "_type": "span",
+          "marks": [],
+          "text": "Screenshots"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k9",
+      "_type": "gallery",
+      "images": [
+        {
+          "_key": "k10",
+          "_type": "image",
+          "alt": "Expense Buddy dashboard",
+          "asset": {
+            "_ref": "legacy-3e40ec51adebe6b00143e15f",
+            "_type": "reference"
+          }
+        },
+        {
+          "_key": "k11",
+          "_type": "image",
+          "alt": "Expense Buddy add expense screen",
+          "asset": {
+            "_ref": "legacy-f1a4be4d9173e5ee9c0ccbca",
+            "_type": "reference"
+          }
+        },
+        {
+          "_key": "k12",
+          "_type": "image",
+          "alt": "Expense Buddy analytics",
+          "asset": {
+            "_ref": "legacy-fabb884b0de3d028db2f9ad5",
+            "_type": "reference"
+          }
+        },
+        {
+          "_key": "k13",
+          "_type": "image",
+          "alt": "Expense Buddy history",
+          "asset": {
+            "_ref": "legacy-5554814d3246bf23a19d404b",
+            "_type": "reference"
+          }
+        },
+        {
+          "_key": "k14",
+          "_type": "image",
+          "alt": "Expense Buddy settings",
+          "asset": {
+            "_ref": "legacy-6ff4084321bbf962bdfeca18",
+            "_type": "reference"
+          }
+        }
+      ]
+    },
+    {
+      "_key": "k15",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k16",
+          "_type": "span",
+          "marks": [],
+          "text": "Why Expense Buddy exists"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k17",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k18",
+          "_type": "span",
+          "marks": [],
+          "text": "Most expense trackers either felt slow, intrusive, or vague about where my data lived. I wanted something simple enough to open daily, fast enough to never frustrate me, and honest about storage. Expense Buddy is the result—focused on clarity, speed, and ownership:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k19",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k20",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Local-first"
+        },
+        {
+          "_key": "k21",
+          "_type": "span",
+          "marks": [],
+          "text": " by default (your data stays on-device)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k22",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k23",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Private"
+        },
+        {
+          "_key": "k24",
+          "_type": "span",
+          "marks": [],
+          "text": " by design (no analytics, ads, or data selling)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k25",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k26",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Fast"
+        },
+        {
+          "_key": "k27",
+          "_type": "span",
+          "marks": [],
+          "text": " on large datasets with a lightweight UI"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k28",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k29",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "In your control"
+        },
+        {
+          "_key": "k30",
+          "_type": "span",
+          "marks": [],
+          "text": " with optional GitHub sync to your own repo"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k31",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k32",
+          "_type": "span",
+          "marks": [],
+          "text": "Feature highlights"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k33",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k34",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Daily expense tracking"
+        },
+        {
+          "_key": "k35",
+          "_type": "span",
+          "marks": [],
+          "text": " with category and payment method tags"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k36",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k37",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Edit expenses"
+        },
+        {
+          "_key": "k38",
+          "_type": "span",
+          "marks": [],
+          "text": " anytime with a full "
+        },
+        {
+          "_key": "k39",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "history view"
+        },
+        {
+          "_key": "k40",
+          "_type": "span",
+          "marks": [],
+          "text": " to revisit and update past entries"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k41",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k42",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Smart GitHub sync"
+        },
+        {
+          "_key": "k43",
+          "_type": "span",
+          "marks": [],
+          "text": " with incremental, differential, and batched commits"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k44",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k45",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Analytics that go deeper"
+        },
+        {
+          "_key": "k46",
+          "_type": "span",
+          "marks": [],
+          "text": ": category and payment method breakdowns, instrument‑level splits, plus a spending trend chart"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k47",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k48",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Custom categories"
+        },
+        {
+          "_key": "k49",
+          "_type": "span",
+          "marks": [],
+          "text": " with colors and icons"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k50",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k51",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Saved payment instruments"
+        },
+        {
+          "_key": "k52",
+          "_type": "span",
+          "marks": [],
+          "text": " (cards and UPI IDs)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k53",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k54",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "In‑app update notes"
+        },
+        {
+          "_key": "k55",
+          "_type": "span",
+          "marks": [],
+          "text": " with a “What’s New” sheet after updates"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k56",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k57",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Issue reporting"
+        },
+        {
+          "_key": "k58",
+          "_type": "span",
+          "marks": [],
+          "text": " directly from Settings"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k59",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k60",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Light and dark mode"
+        },
+        {
+          "_key": "k61",
+          "_type": "span",
+          "marks": [],
+          "text": " with theme‑aware styling"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k62",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k63",
+          "_type": "span",
+          "marks": [],
+          "text": "Dashboard"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k64",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k65",
+          "_type": "span",
+          "marks": [],
+          "text": "The dashboard is my “daily check‑in” screen. It gives me a quick view of recent spending and a simple 7‑day trend. I made the graph tappable because I kept wanting to jump straight into that day’s entries."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k66",
+      "_type": "gallery",
+      "images": [
+        {
+          "_key": "k67",
+          "_type": "image",
+          "alt": "Expense Buddy dashboard",
+          "asset": {
+            "_ref": "legacy-3e40ec51adebe6b00143e15f",
+            "_type": "reference"
+          }
+        }
+      ]
+    },
+    {
+      "_key": "k68",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k69",
+          "_type": "span",
+          "marks": [],
+          "text": "Add expense"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k70",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k71",
+          "_type": "span",
+          "marks": [],
+          "text": "Adding an expense should be boring—in a good way. It’s a one‑screen flow with quick category and payment method picks so I can log something in a few seconds and move on."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k72",
+      "_type": "gallery",
+      "images": [
+        {
+          "_key": "k73",
+          "_type": "image",
+          "alt": "Expense Buddy add expense screen",
+          "asset": {
+            "_ref": "legacy-f1a4be4d9173e5ee9c0ccbca",
+            "_type": "reference"
+          }
+        }
+      ]
+    },
+    {
+      "_key": "k74",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k75",
+          "_type": "span",
+          "marks": [],
+          "text": "Analytics you can trust"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k76",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k77",
+          "_type": "span",
+          "marks": [],
+          "text": "I wanted answers, not charts for the sake of charts. The analytics tab helps me see where money goes by "
+        },
+        {
+          "_key": "k78",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "category"
+        },
+        {
+          "_key": "k79",
+          "_type": "span",
+          "marks": [],
+          "text": ", "
+        },
+        {
+          "_key": "k80",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "payment method"
+        },
+        {
+          "_key": "k81",
+          "_type": "span",
+          "marks": [],
+          "text": ", and "
+        },
+        {
+          "_key": "k82",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "saved instrument"
+        },
+        {
+          "_key": "k83",
+          "_type": "span",
+          "marks": [],
+          "text": ", then zoom out with a "
+        },
+        {
+          "_key": "k84",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "spending trend"
+        },
+        {
+          "_key": "k85",
+          "_type": "span",
+          "marks": [],
+          "text": " view. I also added multiple "
+        },
+        {
+          "_key": "k86",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "time windows"
+        },
+        {
+          "_key": "k87",
+          "_type": "span",
+          "marks": [],
+          "text": " so I can compare “this week” vs. “the last 3 months” without leaving the screen."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k88",
+      "_type": "gallery",
+      "images": [
+        {
+          "_key": "k89",
+          "_type": "image",
+          "alt": "Expense Buddy analytics",
+          "asset": {
+            "_ref": "legacy-fabb884b0de3d028db2f9ad5",
+            "_type": "reference"
+          }
+        },
+        {
+          "_key": "k90",
+          "_type": "image",
+          "alt": "Expense Buddy analytics charts",
+          "asset": {
+            "_ref": "legacy-e339ee44d640f0b46a055019",
+            "_type": "reference"
+          }
+        }
+      ]
+    },
+    {
+      "_key": "k91",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k92",
+          "_type": "span",
+          "marks": [],
+          "text": "History and edits"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k93",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k94",
+          "_type": "span",
+          "marks": [],
+          "text": "I mess up entries all the time. The history view lets me browse past entries, open any expense, and fix it in place—no weird edit mode, no hunting."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k95",
+      "_type": "gallery",
+      "images": [
+        {
+          "_key": "k96",
+          "_type": "image",
+          "alt": "Expense Buddy history",
+          "asset": {
+            "_ref": "legacy-5554814d3246bf23a19d404b",
+            "_type": "reference"
+          }
+        }
+      ]
+    },
+    {
+      "_key": "k97",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k98",
+          "_type": "span",
+          "marks": [],
+          "text": "Settings that stay out of your way"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k99",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k100",
+          "_type": "span",
+          "marks": [],
+          "text": "Settings are intentionally boring. You can set a "
+        },
+        {
+          "_key": "k101",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "default payment method"
+        },
+        {
+          "_key": "k102",
+          "_type": "span",
+          "marks": [],
+          "text": ", add "
+        },
+        {
+          "_key": "k103",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "custom categories"
+        },
+        {
+          "_key": "k104",
+          "_type": "span",
+          "marks": [],
+          "text": " (the app ships with 8 defaults you can edit), manage "
+        },
+        {
+          "_key": "k105",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "saved payment instruments"
+        },
+        {
+          "_key": "k106",
+          "_type": "span",
+          "marks": [],
+          "text": " for deeper analytics, and enable "
+        },
+        {
+          "_key": "k107",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "GitHub sync"
+        },
+        {
+          "_key": "k108",
+          "_type": "span",
+          "marks": [],
+          "text": " to keep everything in sync across devices. Auto‑sync can run "
+        },
+        {
+          "_key": "k109",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "on change"
+        },
+        {
+          "_key": "k110",
+          "_type": "span",
+          "marks": [],
+          "text": " or "
+        },
+        {
+          "_key": "k111",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "on app launch"
+        },
+        {
+          "_key": "k112",
+          "_type": "span",
+          "marks": [],
+          "text": "."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k113",
+      "_type": "gallery",
+      "images": [
+        {
+          "_key": "k114",
+          "_type": "image",
+          "alt": "Expense Buddy settings",
+          "asset": {
+            "_ref": "legacy-6ff4084321bbf962bdfeca18",
+            "_type": "reference"
+          }
+        },
+        {
+          "_key": "k115",
+          "_type": "image",
+          "alt": "Expense Buddy settings auto-sync",
+          "asset": {
+            "_ref": "legacy-971260aef4bd5f5fca6a88e2",
+            "_type": "reference"
+          }
+        }
+      ]
+    },
+    {
+      "_key": "k116",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k117",
+          "_type": "span",
+          "marks": [],
+          "text": "How GitHub sync works (optional)"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k118",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k119",
+          "_type": "span",
+          "marks": [],
+          "text": "I designed GitHub sync to be safe, predictable, and fully optional. Your data stays local unless you explicitly turn this on."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k120",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k121",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Daily CSV files"
+        },
+        {
+          "_key": "k122",
+          "_type": "span",
+          "marks": [],
+          "text": ": expenses are stored as "
+        },
+        {
+          "_key": "k123",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "expenses-YYYY-MM-DD.csv"
+        },
+        {
+          "_key": "k124",
+          "_type": "span",
+          "marks": [],
+          "text": " in your repo"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k125",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k126",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Merge‑first workflow"
+        },
+        {
+          "_key": "k127",
+          "_type": "span",
+          "marks": [],
+          "text": ": fetch → merge → push, to avoid accidental data loss"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k128",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k129",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Conflict handling"
+        },
+        {
+          "_key": "k130",
+          "_type": "span",
+          "marks": [],
+          "text": ": timestamp‑based resolution, with true conflict prompts only when needed"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k131",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k132",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Differential uploads"
+        },
+        {
+          "_key": "k133",
+          "_type": "span",
+          "marks": [],
+          "text": ": only changed files are uploaded, and changes are "
+        },
+        {
+          "_key": "k134",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "batched into a single commit"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k135",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k136",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Settings sync"
+        },
+        {
+          "_key": "k137",
+          "_type": "span",
+          "marks": [],
+          "text": " (optional): categories and saved instruments can be synced via "
+        },
+        {
+          "_key": "k138",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "settings.json"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k139",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k140",
+          "_type": "span",
+          "marks": [],
+          "text": "Built for speed"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k141",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k142",
+          "_type": "span",
+          "marks": [],
+          "text": "I’m allergic to janky lists, so performance was a first‑class goal. Virtualized lists, memoized components, and a lightweight state layer keep things snappy even with long histories. The UI stays minimal so logging an expense takes seconds, not minutes."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k143",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k144",
+          "_type": "span",
+          "marks": [],
+          "text": "Privacy notes"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k145",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k146",
+          "_type": "span",
+          "marks": [],
+          "text": "No required external accounts to use the app"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k147",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k148",
+          "_type": "span",
+          "marks": [],
+          "text": "GitHub sync is "
+        },
+        {
+          "_key": "k149",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "opt‑in"
+        },
+        {
+          "_key": "k150",
+          "_type": "span",
+          "marks": [],
+          "text": " and stores files in your own repository (daily CSVs)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k151",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k152",
+          "_type": "span",
+          "marks": [],
+          "text": "No selling of data"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k153",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k154",
+          "_type": "span",
+          "marks": [],
+          "text": "If you want to dig deeper, here are the links I keep updated:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k155",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k157",
+          "_type": "span",
+          "marks": [
+            "k156"
+          ],
+          "text": "GitHub repo"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [
+        {
+          "_key": "k156",
+          "_type": "link",
+          "href": "https://github.com/sudokoi/expense-buddy"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k158",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k160",
+          "_type": "span",
+          "marks": [
+            "k159"
+          ],
+          "text": "Changelog"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [
+        {
+          "_key": "k159",
+          "_type": "link",
+          "href": "https://github.com/sudokoi/expense-buddy/blob/main/CHANGELOG.md"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k161",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k163",
+          "_type": "span",
+          "marks": [
+            "k162"
+          ],
+          "text": "Privacy policy"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [
+        {
+          "_key": "k162",
+          "_type": "link",
+          "href": "https://github.com/sudokoi/expense-buddy/blob/main/PRIVACY.md"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k164",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k166",
+          "_type": "span",
+          "marks": [
+            "k165"
+          ],
+          "text": "Latest release"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [
+        {
+          "_key": "k165",
+          "_type": "link",
+          "href": "https://github.com/sudokoi/expense-buddy/releases/latest"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k167",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k168",
+          "_type": "span",
+          "marks": [],
+          "text": "Get involved"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k169",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k170",
+          "_type": "span",
+          "marks": [],
+          "text": "Expense Buddy is available on Google Play Store. Give it a try and let me know what you think!"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k171",
+      "_type": "image",
+      "alt": "Get it on Google Play",
+      "asset": {
+        "_ref": "legacy-81c1e8c07f28c8f8ead3d5c2",
+        "_type": "reference"
+      },
+      "href": "https://play.google.com/store/apps/details?id=com.sudokoi.expensebuddy"
+    }
+  ],
+  "description": "Expense Buddy is a privacy-first, local-first expense tracker built with React Native (Expo), now in internal testing on Google Play.",
+  "id": "post-expense-buddy",
+  "publishedAt": "2026-01-16",
+  "slug": "expense-buddy",
+  "tags": [
+    "expense-tracker",
+    "privacy-first",
+    "local-first",
+    "personal finance",
+    "react-native",
+    "expo",
+    "product",
+    "release"
+  ],
+  "title": "Expense Buddy — Local-first expense tracking with GitHub sync"
+}

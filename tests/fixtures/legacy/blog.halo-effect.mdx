@@ -1,0 +1,198 @@
+---
+title: Halo Effect for Images
+description: Adding a halo effect to an image can be tricky. This blog post explores a particular way to add a halo effect to an image (or anything).
+date: May 16, 2024
+tags:
+  - css
+  - tailwindcss
+  - ui
+  - animation
+---
+
+import { BlogTimestamp } from "../components/blog-timestamp";
+import { BlogTags } from "../components/blog-tags";
+import { HaloEffect } from "../components/blogs/halo-effect/halo-effect";
+import { WrongHaloEffect } from "../components/blogs/halo-effect/wrong-halo-effect";
+import { WrongHaloEffect2 } from "../components/blogs/halo-effect/wrong-halo-effect-2";
+
+export const links = () => [
+  { rel: "preload", href: "/assets/logo.png", as: "image" },
+  {
+    rel: "stylesheet",
+    href: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css",
+  },
+];
+
+export const meta = () => [
+  { title: "Halo Effect for Images" },
+  {
+    name: "description",
+    content:
+      "Adding a halo effect to an image can be tricky. This blog post explores a particular way to add a halo effect to an image (or anything).",
+  },
+  { name: "date", content: "May 16, 2024" },
+  {
+    property: "og:title",
+    content: "Halo Effect for Images",
+  },
+  {
+    property: "og:description",
+    content:
+      "Adding a halo effect to an image can be tricky. This blog post explores a particular way to add a halo effect to an image (or anything).",
+  },
+  {
+    property: "og:type",
+    content: "article",
+  },
+  {
+    property: "og:image",
+    content: "/og/halo-effect.jpeg",
+  },
+  {
+    name: "twitter:card",
+    content: "summary_large_image",
+  },
+  {
+    name: "twitter:title",
+    content: "Halo Effect for Images",
+  },
+  {
+    name: "twitter:description",
+    content:
+      "Adding a halo effect to an image can be tricky. This blog post explores a particular way to add a halo effect to an image (or anything).",
+  },
+  {
+    name: "twitter:image",
+    content: "/og/halo-effect.jpeg",
+  },
+];
+
+<BlogTimestamp timestamp={frontmatter.date} />
+
+# {frontmatter.title}
+
+## Context
+
+Recently, I was working on a project where I was trying to add a halo effect to an image.
+
+The final output was supposed to look like this:
+<HaloEffect className="[--spread-radius:50px]" />
+
+<BlogTags tags={frontmatter.tags} />
+
+Here's the effect with a more prominient color for emphasis:
+<HaloEffect haloClassName="![box-shadow:0px_0px_150px_100px_hotpink]"/>
+
+## First Attempt
+
+I started by adding a `box-shadow` to the image. The code looked something like this:
+
+```jsx
+  <img src="/assets/logo.png" alt="logo" className="m-auto size-10 animate-pulse [box-shadow:0px_0px_250px_100px_blue]" />   
+```
+But, the result this produced was not what I was looking for. The box-shadow added a square box outline around the image.
+<WrongHaloEffect />
+Also, the entire image was pulsing due to the pulse animation. I only wanted the box shadow to pulse.
+
+To remove the square box outline, I suspected that the image was the culprit. Maybe, the transparent pixels around the image weren't really transparent after all.
+I tried to fix this by experimenting with different image formats (svg vs png), adding custom masking in figma and
+exporting another image, but to no avail. The issue still persisted.
+
+Taking one problem at a time, I decided to first fix the pulsing image issue first.
+
+## Attempt 2
+
+I had this stupid idea: let's place the image and a div in the same grid cell.
+Then adding the box-shadow to the div would give me the desired effect. Maybe, it will also remove the square box outline around the image.
+
+```jsx
+  <div className="grid size-80 w-full items-center justify-center">
+    <div className="grid [grid-column:1/2] [grid-row:1/2]">
+      <img src="/assets/logo.png" alt="logo" className="m-auto size-10" />
+    </div>
+    <div className="grid size-20 [grid-column:1/2] [grid-row:1/2]">
+      <div className="m-auto h-full w-full animate-pulse [box-shadow:0px_0px_250px_100px_blue]"/>
+    </div>
+  </div>
+```
+The result:
+<WrongHaloEffect2 />
+
+While this did stop the image from pulsing, the box around the image was still very evidently visible.
+
+## The Solution
+
+Now to fix the square box outline, I had to think of a different approach. The box shadow is applied outside the border-box of the element. And since the border-box
+of the div itself was a square, it was leaving a square outline around the image.
+
+Now what's the solution to this? Simple! Just make the div such that it doesn't have a border-box i.e. make the `width` and `height` of the div **0px**. Tada!!
+
+(You won't believe how long it took me to try this.)
+
+The best solution are often the simplest.
+
+```jsx
+  <div className="grid size-80 w-full items-center justify-center">
+      <div className="grid size-20 [grid-column:1/2] [grid-row:1/2]">
+        <div className="m-auto size-[0px] animate-pulse [box-shadow:0px_0px_250px_100px_blue]" />
+      </div>
+      <div className="z-10 grid [grid-column:1/2] [grid-row:1/2]">
+        <img src="/assets/logo.png" alt="logo" className="m-auto size-10" />
+      </div>
+    </div>
+```
+I use tailwindcss for styling. The generated css for the classes used in the above code is:
+```css
+.m-auto {
+  margin: auto;
+}
+.grid {
+  display: grid;
+}
+.size-10 {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.size-20 {
+  width: 5rem;
+  height: 5rem;
+}
+.size-80 {
+  width: 20rem;
+  height: 20rem;
+}
+.size-\[0px\] {
+  width: 0px;
+  height: 0px;
+}
+.w-full {
+  width: 100%;
+}
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.\[box-shadow\:0px_0px_250px_100px_blue\] {
+  box-shadow: 0px 0px 250px 100px blue;
+}
+.\[grid-column\:1\/2\] {
+  grid-column: 1/2;
+}
+.\[grid-row\:1\/2\] {
+  grid-row: 1/2;
+}
+```
+
+This finally gave me the desired effect. There was a halo around the image, the image wasn't pulsing and no square box outline around the image.
+
+<HaloEffect className="[--spread-radius:50px]" />

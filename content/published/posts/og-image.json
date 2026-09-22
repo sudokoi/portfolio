@@ -1,0 +1,1264 @@
+{
+  "body": [
+    {
+      "_key": "k1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k2",
+          "_type": "span",
+          "marks": [],
+          "text": "Context"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k3",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k4",
+          "_type": "span",
+          "marks": [],
+          "text": "OG images are one of the open graph protocols that enables any web page to become a rich object in a social graph. It is used to represent the page\nwhen shared on social media platforms like Facebook, Twitter, LinkedIn, etc."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k6",
+          "_type": "span",
+          "marks": [],
+          "text": "Any webpage can be turned into graph objects by adding some of the basic meta tags to the page. The four required properties for every page are:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k7",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k8",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "og:title"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k10",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "og:type"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k11",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k12",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "og:image"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k13",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k14",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "og:url"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k15",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k16",
+          "_type": "span",
+          "marks": [],
+          "text": "Refer to the "
+        },
+        {
+          "_key": "k18",
+          "_type": "span",
+          "marks": [
+            "k17"
+          ],
+          "text": "Open Graph protocol"
+        },
+        {
+          "_key": "k19",
+          "_type": "span",
+          "marks": [],
+          "text": " for more details."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k17",
+          "_type": "link",
+          "href": "https://ogp.me/"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k20",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k21",
+          "_type": "span",
+          "marks": [],
+          "text": "In this blog post, we will learn how to add an "
+        },
+        {
+          "_key": "k22",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "OG image"
+        },
+        {
+          "_key": "k23",
+          "_type": "span",
+          "marks": [],
+          "text": " to your site."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k24",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k25",
+          "_type": "span",
+          "marks": [],
+          "text": "A bit more context"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k26",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k27",
+          "_type": "span",
+          "marks": [],
+          "text": "I'm a frontend developer and I like to play with things that make the web more interesting, and sometimes write about them.\nI have been writing blogs for a while now (I have a few posts on "
+        },
+        {
+          "_key": "k29",
+          "_type": "span",
+          "marks": [
+            "k28"
+          ],
+          "text": "dev.to"
+        },
+        {
+          "_key": "k30",
+          "_type": "span",
+          "marks": [],
+          "text": ", "
+        },
+        {
+          "_key": "k32",
+          "_type": "span",
+          "marks": [
+            "k31"
+          ],
+          "text": "medium"
+        },
+        {
+          "_key": "k33",
+          "_type": "span",
+          "marks": [],
+          "text": ", and previous iteration of "
+        },
+        {
+          "_key": "k35",
+          "_type": "span",
+          "marks": [
+            "k34"
+          ],
+          "text": "my blog site"
+        },
+        {
+          "_key": "k36",
+          "_type": "span",
+          "marks": [],
+          "text": ").\n"
+        },
+        {
+          "_key": "k37",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "dev.to"
+        },
+        {
+          "_key": "k38",
+          "_type": "span",
+          "marks": [],
+          "text": " and "
+        },
+        {
+          "_key": "k39",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "medium"
+        },
+        {
+          "_key": "k40",
+          "_type": "span",
+          "marks": [],
+          "text": " automatically generated the OG images for me and I wanted something similar for my blog site."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k28",
+          "_type": "link",
+          "href": "https://dev.to/tsuki42"
+        },
+        {
+          "_key": "k31",
+          "_type": "link",
+          "href": "https://medium.com/@perfectsudh"
+        },
+        {
+          "_key": "k34",
+          "_type": "link",
+          "href": "https://blog.sudhanshu-ranjan.tech"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k41",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k42",
+          "_type": "span",
+          "marks": [],
+          "text": "So when I heard about a library called "
+        },
+        {
+          "_key": "k44",
+          "_type": "span",
+          "marks": [
+            "k43"
+          ],
+          "text": "satori"
+        },
+        {
+          "_key": "k45",
+          "_type": "span",
+          "marks": [],
+          "text": " which could take JSX and convert it into an image, I was intrigued. What this basically\nunlocked for me was the ability to customize the OG images for my blog posts to my liking without leaving the comfort of my code editor."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k43",
+          "_type": "link",
+          "href": "https://www.npmjs.com/package/satori"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k46",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k47",
+          "_type": "span",
+          "marks": [],
+          "text": "The problem"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k48",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k49",
+          "_type": "span",
+          "marks": [],
+          "text": "I started looking for guides on how to implement this for my site. I found a really well documented "
+        },
+        {
+          "_key": "k51",
+          "_type": "span",
+          "marks": [
+            "k50"
+          ],
+          "text": "blogpost"
+        },
+        {
+          "_key": "k52",
+          "_type": "span",
+          "marks": [],
+          "text": " on doing the same for a remix site\n(which I am using for this) by "
+        },
+        {
+          "_key": "k54",
+          "_type": "span",
+          "marks": [
+            "k53"
+          ],
+          "text": "@jacobparis"
+        },
+        {
+          "_key": "k55",
+          "_type": "span",
+          "marks": [],
+          "text": ". I quickly did the setup and it worked well on my local. So, I pushed the changes with expectant eyes, hoping to see the\nimplementation go live within a few minutes. But alas, "
+        },
+        {
+          "_key": "k56",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "it didn't work"
+        },
+        {
+          "_key": "k57",
+          "_type": "span",
+          "marks": [],
+          "text": ". The problem: I was using "
+        },
+        {
+          "_key": "k58",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "satori"
+        },
+        {
+          "_key": "k59",
+          "_type": "span",
+          "marks": [],
+          "text": " with "
+        },
+        {
+          "_key": "k61",
+          "_type": "span",
+          "marks": [
+            "k60"
+          ],
+          "text": "resvg"
+        },
+        {
+          "_key": "k62",
+          "_type": "span",
+          "marks": [],
+          "text": " which was not supported by\n"
+        },
+        {
+          "_key": "k64",
+          "_type": "span",
+          "marks": [
+            "k63"
+          ],
+          "text": "cloudflare workers"
+        },
+        {
+          "_key": "k65",
+          "_type": "span",
+          "marks": [],
+          "text": ". As "
+        },
+        {
+          "_key": "k67",
+          "_type": "span",
+          "marks": [
+            "k66"
+          ],
+          "text": "this site"
+        },
+        {
+          "_key": "k68",
+          "_type": "span",
+          "marks": [],
+          "text": " is hosted on cloudflare, it was a no-no for me as I didn't want to switch my hosting setup.\nSo, I had to look for a solution."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k50",
+          "_type": "link",
+          "href": "https://www.jacobparis.com/content/remix-og"
+        },
+        {
+          "_key": "k53",
+          "_type": "link",
+          "href": "https://x.com/jacobmparis"
+        },
+        {
+          "_key": "k60",
+          "_type": "link",
+          "href": "https://www.npmjs.com/package/@resvg/resvg-js"
+        },
+        {
+          "_key": "k63",
+          "_type": "link",
+          "href": "https://workers.cloudflare.com"
+        },
+        {
+          "_key": "k66",
+          "_type": "link",
+          "href": "https://sudh.online"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k69",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k70",
+          "_type": "span",
+          "marks": [],
+          "text": "A ray of hope"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "k71",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k72",
+          "_type": "span",
+          "marks": [],
+          "text": "I contacted "
+        },
+        {
+          "_key": "k73",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Jacob Paris"
+        },
+        {
+          "_key": "k74",
+          "_type": "span",
+          "marks": [],
+          "text": " on twitter over DM (he was so nice!) and he guided me towards an implementation by "
+        },
+        {
+          "_key": "k76",
+          "_type": "span",
+          "marks": [
+            "k75"
+          ],
+          "text": "@sergiodxa"
+        },
+        {
+          "_key": "k77",
+          "_type": "span",
+          "marks": [],
+          "text": " for cloudflare workers, which used "
+        },
+        {
+          "_key": "k78",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "wasm"
+        },
+        {
+          "_key": "k79",
+          "_type": "span",
+          "marks": [],
+          "text": " version\nof "
+        },
+        {
+          "_key": "k80",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "resvg"
+        },
+        {
+          "_key": "k81",
+          "_type": "span",
+          "marks": [],
+          "text": " (see "
+        },
+        {
+          "_key": "k83",
+          "_type": "span",
+          "marks": [
+            "k82"
+          ],
+          "text": "gist"
+        },
+        {
+          "_key": "k84",
+          "_type": "span",
+          "marks": [],
+          "text": "). I started adapting the implementation for my use-case, when I found out that it relied on R2 (which is AWS S3\nlike service by cloudflare). I didn't want to use R2 and hence had to look for another solution."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k75",
+          "_type": "link",
+          "href": "https://x.com/sergiodxa"
+        },
+        {
+          "_key": "k82",
+          "_type": "link",
+          "href": "https://gist.github.com/sergiodxa/63770bbe411e2539652201454ccd1b99"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k85",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k86",
+          "_type": "span",
+          "marks": [],
+          "text": "Sort-of-will-do implementation"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k87",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k88",
+          "_type": "span",
+          "marks": [],
+          "text": "It seemed like the implementation for og-images was not straightforward (while being on clouldflare), and around that time, I found out about "
+        },
+        {
+          "_key": "k90",
+          "_type": "span",
+          "marks": [
+            "k89"
+          ],
+          "text": "Vercel's OG image generation"
+        },
+        {
+          "_key": "k91",
+          "_type": "span",
+          "marks": [],
+          "text": ".\nThey had an implementation ("
+        },
+        {
+          "_key": "k93",
+          "_type": "span",
+          "marks": [
+            "k92"
+          ],
+          "text": "@vercel/og"
+        },
+        {
+          "_key": "k94",
+          "_type": "span",
+          "marks": [],
+          "text": "), which used "
+        },
+        {
+          "_key": "k95",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "satori"
+        },
+        {
+          "_key": "k96",
+          "_type": "span",
+          "marks": [],
+          "text": " and "
+        },
+        {
+          "_key": "k97",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "resvg"
+        },
+        {
+          "_key": "k98",
+          "_type": "span",
+          "marks": [],
+          "text": " in the background, and that could be directly deployed on "
+        },
+        {
+          "_key": "k99",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "vercel"
+        },
+        {
+          "_key": "k100",
+          "_type": "span",
+          "marks": [],
+          "text": ". So, I just did that.\nI created a nextjs project with a single api route that took the "
+        },
+        {
+          "_key": "k101",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "title"
+        },
+        {
+          "_key": "k102",
+          "_type": "span",
+          "marks": [],
+          "text": " and "
+        },
+        {
+          "_key": "k103",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "description"
+        },
+        {
+          "_key": "k104",
+          "_type": "span",
+          "marks": [],
+          "text": " as query params and gave an OG image in response. (e.g. "
+        },
+        {
+          "_key": "k106",
+          "_type": "span",
+          "marks": [
+            "k105"
+          ],
+          "text": "test"
+        },
+        {
+          "_key": "k107",
+          "_type": "span",
+          "marks": [],
+          "text": ").\nThe entire implementation is basically this:"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k89",
+          "_type": "link",
+          "href": "https://vercel.com/docs/functions/og-image-generation"
+        },
+        {
+          "_key": "k92",
+          "_type": "link",
+          "href": "https://www.npmjs.com/package/@vercel/og"
+        },
+        {
+          "_key": "k105",
+          "_type": "link",
+          "href": "https://og.sudh.online/api?title=og%20image%20title&description=this%20is%20a%20test%20og%20image"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k108",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k109",
+          "_type": "span",
+          "marks": [],
+          "text": "file: api/route.tsx"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k110",
+      "_type": "code",
+      "code": "export async function GET(request: Request) {\n  const requestUrl = request.url;\n\n  const url = new URL(requestUrl);\n\n  const title = url.searchParams.get(\"title\");\n  const description = url.searchParams.get(\"description\");\n\n  return new ImageResponse(\n    (\n      <div\n        tw=\"text-[#363681] w-full h-full flex flex-col bg-[#F3F2F8] p-4\"\n        style={{\n          background: \"linear-gradient(to bottom right, #FFF8E3, #E6A4B4)\",\n        }}\n      >\n        <div tw=\"flex w-full items-center mb-auto\">\n          {/* eslint-disable-next-line @next/next/no-img-element */}\n          <img\n            src={`${url.origin}/logo.png`}\n            alt=\"\"\n            aria-hidden={true}\n            tw=\"w-16 h-16\"\n          />\n          <div tw=\"text-2xl font-bold border-b-2 border-[#2646BA]\">\n            Sudhanshu&#39;s Blogs\n          </div>\n        </div>\n        <section tw=\"flex flex-col flex-1 justify-center items-center px-4\">\n          <div tw=\"text-4xl font-bold text-black\">{title}</div>\n          <p tw=\"text-lg text-[#363681] text-center\">{description}</p>\n        </section>\n        <div tw=\"flex px-4\">\n          <div tw=\"mr-auto text-lg\">https://sudh.online</div>\n          <div tw=\"ml-auto text-lg\">{TWITTER_HANDLE}</div>\n        </div>\n      </div>\n    ),\n    {\n      width: 800,\n      height: 420,\n    }\n  );\n}",
+      "language": "jsx"
+    },
+    {
+      "_key": "k111",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k112",
+          "_type": "span",
+          "marks": [],
+          "text": "The full implementation is available on "
+        },
+        {
+          "_key": "k114",
+          "_type": "span",
+          "marks": [
+            "k113"
+          ],
+          "text": "github"
+        },
+        {
+          "_key": "k115",
+          "_type": "span",
+          "marks": [],
+          "text": "."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k113",
+          "_type": "link",
+          "href": "https://github.com/tometo-dev/nextjs-og-images"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k116",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k117",
+          "_type": "span",
+          "marks": [],
+          "text": "While this is not an optimum solution, it worked and sufficed my needs (for the time being)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k118",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k119",
+          "_type": "span",
+          "marks": [],
+          "text": "Discovering "
+        },
+        {
+          "_key": "k120",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "remix-og-image"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k121",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k122",
+          "_type": "span",
+          "marks": [],
+          "text": "Seems like I wasn't the only one who was unhappy with the state on og-images in the react ecosystem."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k123",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k124",
+          "_type": "span",
+          "marks": [],
+          "text": "OG image generation is not solved at all."
+        }
+      ],
+      "markDefs": [],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k125",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k126",
+          "_type": "span",
+          "marks": [],
+          "text": "It is clear you want some sort of templating system for your images. You also often want them in a style similar to your website, which begs for reusing of components and styles that you already have."
+        }
+      ],
+      "markDefs": [],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k127",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k128",
+          "_type": "span",
+          "marks": [],
+          "text": "But it's complicated."
+        }
+      ],
+      "markDefs": [],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k129",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k130",
+          "_type": "span",
+          "marks": [],
+          "text": "Only the browser can reliably render your HTML and CSS. There are solutions that try to do that for you, but they are limited by design, and very often extremely limited in practice."
+        }
+      ],
+      "markDefs": [],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k131",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k132",
+          "_type": "span",
+          "marks": [],
+          "text": "Spawning browsers is expensive and, frankly, needless. I dare say 98% of OG images are static in nature. Nothing in the image will change ever. Bootstarting Chromium on each server request to get you an image is not the way forward."
+        }
+      ],
+      "markDefs": [],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k133",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k134",
+          "_type": "span",
+          "marks": [],
+          "text": "Then there's browser automation. You can have a setup script that spawns a headless browser and goes to some internal route in your app that renders a dynamic \"og image\" (a React component, really), and takes its screenshot. That's how I do OG images on my blog."
+        }
+      ],
+      "markDefs": [],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k135",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k136",
+          "_type": "span",
+          "marks": [],
+          "text": "- Artem ("
+        },
+        {
+          "_key": "k138",
+          "_type": "span",
+          "marks": [
+            "k137"
+          ],
+          "text": "@kettanaito"
+        },
+        {
+          "_key": "k139",
+          "_type": "span",
+          "marks": [],
+          "text": ")"
+        },
+        {
+          "_key": "k140",
+          "_type": "span",
+          "marks": [],
+          "text": " on "
+        },
+        {
+          "_key": "k142",
+          "_type": "span",
+          "marks": [
+            "k141"
+          ],
+          "text": "twitter"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k137",
+          "_type": "link",
+          "href": "https://twitter.com/kettanaito"
+        },
+        {
+          "_key": "k141",
+          "_type": "link",
+          "href": "https://twitter.com/kettanaito/status/1823818169775218777"
+        }
+      ],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k143",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k144",
+          "_type": "span",
+          "marks": [],
+          "text": "And so, he built a tool for it: "
+        },
+        {
+          "_key": "k146",
+          "_type": "span",
+          "marks": [
+            "k145"
+          ],
+          "text": "remix-og-image"
+        },
+        {
+          "_key": "k147",
+          "_type": "span",
+          "marks": [],
+          "text": " and he build it for remix!! (😍)"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k145",
+          "_type": "link",
+          "href": "https://twitter.com/kettanaito/status/1825641793318486349"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k148",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k149",
+          "_type": "span",
+          "marks": [],
+          "text": "I jumped into the wagon and tried to use it asap. It was working, but had some issues and I couldn't adapt the tool for my usecase. After a quick chat with Artem, I "
+        },
+        {
+          "_key": "k151",
+          "_type": "span",
+          "marks": [
+            "k150"
+          ],
+          "text": "reported"
+        },
+        {
+          "_key": "k152",
+          "_type": "span",
+          "marks": [],
+          "text": " the issue (which was then fixed pretty quickly)."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k150",
+          "_type": "link",
+          "href": "https://github.com/kettanaito/remix-og-image/issues/15"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k153",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k154",
+          "_type": "span",
+          "marks": [],
+          "text": "Final implementation"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k155",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k156",
+          "_type": "span",
+          "marks": [],
+          "text": "I finally changed the implementation to use "
+        },
+        {
+          "_key": "k157",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "remix-og-image"
+        },
+        {
+          "_key": "k158",
+          "_type": "span",
+          "marks": [],
+          "text": ".\nFollowing the "
+        },
+        {
+          "_key": "k160",
+          "_type": "span",
+          "marks": [
+            "k159"
+          ],
+          "text": "instructions"
+        },
+        {
+          "_key": "k161",
+          "_type": "span",
+          "marks": [],
+          "text": ", I added the plugin to my vite buildchain and also added the "
+        },
+        {
+          "_key": "k162",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "og route"
+        },
+        {
+          "_key": "k163",
+          "_type": "span",
+          "marks": [],
+          "text": " as follows:"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k159",
+          "_type": "link",
+          "href": "https://github.com/kettanaito/remix-og-image/blob/e1dc2d34e16806fe0957be00e624bf0dbbc2f6ad/README.md"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k164",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k165",
+          "_type": "span",
+          "marks": [],
+          "text": "file: routes/og.$slug.tsx"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k166",
+      "_type": "code",
+      "code": "const getBlogDetails = async () => {\n  return Object.entries(\n    import.meta.glob(\"./**/*.mdx\", {\n      import: \"frontmatter\",\n      eager: true,\n    }),\n  ).map(([filePath, contents]) => {\n    return [\n      filePath\n        .replace(\"./\", \"/\")\n        .replace(\".\", \"/\")\n        .replace(/\\.mdx$/, \"\"),\n      contents,\n    ] as [string, { title: string; description: string; date: string }];\n  });\n};\n\nexport async function openGraphImage() {\n  // Return a dynamic number of OG image entries\n  // based on your data. The plugin will automatically\n  // provide the \"params\" to this route when\n  // visiting each alternation of this page in the browser.\n  const data = (await getBlogDetails()).map<OpenGraphImageData>(\n    ([filepath]) => {\n      const slug = filepath.split(\"/\").pop()!;\n\n      return {\n        name: slug,\n        params: {\n          slug: slug,\n        },\n      };\n    },\n  );\n\n  return data;\n}\n\nexport async function loader({ request, params }: LoaderFunctionArgs) {\n  // check if the incoming request is a meta request\n  // from the plugin. Use the `isOpenGraphImageRequest` utility from the library.\n  if (isOpenGraphImageRequest(request)) {\n    /**\n     * @note Throw the OG image response instead of returning it.\n     * This way, you don't have to deal with the `loader` function\n     * returning a union of OG image data and the actual data\n     * returned to the UI component.\n     */\n    throw json(await openGraphImage());\n  }\n\n  invariant(params, \"Params should be defined for this route\");\n  invariant(params.slug, \"Slug should be defined for this route\");\n\n  const currentBlog = (await getBlogDetails()).find(([filePath]) =>\n    filePath.includes(params.slug!),\n  );\n\n  return json({\n    title: currentBlog[1].title,\n    description: currentBlog[1].description,\n  });\n}\n\nexport default function Template() {\n  const data = useLoaderData<typeof loader>()\n\n  return <Template data={data} />\n}",
+      "language": "tsx"
+    },
+    {
+      "_key": "k167",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k168",
+          "_type": "span",
+          "marks": [],
+          "text": "It was a fairly simple change. After this, all I had to do was to update the og meta tags in my blog posts to point to the og image route. The changes can be found "
+        },
+        {
+          "_key": "k170",
+          "_type": "span",
+          "marks": [
+            "k169"
+          ],
+          "text": "here"
+        },
+        {
+          "_key": "k171",
+          "_type": "span",
+          "marks": [],
+          "text": "."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k169",
+          "_type": "link",
+          "href": "https://github.com/tometo-dev/sudhanshu-on-the-internet/pull/13/files"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k172",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k173",
+          "_type": "span",
+          "marks": [],
+          "text": "And that's it! It worked like a charm and the OG images of this site are being generated during build time using the "
+        },
+        {
+          "_key": "k174",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "remix-og-image"
+        },
+        {
+          "_key": "k175",
+          "_type": "span",
+          "marks": [],
+          "text": " plugin."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k176",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k177",
+          "_type": "span",
+          "marks": [],
+          "text": "Conclusion"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k178",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k179",
+          "_type": "span",
+          "marks": [],
+          "text": "I'm quite happy with the current setup. The only thing I may still experiment with is to change the quality of the images to reduce the size of the generated images. But that's a story for another day."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k180",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k181",
+          "_type": "span",
+          "marks": [],
+          "text": "All the images are generated automatically during the build. The entire code for this lives in the same repo. I don't have to worry about OG images for a while now. And that makes me happy! 😊"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    }
+  ],
+  "description": "OG (Open Graph) images help in social sharing of a site. This is a view into my experience while implementing it for my site.",
+  "id": "post-og-image",
+  "publishedAt": "2024-09-04",
+  "slug": "og-image",
+  "tags": [
+    "seo",
+    "open-graph",
+    "remix"
+  ],
+  "title": "Adding an OG Image to my site"
+}

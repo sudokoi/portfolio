@@ -1,0 +1,15 @@
+node_modules/
+.next/
+.env*
+!.env.example
+.vercel/
+.scratch/
+.staging/
+studio/dist/
+studio/.sanity/
+test-results/
+playwright-report/
+*.tsbuildinfo
+src/modules/content/generated.ts
+public/search-index.json
+.DS_Store

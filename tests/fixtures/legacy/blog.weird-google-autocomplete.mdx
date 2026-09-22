@@ -1,0 +1,215 @@
+---
+title: Weird Google Autocomplete + MUI
+date: May 07, 2024
+description: Google Maps API + Material UI is even weirder. A tale of how I solved the autocomplete suggestions not showing up issue.
+tags:
+  - google-maps
+  - mui
+  - react
+---
+
+import { BlogTimestamp } from "../components/blog-timestamp";
+import { BlogTags } from "../components/blog-tags";
+
+export const links = () => [
+  { rel: "preload", href: "/assets/autocomplete-works.png", as: "image" },
+  { rel: "preload", href: "/assets/autocomplete-not-working.png", as: "image" },
+  { rel: "preload", href: "/assets/autocomplete-not-working2.png", as: "image" },
+  { rel: "preload", href: "/assets/autocomplete-hack.png", as: "image" },
+  {
+    rel: "stylesheet",
+    href: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css",
+  },
+];
+
+export const meta = () => [
+  { title: "Weird Google Autocomplete + MUI" },
+  {
+    name: "description",
+    content:
+      "Google Maps API + Material UI is even weirder. A tale of how I solved the autocomplete suggestions not showing up issue.",
+  },
+  { name: "date", content: "May 7, 2024" },
+  {
+    property: "og:title",
+    content: "Weird Google Autocomplete + MUI",
+  },
+  {
+    property: "og:description",
+    content:
+      "Google Maps API + Material UI is even weirder. A tale of how I solved the autocomplete suggestions not showing up issue.",
+  },
+  {
+    property: "og:type",
+    content: "article",
+  },
+  {
+    property: "og:image",
+    content: "/og/weird-google-autocomplete.jpeg",
+  },
+  {
+    name: "twitter:card",
+    content: "summary_large_image",
+  },
+  {
+    name: "twitter:title",
+    content: "Weird Google Autocomplete + MUI",
+  },
+  {
+    name: "twitter:description",
+    content:
+      "Google Maps API + Material UI is even weirder. A tale of how I solved the autocomplete suggestions not showing up issue.",
+  },
+  {
+    name: "twitter:image",
+    content: "/og/weird-google-autocomplete.jpeg",
+  },
+];
+
+<BlogTimestamp timestamp={frontmatter.date} />
+
+# {frontmatter.title}
+
+> Google Maps API is weird
+
+> Google Maps API + Material UI is even weirder
+
+## Context
+
+My task was to incorporate google maps places api that should ideally provide autocomplete suggestions to the users.
+It should look like the following if working correctly:
+
+<figure className="flex h-full w-full flex-col">
+  <img src="/assets/autocomplete-works.png" className="mx-auto w-[30rem]" />
+  <figcaption className="mx-auto">Working autocomplete suggestions</figcaption>
+</figure>
+
+It worked perfectly fine if the users entered the correct address. However, if the users entered an incorrect address,
+or god forbid, they cleared the address once entered, the autocomplete suggestions would not show up. It would look like the following:
+
+<figure className="flex h-full w-full flex-col">
+  <img src="/assets/autocomplete-not-working.png" className="mx-auto w-[30rem]" />
+  <figcaption className="mx-auto">
+    Not working autocomplete suggestions
+  </figcaption>
+</figure>
+
+No matter how much the user tried to type the address, the users would not get any suggestion, and since the users won't be
+getting any suggestions, they would also not be able to proceed further.
+
+<figure className="flex h-full w-full flex-col">
+  <img src="/assets/autocomplete-not-working2.png" className="mx-auto w-[30rem]" />
+  <figcaption className="mx-auto">No suggestions, no progress</figcaption>
+</figure>
+
+## Trial and Error begins
+
+So, like any sane developer trying to integrate a 3rd party API, I started by checking the official documentation.
+Going through the documentation, I came to know that there is a _right way_ of integrating the google maps places API.
+
+What I was doing was simply appending the script tag to the head of the document and using the google maps places API directly.
+
+```typescript
+function useGooglePlaces(onLoadCallback: () => void) {
+  const onLoadCallbackRef = useRef(onLoadCallback);
+
+  useLayoutEffect(() => {
+    onLoadCallbackRef.current = onLoadCallback;
+  }, [onLoadCallback]);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places`;
+
+    script.onload = onLoadCallbackRef.current;
+
+    // append the script to the head
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+}
+```
+
+However, the _right way_ of integrating the google maps places library was to use their [loader package](https://developers.google.com/maps/documentation/javascript/overview#js_api_loader_package).
+
+```typescript
+import { Loader } from "@googlemaps/js-api-loader";
+import { useEffect, useLayoutEffect, useRef } from "react";
+
+const loader = new Loader({
+  apiKey: GOOGLE_MAPS_API_KEY,
+  libraries: ["places"],
+});
+
+export function useGooglePlaces(
+  onLoadCallback: (instance: google.maps.PlacesLibrary) => void,
+) {
+  const onLoadCallbackRef = useRef(onLoadCallback);
+
+  useLayoutEffect(() => {
+    onLoadCallbackRef.current = onLoadCallback;
+  }, [onLoadCallback]);
+
+  useEffect(() => {
+    loader.importLibrary("places").then(onLoadCallbackRef.current);
+  }, []);
+}
+```
+
+and then usage was something like this:
+
+```typescript
+useGooglePlacesAPI((instance) => {
+  autoCompleteInstanceRef.current = new instance.Autocomplete(
+    inputRef.current as HTMLInputElement,
+    {
+      componentRestrictions: { country: "us" },
+      fields: ["address_components", "formatted_address"],
+    },
+  );
+
+  autoCompleteInstanceRef.current.addListener("place_changed", () => {
+    const place = autoCompleteInstanceRef.current?.getPlace();
+
+    // rest of the code
+    // ...
+  });
+});
+```
+
+If this worked, this blog post would have ended here. But it didn't. The issue still persisted.
+
+So, I then suspected that maybe the inputRef was changing between re-renders somehow, and that was causing the issue.
+I was using [MUI TextField](https://mui.com/material-ui/react-text-field/) component and suspected that maybe it was doing something
+weird with the inputRef between renders (I still don't know if that is what was causing the issue).
+
+I tried to use the native input element instead of the MUI TextField component, and viola! it worked. The autocomplete suggestions were showing up as expected.
+But the problem was that I had to use the MUI TextField component, and I couldn't just use the native input element.
+
+## The Solution
+
+While debugging multiple times, I noticed that even if the autocomplete suggestions were not showing up, when the component was unmounted/remounted, the suggestions
+would start showing up again. So, that's what I did: a hacky solution to unmount/remount the component whenever the user selection changed. This meant that whenever
+the user selected an address or even cleared the address, the component would unmount and remount, and the suggestions would start showing up again.
+And all it took was a simple <span className="text-accent font-bold">key</span> prop to the parent component.
+
+<figure className="flex h-full w-full flex-col">
+  <img src="/assets/autocomplete-hack.png" className="mx-auto w-[30rem]" />
+  <figcaption className="mx-auto">The hack that worked</figcaption>
+</figure>
+
+As my friend would call it, when I shared the solution:
+
+> it's called a key for a reason; it opens up solution to complex problems y'all
+
+And that's how I solved the issue. A hacky solution, but a solution nonetheless.
+
+## Conclusion
+
+Sometimes, the official documentation might not be enough, and you might have to resort to some hacky solutions to get things working.
+And that's okay. As long as it works, it's fine.
+
+<BlogTags tags={frontmatter.tags} />

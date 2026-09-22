@@ -1,0 +1,448 @@
+{
+  "body": [
+    {
+      "_key": "k1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k2",
+          "_type": "span",
+          "marks": [],
+          "text": "Google Maps API is weird"
+        }
+      ],
+      "markDefs": [],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k3",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k4",
+          "_type": "span",
+          "marks": [],
+          "text": "Google Maps API + Material UI is even weirder"
+        }
+      ],
+      "markDefs": [],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k6",
+          "_type": "span",
+          "marks": [],
+          "text": "Context"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k7",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k8",
+          "_type": "span",
+          "marks": [],
+          "text": "My task was to incorporate google maps places api that should ideally provide autocomplete suggestions to the users.\nIt should look like the following if working correctly:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k9",
+      "_type": "image",
+      "alt": "Working autocomplete suggestions",
+      "asset": {
+        "_ref": "legacy-44568001856976a4dc3e6d5a",
+        "_type": "reference"
+      },
+      "caption": "Working autocomplete suggestions"
+    },
+    {
+      "_key": "k10",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k11",
+          "_type": "span",
+          "marks": [],
+          "text": "It worked perfectly fine if the users entered the correct address. However, if the users entered an incorrect address,\nor god forbid, they cleared the address once entered, the autocomplete suggestions would not show up. It would look like the following:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k12",
+      "_type": "image",
+      "alt": "Not working autocomplete suggestions",
+      "asset": {
+        "_ref": "legacy-e6037e03ca7b1018b20ec2cf",
+        "_type": "reference"
+      },
+      "caption": "Not working autocomplete suggestions"
+    },
+    {
+      "_key": "k13",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k14",
+          "_type": "span",
+          "marks": [],
+          "text": "No matter how much the user tried to type the address, the users would not get any suggestion, and since the users won't be\ngetting any suggestions, they would also not be able to proceed further."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k15",
+      "_type": "image",
+      "alt": "No suggestions, no progress",
+      "asset": {
+        "_ref": "legacy-fe62a2b52e36bbdb5a24b692",
+        "_type": "reference"
+      },
+      "caption": "No suggestions, no progress"
+    },
+    {
+      "_key": "k16",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k17",
+          "_type": "span",
+          "marks": [],
+          "text": "Trial and Error begins"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k18",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k19",
+          "_type": "span",
+          "marks": [],
+          "text": "So, like any sane developer trying to integrate a 3rd party API, I started by checking the official documentation.\nGoing through the documentation, I came to know that there is a "
+        },
+        {
+          "_key": "k20",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "right way"
+        },
+        {
+          "_key": "k21",
+          "_type": "span",
+          "marks": [],
+          "text": " of integrating the google maps places API."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k22",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k23",
+          "_type": "span",
+          "marks": [],
+          "text": "What I was doing was simply appending the script tag to the head of the document and using the google maps places API directly."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k24",
+      "_type": "code",
+      "code": "function useGooglePlaces(onLoadCallback: () => void) {\n  const onLoadCallbackRef = useRef(onLoadCallback);\n\n  useLayoutEffect(() => {\n    onLoadCallbackRef.current = onLoadCallback;\n  }, [onLoadCallback]);\n\n  useEffect(() => {\n    const script = document.createElement(\"script\");\n    script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_MAPS_API_KEY}&libraries=places`;\n\n    script.onload = onLoadCallbackRef.current;\n\n    // append the script to the head\n    document.head.appendChild(script);\n\n    return () => {\n      document.head.removeChild(script);\n    };\n  }, []);\n}",
+      "language": "typescript"
+    },
+    {
+      "_key": "k25",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k26",
+          "_type": "span",
+          "marks": [],
+          "text": "However, the "
+        },
+        {
+          "_key": "k27",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "right way"
+        },
+        {
+          "_key": "k28",
+          "_type": "span",
+          "marks": [],
+          "text": " of integrating the google maps places library was to use their "
+        },
+        {
+          "_key": "k30",
+          "_type": "span",
+          "marks": [
+            "k29"
+          ],
+          "text": "loader package"
+        },
+        {
+          "_key": "k31",
+          "_type": "span",
+          "marks": [],
+          "text": "."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k29",
+          "_type": "link",
+          "href": "https://developers.google.com/maps/documentation/javascript/overview#js_api_loader_package"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k32",
+      "_type": "code",
+      "code": "import { Loader } from \"@googlemaps/js-api-loader\";\nimport { useEffect, useLayoutEffect, useRef } from \"react\";\n\nconst loader = new Loader({\n  apiKey: GOOGLE_MAPS_API_KEY,\n  libraries: [\"places\"],\n});\n\nexport function useGooglePlaces(\n  onLoadCallback: (instance: google.maps.PlacesLibrary) => void,\n) {\n  const onLoadCallbackRef = useRef(onLoadCallback);\n\n  useLayoutEffect(() => {\n    onLoadCallbackRef.current = onLoadCallback;\n  }, [onLoadCallback]);\n\n  useEffect(() => {\n    loader.importLibrary(\"places\").then(onLoadCallbackRef.current);\n  }, []);\n}",
+      "language": "typescript"
+    },
+    {
+      "_key": "k33",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k34",
+          "_type": "span",
+          "marks": [],
+          "text": "and then usage was something like this:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k35",
+      "_type": "code",
+      "code": "useGooglePlacesAPI((instance) => {\n  autoCompleteInstanceRef.current = new instance.Autocomplete(\n    inputRef.current as HTMLInputElement,\n    {\n      componentRestrictions: { country: \"us\" },\n      fields: [\"address_components\", \"formatted_address\"],\n    },\n  );\n\n  autoCompleteInstanceRef.current.addListener(\"place_changed\", () => {\n    const place = autoCompleteInstanceRef.current?.getPlace();\n\n    // rest of the code\n    // ...\n  });\n});",
+      "language": "typescript"
+    },
+    {
+      "_key": "k36",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k37",
+          "_type": "span",
+          "marks": [],
+          "text": "If this worked, this blog post would have ended here. But it didn't. The issue still persisted."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k38",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k39",
+          "_type": "span",
+          "marks": [],
+          "text": "So, I then suspected that maybe the inputRef was changing between re-renders somehow, and that was causing the issue.\nI was using "
+        },
+        {
+          "_key": "k41",
+          "_type": "span",
+          "marks": [
+            "k40"
+          ],
+          "text": "MUI TextField"
+        },
+        {
+          "_key": "k42",
+          "_type": "span",
+          "marks": [],
+          "text": " component and suspected that maybe it was doing something\nweird with the inputRef between renders (I still don't know if that is what was causing the issue)."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k40",
+          "_type": "link",
+          "href": "https://mui.com/material-ui/react-text-field/"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k43",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k44",
+          "_type": "span",
+          "marks": [],
+          "text": "I tried to use the native input element instead of the MUI TextField component, and viola! it worked. The autocomplete suggestions were showing up as expected.\nBut the problem was that I had to use the MUI TextField component, and I couldn't just use the native input element."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k45",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k46",
+          "_type": "span",
+          "marks": [],
+          "text": "The Solution"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k47",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k48",
+          "_type": "span",
+          "marks": [],
+          "text": "While debugging multiple times, I noticed that even if the autocomplete suggestions were not showing up, when the component was unmounted/remounted, the suggestions\nwould start showing up again. So, that's what I did: a hacky solution to unmount/remount the component whenever the user selection changed. This meant that whenever\nthe user selected an address or even cleared the address, the component would unmount and remount, and the suggestions would start showing up again.\nAnd all it took was a simple "
+        },
+        {
+          "_key": "k49",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "key"
+        },
+        {
+          "_key": "k50",
+          "_type": "span",
+          "marks": [],
+          "text": " prop to the parent component."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k51",
+      "_type": "image",
+      "alt": "The hack that worked",
+      "asset": {
+        "_ref": "legacy-014d651add55db74b5131ff6",
+        "_type": "reference"
+      },
+      "caption": "The hack that worked"
+    },
+    {
+      "_key": "k52",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k53",
+          "_type": "span",
+          "marks": [],
+          "text": "As my friend would call it, when I shared the solution:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k54",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k55",
+          "_type": "span",
+          "marks": [],
+          "text": "it's called a key for a reason; it opens up solution to complex problems y'all"
+        }
+      ],
+      "markDefs": [],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k56",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k57",
+          "_type": "span",
+          "marks": [],
+          "text": "And that's how I solved the issue. A hacky solution, but a solution nonetheless."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k58",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k59",
+          "_type": "span",
+          "marks": [],
+          "text": "Conclusion"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k60",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k61",
+          "_type": "span",
+          "marks": [],
+          "text": "Sometimes, the official documentation might not be enough, and you might have to resort to some hacky solutions to get things working.\nAnd that's okay. As long as it works, it's fine."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    }
+  ],
+  "description": "Google Maps API + Material UI is even weirder. A tale of how I solved the autocomplete suggestions not showing up issue.",
+  "id": "post-weird-google-autocomplete",
+  "publishedAt": "2024-05-07",
+  "slug": "weird-google-autocomplete",
+  "tags": [
+    "google-maps",
+    "mui",
+    "react"
+  ],
+  "title": "Weird Google Autocomplete + MUI"
+}

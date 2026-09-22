@@ -1,0 +1,414 @@
+{
+  "body": [
+    {
+      "_key": "k1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k2",
+          "_type": "span",
+          "marks": [],
+          "text": "Context"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k3",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k4",
+          "_type": "span",
+          "marks": [],
+          "text": "Recently, I was working on a project where I was trying to add a halo effect to an image."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k6",
+          "_type": "span",
+          "marks": [],
+          "text": "The final output was supposed to look like this:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k7",
+      "_type": "demo",
+      "variant": "halo"
+    },
+    {
+      "_key": "k8",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k9",
+          "_type": "span",
+          "marks": [],
+          "text": "Here's the effect with a more prominient color for emphasis:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k10",
+      "_type": "demo",
+      "variant": "prominent"
+    },
+    {
+      "_key": "k11",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k12",
+          "_type": "span",
+          "marks": [],
+          "text": "First Attempt"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k13",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k14",
+          "_type": "span",
+          "marks": [],
+          "text": "I started by adding a "
+        },
+        {
+          "_key": "k15",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "box-shadow"
+        },
+        {
+          "_key": "k16",
+          "_type": "span",
+          "marks": [],
+          "text": " to the image. The code looked something like this:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k17",
+      "_type": "code",
+      "code": "  <img src=\"/assets/logo.png\" alt=\"logo\" className=\"m-auto size-10 animate-pulse [box-shadow:0px_0px_250px_100px_blue]\" />   ",
+      "language": "jsx"
+    },
+    {
+      "_key": "k18",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k19",
+          "_type": "span",
+          "marks": [],
+          "text": "But, the result this produced was not what I was looking for. The box-shadow added a square box outline around the image."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k20",
+      "_type": "demo",
+      "variant": "wrong-image"
+    },
+    {
+      "_key": "k21",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k22",
+          "_type": "span",
+          "marks": [],
+          "text": "Also, the entire image was pulsing due to the pulse animation. I only wanted the box shadow to pulse."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k23",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k24",
+          "_type": "span",
+          "marks": [],
+          "text": "To remove the square box outline, I suspected that the image was the culprit. Maybe, the transparent pixels around the image weren't really transparent after all.\nI tried to fix this by experimenting with different image formats (svg vs png), adding custom masking in figma and\nexporting another image, but to no avail. The issue still persisted."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k25",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k26",
+          "_type": "span",
+          "marks": [],
+          "text": "Taking one problem at a time, I decided to first fix the pulsing image issue first."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k27",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k28",
+          "_type": "span",
+          "marks": [],
+          "text": "Attempt 2"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k29",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k30",
+          "_type": "span",
+          "marks": [],
+          "text": "I had this stupid idea: let's place the image and a div in the same grid cell.\nThen adding the box-shadow to the div would give me the desired effect. Maybe, it will also remove the square box outline around the image."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k31",
+      "_type": "code",
+      "code": "  <div className=\"grid size-80 w-full items-center justify-center\">\n    <div className=\"grid [grid-column:1/2] [grid-row:1/2]\">\n      <img src=\"/assets/logo.png\" alt=\"logo\" className=\"m-auto size-10\" />\n    </div>\n    <div className=\"grid size-20 [grid-column:1/2] [grid-row:1/2]\">\n      <div className=\"m-auto h-full w-full animate-pulse [box-shadow:0px_0px_250px_100px_blue]\"/>\n    </div>\n  </div>",
+      "language": "jsx"
+    },
+    {
+      "_key": "k32",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k33",
+          "_type": "span",
+          "marks": [],
+          "text": "The result:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k34",
+      "_type": "demo",
+      "variant": "wrong-box"
+    },
+    {
+      "_key": "k35",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k36",
+          "_type": "span",
+          "marks": [],
+          "text": "While this did stop the image from pulsing, the box around the image was still very evidently visible."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k37",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k38",
+          "_type": "span",
+          "marks": [],
+          "text": "The Solution"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k39",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k40",
+          "_type": "span",
+          "marks": [],
+          "text": "Now to fix the square box outline, I had to think of a different approach. The box shadow is applied outside the border-box of the element. And since the border-box\nof the div itself was a square, it was leaving a square outline around the image."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k41",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k42",
+          "_type": "span",
+          "marks": [],
+          "text": "Now what's the solution to this? Simple! Just make the div such that it doesn't have a border-box i.e. make the "
+        },
+        {
+          "_key": "k43",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "width"
+        },
+        {
+          "_key": "k44",
+          "_type": "span",
+          "marks": [],
+          "text": " and "
+        },
+        {
+          "_key": "k45",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "height"
+        },
+        {
+          "_key": "k46",
+          "_type": "span",
+          "marks": [],
+          "text": " of the div "
+        },
+        {
+          "_key": "k47",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "0px"
+        },
+        {
+          "_key": "k48",
+          "_type": "span",
+          "marks": [],
+          "text": ". Tada!!"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k49",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k50",
+          "_type": "span",
+          "marks": [],
+          "text": "(You won't believe how long it took me to try this.)"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k51",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k52",
+          "_type": "span",
+          "marks": [],
+          "text": "The best solution are often the simplest."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k53",
+      "_type": "code",
+      "code": "  <div className=\"grid size-80 w-full items-center justify-center\">\n      <div className=\"grid size-20 [grid-column:1/2] [grid-row:1/2]\">\n        <div className=\"m-auto size-[0px] animate-pulse [box-shadow:0px_0px_250px_100px_blue]\" />\n      </div>\n      <div className=\"z-10 grid [grid-column:1/2] [grid-row:1/2]\">\n        <img src=\"/assets/logo.png\" alt=\"logo\" className=\"m-auto size-10\" />\n      </div>\n    </div>",
+      "language": "jsx"
+    },
+    {
+      "_key": "k54",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k55",
+          "_type": "span",
+          "marks": [],
+          "text": "I use tailwindcss for styling. The generated css for the classes used in the above code is:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k56",
+      "_type": "code",
+      "code": ".m-auto {\n  margin: auto;\n}\n.grid {\n  display: grid;\n}\n.size-10 {\n  width: 2.5rem;\n  height: 2.5rem;\n}\n.size-20 {\n  width: 5rem;\n  height: 5rem;\n}\n.size-80 {\n  width: 20rem;\n  height: 20rem;\n}\n.size-\\[0px\\] {\n  width: 0px;\n  height: 0px;\n}\n.w-full {\n  width: 100%;\n}\n@keyframes pulse {\n  50% {\n    opacity: .5;\n  }\n}\n.animate-pulse {\n  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;\n}\n.items-center {\n  align-items: center;\n}\n.justify-center {\n  justify-content: center;\n}\n.\\[box-shadow\\:0px_0px_250px_100px_blue\\] {\n  box-shadow: 0px 0px 250px 100px blue;\n}\n.\\[grid-column\\:1\\/2\\] {\n  grid-column: 1/2;\n}\n.\\[grid-row\\:1\\/2\\] {\n  grid-row: 1/2;\n}",
+      "language": "css"
+    },
+    {
+      "_key": "k57",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k58",
+          "_type": "span",
+          "marks": [],
+          "text": "This finally gave me the desired effect. There was a halo around the image, the image wasn't pulsing and no square box outline around the image."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k59",
+      "_type": "demo",
+      "variant": "halo"
+    }
+  ],
+  "description": "Adding a halo effect to an image can be tricky. This blog post explores a particular way to add a halo effect to an image (or anything).",
+  "id": "post-halo-effect",
+  "publishedAt": "2024-05-16",
+  "slug": "halo-effect",
+  "tags": [
+    "css",
+    "tailwindcss",
+    "ui",
+    "animation"
+  ],
+  "title": "Halo Effect for Images"
+}

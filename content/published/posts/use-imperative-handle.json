@@ -1,0 +1,746 @@
+{
+  "body": [
+    {
+      "_key": "k1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k2",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "useImperativeHandle"
+        },
+        {
+          "_key": "k3",
+          "_type": "span",
+          "marks": [],
+          "text": " is an "
+        },
+        {
+          "_key": "k5",
+          "_type": "span",
+          "marks": [
+            "k4"
+          ],
+          "text": "S-tier hook"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k4",
+          "_type": "link",
+          "href": "https://x.com/DavidKPiano/status/1716097453403865288"
+        }
+      ],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k6",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k7",
+          "_type": "span",
+          "marks": [],
+          "text": "- "
+        },
+        {
+          "_key": "k9",
+          "_type": "span",
+          "marks": [
+            "k8"
+          ],
+          "text": "David K Piano"
+        },
+        {
+          "_key": "k10",
+          "_type": "span",
+          "marks": [],
+          "text": " (paraphrased)"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k8",
+          "_type": "link",
+          "href": "https://twitter.com/DavidKPiano"
+        }
+      ],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k11",
+      "_type": "image",
+      "alt": "David K Piano's hooks ranking",
+      "asset": {
+        "_ref": "legacy-80a8394af9b904179e4e9402",
+        "_type": "reference"
+      },
+      "caption": "David K Piano's hooks ranking"
+    },
+    {
+      "_key": "k12",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k13",
+          "_type": "span",
+          "marks": [],
+          "text": "Context"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k14",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k16",
+          "_type": "span",
+          "marks": [
+            "k15"
+          ],
+          "text": "useImperativeHandle"
+        },
+        {
+          "_key": "k17",
+          "_type": "span",
+          "marks": [],
+          "text": " is perhaps the most underused hook out of all the react hooks,\nand most of that is just because people have either never heard of it or don't know when to use it."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k15",
+          "_type": "link",
+          "href": "https://react.dev/reference/react/useImperativeHandle"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k18",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k19",
+          "_type": "span",
+          "marks": [],
+          "text": "If you look into the official documentation, it says:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k20",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k21",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "useImperativeHandle"
+        },
+        {
+          "_key": "k22",
+          "_type": "span",
+          "marks": [],
+          "text": " is a React Hook that lets you customize the handle exposed as a "
+        },
+        {
+          "_key": "k23",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "ref"
+        },
+        {
+          "_key": "k24",
+          "_type": "span",
+          "marks": [],
+          "text": "."
+        }
+      ],
+      "markDefs": [],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k25",
+      "_type": "code",
+      "code": "useImperativeHandle(ref, createHandle, dependencies?)",
+      "language": "typescript"
+    },
+    {
+      "_key": "k26",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k27",
+          "_type": "span",
+          "marks": [],
+          "text": "In the declarative world of React, most of the imperative APIs are abstracted away. It is also often recommended to avoid using them.\nHowever, there are times when you need to interact with the APIs that are imperative in nature.\nFor DOM elements, it's pretty easy: you can just use the "
+        },
+        {
+          "_key": "k28",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "ref"
+        },
+        {
+          "_key": "k29",
+          "_type": "span",
+          "marks": [],
+          "text": " prop and interact with the DOM element directly."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k30",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k31",
+          "_type": "span",
+          "marks": [],
+          "text": "But what if you need to interact with a custom component that is not a DOM element?"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k32",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k33",
+          "_type": "span",
+          "marks": [],
+          "text": "Problem"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k34",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k35",
+          "_type": "span",
+          "marks": [],
+          "text": "(Here, I'm using a very specific problem that I had faced, but it demonstrates a usage that is applicable to a wide range of scenarios)"
+        }
+      ],
+      "markDefs": [],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k36",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k37",
+          "_type": "span",
+          "marks": [],
+          "text": "I have a custom component for accepting credit card details. The component makes use of a third-party library for\ncollecting the credit card details. The reason for using a third-party library (like "
+        },
+        {
+          "_key": "k39",
+          "_type": "span",
+          "marks": [
+            "k38"
+          ],
+          "text": "stripe web elements"
+        },
+        {
+          "_key": "k40",
+          "_type": "span",
+          "marks": [],
+          "text": ") is because:"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k38",
+          "_type": "link",
+          "href": "https://docs.stripe.com/payments/elements"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k41",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k42",
+          "_type": "span",
+          "marks": [],
+          "text": "it provides a better user experience"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k43",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k44",
+          "_type": "span",
+          "marks": [],
+          "text": "it is more secure"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k45",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k46",
+          "_type": "span",
+          "marks": [],
+          "text": "and, you may not always have the certifications required to handle the credit card details yourself"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k47",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k48",
+          "_type": "span",
+          "marks": [],
+          "text": "The component needs to initialize the third-party library so that it can be used to collect the credit card details.\nNow, you could initialize the library in the "
+        },
+        {
+          "_key": "k49",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "useEffect"
+        },
+        {
+          "_key": "k50",
+          "_type": "span",
+          "marks": [],
+          "text": " hook in the parent component (why?) and pass the instance of the library to the child component as a prop."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k51",
+      "_type": "code",
+      "code": "function ParentComponent() {\n  // other code\n  useEffect(() => {\n    // library initialization code\n    initialize()\n  }, [])\n  // rest of the code\n\n  return <ChildComponent instance={instance} />\n}\n",
+      "language": "typescript"
+    },
+    {
+      "_key": "k52",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k53",
+          "_type": "span",
+          "marks": [],
+          "text": "But, that would be a bad idea because:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k54",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k55",
+          "_type": "span",
+          "marks": [],
+          "text": "it would break the encapsulation of the child component"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k56",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k57",
+          "_type": "span",
+          "marks": [],
+          "text": "it would make the child component less reusable"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k58",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k59",
+          "_type": "span",
+          "marks": [],
+          "text": "and, it would make the parent component more complex"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k60",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k61",
+          "_type": "span",
+          "marks": [],
+          "text": "Also, what happens if you need to use another similar library for a different set of payment options? Do you initialize that in the parent component as well?"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k62",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k63",
+          "_type": "span",
+          "marks": [],
+          "text": "There may also be other thoughts going through your mind, like:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k64",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k65",
+          "_type": "span",
+          "marks": [],
+          "text": "I can just initialize them in the child component itself"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k66",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k67",
+          "_type": "span",
+          "marks": [],
+          "text": "I can use a context to provide the instance to the child component"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k68",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k69",
+          "_type": "span",
+          "marks": [],
+          "text": "Feel free to discuss these thoughts below in the comments."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k70",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k71",
+          "_type": "span",
+          "marks": [],
+          "text": "Solution"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k72",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k73",
+          "_type": "span",
+          "marks": [],
+          "text": "This is where "
+        },
+        {
+          "_key": "k74",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "useImperativeHandle"
+        },
+        {
+          "_key": "k75",
+          "_type": "span",
+          "marks": [],
+          "text": " comes into play. It allows you to customize the handle that is exposed as a "
+        },
+        {
+          "_key": "k76",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "ref"
+        },
+        {
+          "_key": "k77",
+          "_type": "span",
+          "marks": [],
+          "text": "."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k78",
+      "_type": "code",
+      "code": "function ChildComponent({ ref, ...props }) {\n  // other code\n  useImperativeHandle(\n    ref,\n    () => ({\n      initialize: () => {\n        // initialize the library\n        initialize();\n      },\n    }),\n    [],\n  );\n  // rest of the code\n}\n\nfunction ParentComponent() {\n  const ref = useRef();\n\n  // other code\n\n  return <ChildComponent ref={ref} />;\n}",
+      "language": "javascript"
+    },
+    {
+      "_key": "k79",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k80",
+          "_type": "span",
+          "marks": [],
+          "text": "Now, the parent component can call the "
+        },
+        {
+          "_key": "k81",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "initialize"
+        },
+        {
+          "_key": "k82",
+          "_type": "span",
+          "marks": [],
+          "text": " method on the child component's ref whenever it needs to initialize the library.\nIt may not be in an "
+        },
+        {
+          "_key": "k83",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "useEffect"
+        },
+        {
+          "_key": "k84",
+          "_type": "span",
+          "marks": [],
+          "text": ", but can be called in response to a user action (like button click) or some other event (like navigation)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k85",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k86",
+          "_type": "span",
+          "marks": [],
+          "text": "The point being, the parent component doesn't need to know how the library is initialized, it just needs to know that it can call the "
+        },
+        {
+          "_key": "k87",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "initialize"
+        },
+        {
+          "_key": "k88",
+          "_type": "span",
+          "marks": [],
+          "text": " method on the child component's ref.\nThis approach does the following:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k89",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k90",
+          "_type": "span",
+          "marks": [],
+          "text": "encapsulates the initialization logic within the child component"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k91",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k92",
+          "_type": "span",
+          "marks": [],
+          "text": "makes the child component more reusable"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k93",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k94",
+          "_type": "span",
+          "marks": [],
+          "text": "makes the parent component less complex"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k95",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k96",
+          "_type": "span",
+          "marks": [],
+          "text": "and, allows you to use multiple similar libraries in the same parent component: just conditionally render a different child component"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k97",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k98",
+          "_type": "span",
+          "marks": [],
+          "text": "Conclusion"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k99",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k100",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "useImperativeHandle"
+        },
+        {
+          "_key": "k101",
+          "_type": "span",
+          "marks": [],
+          "text": " is a powerful hook and can be used to solve a particular set of problems that are not easily solvable using the declarative APIs.\nIt is not a hook that you would use every day, but when you need it, you would be glad that it exists."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    }
+  ],
+  "description": "useImperativeHandle is a React Hook that lets you customize the handle exposed as a ref.",
+  "id": "post-use-imperative-handle",
+  "publishedAt": "2024-05-13",
+  "slug": "use-imperative-handle",
+  "tags": [
+    "react",
+    "hooks",
+    "patterns"
+  ],
+  "title": "Why useImperativeHandle?"
+}

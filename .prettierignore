@@ -1,0 +1,18 @@
+node_modules
+.next
+.staging
+.scratch
+studio/dist
+studio/.sanity
+test-results
+playwright-report
+pnpm-lock.yaml
+next-env.d.ts
+src/modules/content/generated.ts
+public/search-index.json
+# Deterministic exporter owns serialized snapshot formatting and content hashes.
+content/published
+tests/fixtures/legacy
+public/assets
+public/media
+src/modules/seo/fonts

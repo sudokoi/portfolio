@@ -1,0 +1,269 @@
+---
+title: Adding an OG Image to my site
+description: OG (Open Graph) images help in social sharing of a site. This is a view into my experience while implementing it for my site.
+date: Sep 04, 2024
+tags:
+  - seo
+  - open-graph
+  - remix
+---
+
+import { BlogTimestamp } from "../components/blog-timestamp";
+import { BlogTags } from "../components/blog-tags";
+
+export const links = () => [
+  {
+    rel: "stylesheet",
+    href: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css",
+  },
+];
+
+export const meta = () => [
+  { title: "Adding an OG Image to my site" },
+  {
+    name: "description",
+    content:
+      "OG (Open Graph) images help in social sharing of a site. This is a view into my experience while implementing it for my site.",
+  },
+  { name: "date", content: "Aug 31, 2024" },
+  {
+    property: "og:title",
+    content: "Adding an OG Image to my site",
+  },
+  {
+    property: "og:description",
+    content:
+      "OG (Open Graph) images help in social sharing of a site. This is a view into my experience while implementing it for my site.",
+  },
+  {
+    property: "og:type",
+    content: "article",
+  },
+  {
+    property: "og:image",
+    content: "/og/og-image.jpeg",
+  },
+  {
+    name: "twitter:card",
+    content: "summary_large_image",
+  },
+  {
+    name: "twitter:title",
+    content: "Adding an OG Image to my site",
+  },
+  {
+    name: "twitter:description",
+    content:
+      "OG (Open Graph) images help in social sharing of a site. This is a view into my experience while implementing it for my site.",
+  },
+  {
+    name: "twitter:image",
+    content: "/og/og-image.jpeg",
+  },
+];
+
+<BlogTimestamp timestamp={frontmatter.date} />
+
+# {frontmatter.title}
+
+## Context
+
+OG images are one of the open graph protocols that enables any web page to become a rich object in a social graph. It is used to represent the page
+when shared on social media platforms like Facebook, Twitter, LinkedIn, etc.
+
+Any webpage can be turned into graph objects by adding some of the basic meta tags to the page. The four required properties for every page are:
+  - `og:title`
+  - `og:type`
+  - `og:image`
+  - `og:url`
+
+Refer to the [Open Graph protocol](https://ogp.me/) for more details.
+
+In this blog post, we will learn how to add an **OG image** to your site.
+
+## A bit more context
+I'm a frontend developer and I like to play with things that make the web more interesting, and sometimes write about them.
+I have been writing blogs for a while now (I have a few posts on [dev.to](https://dev.to/tsuki42), [medium](https://medium.com/@perfectsudh), and previous iteration of [my blog site](https://blog.sudhanshu-ranjan.tech)).
+`dev.to` and `medium` automatically generated the OG images for me and I wanted something similar for my blog site.
+
+So when I heard about a library called [satori](https://www.npmjs.com/package/satori) which could take JSX and convert it into an image, I was intrigued. What this basically
+unlocked for me was the ability to customize the OG images for my blog posts to my liking without leaving the comfort of my code editor.
+
+## The problem
+I started looking for guides on how to implement this for my site. I found a really well documented [blogpost](https://www.jacobparis.com/content/remix-og) on doing the same for a remix site
+(which I am using for this) by [@jacobparis](https://x.com/jacobmparis). I quickly did the setup and it worked well on my local. So, I pushed the changes with expectant eyes, hoping to see the
+implementation go live within a few minutes. But alas, **it didn't work**. The problem: I was using `satori` with [resvg](https://www.npmjs.com/package/@resvg/resvg-js) which was not supported by
+[cloudflare workers](https://workers.cloudflare.com). As [this site](https://sudh.online) is hosted on cloudflare, it was a no-no for me as I didn't want to switch my hosting setup.
+So, I had to look for a solution.
+
+### A ray of hope
+I contacted **Jacob Paris** on twitter over DM (he was so nice!) and he guided me towards an implementation by [@sergiodxa](https://x.com/sergiodxa) for cloudflare workers, which used *wasm* version 
+of *resvg* (see [gist](https://gist.github.com/sergiodxa/63770bbe411e2539652201454ccd1b99)). I started adapting the implementation for my use-case, when I found out that it relied on R2 (which is AWS S3
+like service by cloudflare). I didn't want to use R2 and hence had to look for another solution.
+
+## Sort-of-will-do implementation
+It seemed like the implementation for og-images was not straightforward (while being on clouldflare), and around that time, I found out about [Vercel's OG image generation](https://vercel.com/docs/functions/og-image-generation).
+They had an implementation ([@vercel/og](https://www.npmjs.com/package/@vercel/og)), which used `satori` and `resvg` in the background, and that could be directly deployed on `vercel`. So, I just did that.
+I created a nextjs project with a single api route that took the `title` and `description` as query params and gave an OG image in response. (e.g. [test](https://og.sudh.online/api?title=og%20image%20title&description=this%20is%20a%20test%20og%20image)).
+The entire implementation is basically this:
+
+<span className="text-gray-700">file: api/route.tsx</span>
+```jsx
+export async function GET(request: Request) {
+  const requestUrl = request.url;
+
+  const url = new URL(requestUrl);
+
+  const title = url.searchParams.get("title");
+  const description = url.searchParams.get("description");
+
+  return new ImageResponse(
+    (
+      <div
+        tw="text-[#363681] w-full h-full flex flex-col bg-[#F3F2F8] p-4"
+        style={{
+          background: "linear-gradient(to bottom right, #FFF8E3, #E6A4B4)",
+        }}
+      >
+        <div tw="flex w-full items-center mb-auto">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`${url.origin}/logo.png`}
+            alt=""
+            aria-hidden={true}
+            tw="w-16 h-16"
+          />
+          <div tw="text-2xl font-bold border-b-2 border-[#2646BA]">
+            Sudhanshu&#39;s Blogs
+          </div>
+        </div>
+        <section tw="flex flex-col flex-1 justify-center items-center px-4">
+          <div tw="text-4xl font-bold text-black">{title}</div>
+          <p tw="text-lg text-[#363681] text-center">{description}</p>
+        </section>
+        <div tw="flex px-4">
+          <div tw="mr-auto text-lg">https://sudh.online</div>
+          <div tw="ml-auto text-lg">{TWITTER_HANDLE}</div>
+        </div>
+      </div>
+    ),
+    {
+      width: 800,
+      height: 420,
+    }
+  );
+}
+```
+The full implementation is available on [github](https://github.com/tometo-dev/nextjs-og-images).
+
+
+While this is not an optimum solution, it worked and sufficed my needs (for the time being).
+
+## Discovering `remix-og-image`
+Seems like I wasn't the only one who was unhappy with the state on og-images in the react ecosystem.
+
+> OG image generation is not solved at all. 
+>
+>It is clear you want some sort of templating system for your images. You also often want them in a style similar to your website, which begs for reusing of components and styles that you already have.
+>
+>But it's complicated.
+>
+>Only the browser can reliably render your HTML and CSS. There are solutions that try to do that for you, but they are limited by design, and very often extremely limited in practice. 
+>
+>Spawning browsers is expensive and, frankly, needless. I dare say 98% of OG images are static in nature. Nothing in the image will change ever. Bootstarting Chromium on each server request to get you an image is not the way forward. 
+>
+>Then there's browser automation. You can have a setup script that spawns a headless browser and goes to some internal route in your app that renders a dynamic "og image" (a React component, really), and takes its screenshot. That's how I do OG images on my blog.
+>
+><span>- Artem ([@kettanaito](https://twitter.com/kettanaito))</span> on [twitter](https://twitter.com/kettanaito/status/1823818169775218777)
+
+And so, he built a tool for it: [remix-og-image](https://twitter.com/kettanaito/status/1825641793318486349) and he build it for remix!! (😍)
+
+I jumped into the wagon and tried to use it asap. It was working, but had some issues and I couldn't adapt the tool for my usecase. After a quick chat with Artem, I [reported](https://github.com/kettanaito/remix-og-image/issues/15) the issue (which was then fixed pretty quickly).
+
+## Final implementation
+I finally changed the implementation to use `remix-og-image`.
+Following the [instructions](https://github.com/kettanaito/remix-og-image/blob/e1dc2d34e16806fe0957be00e624bf0dbbc2f6ad/README.md), I added the plugin to my vite buildchain and also added the `og route` as follows:
+
+<span className="text-gray-700">file: routes/og.$slug.tsx</span>
+```tsx
+const getBlogDetails = async () => {
+  return Object.entries(
+    import.meta.glob("./**/*.mdx", {
+      import: "frontmatter",
+      eager: true,
+    }),
+  ).map(([filePath, contents]) => {
+    return [
+      filePath
+        .replace("./", "/")
+        .replace(".", "/")
+        .replace(/\.mdx$/, ""),
+      contents,
+    ] as [string, { title: string; description: string; date: string }];
+  });
+};
+
+export async function openGraphImage() {
+  // Return a dynamic number of OG image entries
+  // based on your data. The plugin will automatically
+  // provide the "params" to this route when
+  // visiting each alternation of this page in the browser.
+  const data = (await getBlogDetails()).map<OpenGraphImageData>(
+    ([filepath]) => {
+      const slug = filepath.split("/").pop()!;
+
+      return {
+        name: slug,
+        params: {
+          slug: slug,
+        },
+      };
+    },
+  );
+
+  return data;
+}
+
+export async function loader({ request, params }: LoaderFunctionArgs) {
+  // check if the incoming request is a meta request
+  // from the plugin. Use the `isOpenGraphImageRequest` utility from the library.
+  if (isOpenGraphImageRequest(request)) {
+    /**
+     * @note Throw the OG image response instead of returning it.
+     * This way, you don't have to deal with the `loader` function
+     * returning a union of OG image data and the actual data
+     * returned to the UI component.
+     */
+    throw json(await openGraphImage());
+  }
+
+  invariant(params, "Params should be defined for this route");
+  invariant(params.slug, "Slug should be defined for this route");
+
+  const currentBlog = (await getBlogDetails()).find(([filePath]) =>
+    filePath.includes(params.slug!),
+  );
+
+  return json({
+    title: currentBlog[1].title,
+    description: currentBlog[1].description,
+  });
+}
+
+export default function Template() {
+  const data = useLoaderData<typeof loader>()
+
+  return <Template data={data} />
+}
+```
+
+It was a fairly simple change. After this, all I had to do was to update the og meta tags in my blog posts to point to the og image route. The changes can be found [here](https://github.com/tometo-dev/sudhanshu-on-the-internet/pull/13/files).
+
+And that's it! It worked like a charm and the OG images of this site are being generated during build time using the `remix-og-image` plugin.
+
+## Conclusion
+I'm quite happy with the current setup. The only thing I may still experiment with is to change the quality of the images to reduce the size of the generated images. But that's a story for another day.
+
+All the images are generated automatically during the build. The entire code for this lives in the same repo. I don't have to worry about OG images for a while now. And that makes me happy! 😊
+
+<BlogTags tags={frontmatter.tags} />

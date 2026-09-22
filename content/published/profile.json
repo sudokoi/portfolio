@@ -1,0 +1,93 @@
+{
+  "aside": "Ask me about iframes or forms — I've solved my fair share of tricky problems there.",
+  "experience": [
+    {
+      "company": "Fletch",
+      "highlights": [
+        "Led frontend architecture for a multi-tenant pet insurance platform.",
+        "Built an internal form builder and shipped analytics, A/B testing, and partner widgets with Web Components."
+      ],
+      "href": "https://fletch.co/",
+      "period": "Dec 2022 – present",
+      "role": "Senior Software Engineer (Frontend Lead)"
+    },
+    {
+      "company": "Interview Kickstart",
+      "highlights": [
+        "Led i18n and built analytics and payment integrations.",
+        "Improved DX with Storybook and a monorepo, and contributed backend APIs."
+      ],
+      "href": "https://interviewkickstart.com/",
+      "period": "Nov 2021 – Nov 2022",
+      "role": "Software Engineer"
+    },
+    {
+      "company": "Aptus Data Labs",
+      "highlights": [
+        "Led analytics dashboards, implemented RBAC, and migrated to TypeScript.",
+        "Automated deployments with Docker and improved platform reliability."
+      ],
+      "href": "https://paytm.com/",
+      "period": "Jan 2019 – Aug 2021",
+      "role": "Software Development Engineer (Frontend Lead)"
+    }
+  ],
+  "id": "profile",
+  "introduction": [
+    "Hi, I'm Sudhanshu Ranjan. I'm a senior frontend engineer with 6+ years of experience building fast, responsive, accessible products. I focus on frontend architecture, cross-browser behavior, and shipping features end-to-end with product, design, and backend teams. Outside of work, I enjoy video games, anime, and reading.",
+    "I'm currently working as a senior software engineer (frontend lead) at Fletch.",
+    "I like learning new things and sharing my knowledge with others."
+  ],
+  "links": [
+    {
+      "href": "https://www.linkedin.com/in/perfectsudh/",
+      "label": "LinkedIn"
+    },
+    {
+      "href": "https://github.com/sudokoi",
+      "label": "GitHub"
+    },
+    {
+      "href": "https://twitter.com/sudokaii",
+      "label": "Twitter"
+    },
+    {
+      "href": "https://instagram.com/sudokaii",
+      "label": "Instagram"
+    },
+    {
+      "href": "mailto:perfectsudh@gmail.com",
+      "label": "Email"
+    }
+  ],
+  "name": "Sudhanshu Ranjan",
+  "projects": [
+    {
+      "description": "Cross-platform expense tracker built with React Native and Expo.",
+      "href": "https://github.com/sudokoi/expense-buddy",
+      "name": "Expense Buddy"
+    },
+    {
+      "description": "A personal frontend journal built with Next.js, Sanity, and automatically generated OG images.",
+      "href": "https://github.com/sudokoi/portfolio",
+      "name": "Portfolio & Blog"
+    }
+  ],
+  "resume": {
+    "_ref": "legacy-resume",
+    "_type": "reference"
+  },
+  "role": "Senior frontend engineer",
+  "skills": [
+    "TypeScript / JavaScript",
+    "React / Next.js / Remix",
+    "React Native",
+    "Tailwind / MUI / Chakra",
+    "Node.js / Django",
+    "REST APIs / SQL",
+    "Docker / CI/CD",
+    "GTM / GA / Adobe",
+    "Accessibility / Performance",
+    "A/B Testing"
+  ]
+}

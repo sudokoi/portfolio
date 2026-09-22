@@ -1,0 +1,899 @@
+{
+  "body": [
+    {
+      "_key": "k1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k2",
+          "_type": "span",
+          "marks": [],
+          "text": "Context"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k3",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k4",
+          "_type": "span",
+          "marks": [],
+          "text": "Largest Contentful Paint (LCP) is a stable Core Web Vital metric for\nmeasuring perceived load speed. It marks the point in the page load timeline\nwhen the page's main content has likely loaded. A fast LCP helps reassure\nthe user that the page is useful."
+        }
+      ],
+      "markDefs": [],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k6",
+          "_type": "span",
+          "marks": [],
+          "text": "- "
+        },
+        {
+          "_key": "k8",
+          "_type": "span",
+          "marks": [
+            "k7"
+          ],
+          "text": "web.dev"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k7",
+          "_type": "link",
+          "href": "https://web.dev/articles/lcp"
+        }
+      ],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k10",
+          "_type": "span",
+          "marks": [],
+          "text": "What this means is that we should target as small of an LCP as possible."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k11",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k12",
+          "_type": "span",
+          "marks": [],
+          "text": "Now, let's dive into a pretty interesting case of LCP being affected in a way that you might not expect."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k13",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k14",
+          "_type": "span",
+          "marks": [],
+          "text": "The Problem"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k15",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k16",
+          "_type": "span",
+          "marks": [],
+          "text": "So, there was a page where the LCP was pretty high. To give you the numbers, have a look at the following:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k17",
+      "_type": "table",
+      "rows": [
+        {
+          "_key": "k18",
+          "cells": [
+            {
+              "_key": "k19",
+              "content": [
+                {
+                  "_key": "k20",
+                  "_type": "block",
+                  "children": [
+                    {
+                      "_key": "k21",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Phase"
+                    }
+                  ],
+                  "markDefs": [],
+                  "style": "normal"
+                }
+              ]
+            },
+            {
+              "_key": "k22",
+              "content": [
+                {
+                  "_key": "k23",
+                  "_type": "block",
+                  "children": [
+                    {
+                      "_key": "k24",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "% of LCP"
+                    }
+                  ],
+                  "markDefs": [],
+                  "style": "normal"
+                }
+              ]
+            },
+            {
+              "_key": "k25",
+              "content": [
+                {
+                  "_key": "k26",
+                  "_type": "block",
+                  "children": [
+                    {
+                      "_key": "k27",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Timing"
+                    }
+                  ],
+                  "markDefs": [],
+                  "style": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "k28",
+          "cells": [
+            {
+              "_key": "k29",
+              "content": [
+                {
+                  "_key": "k30",
+                  "_type": "block",
+                  "children": [
+                    {
+                      "_key": "k31",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "TTFB"
+                    }
+                  ],
+                  "markDefs": [],
+                  "style": "normal"
+                }
+              ]
+            },
+            {
+              "_key": "k32",
+              "content": [
+                {
+                  "_key": "k33",
+                  "_type": "block",
+                  "children": [
+                    {
+                      "_key": "k34",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "2%"
+                    }
+                  ],
+                  "markDefs": [],
+                  "style": "normal"
+                }
+              ]
+            },
+            {
+              "_key": "k35",
+              "content": [
+                {
+                  "_key": "k36",
+                  "_type": "block",
+                  "children": [
+                    {
+                      "_key": "k37",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "610ms"
+                    }
+                  ],
+                  "markDefs": [],
+                  "style": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "k38",
+          "cells": [
+            {
+              "_key": "k39",
+              "content": [
+                {
+                  "_key": "k40",
+                  "_type": "block",
+                  "children": [
+                    {
+                      "_key": "k41",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Load Delay"
+                    }
+                  ],
+                  "markDefs": [],
+                  "style": "normal"
+                }
+              ]
+            },
+            {
+              "_key": "k42",
+              "content": [
+                {
+                  "_key": "k43",
+                  "_type": "block",
+                  "children": [
+                    {
+                      "_key": "k44",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "93%"
+                    }
+                  ],
+                  "markDefs": [],
+                  "style": "normal"
+                }
+              ]
+            },
+            {
+              "_key": "k45",
+              "content": [
+                {
+                  "_key": "k46",
+                  "_type": "block",
+                  "children": [
+                    {
+                      "_key": "k47",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "28,800ms"
+                    }
+                  ],
+                  "markDefs": [],
+                  "style": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "k48",
+          "cells": [
+            {
+              "_key": "k49",
+              "content": [
+                {
+                  "_key": "k50",
+                  "_type": "block",
+                  "children": [
+                    {
+                      "_key": "k51",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Load Time"
+                    }
+                  ],
+                  "markDefs": [],
+                  "style": "normal"
+                }
+              ]
+            },
+            {
+              "_key": "k52",
+              "content": [
+                {
+                  "_key": "k53",
+                  "_type": "block",
+                  "children": [
+                    {
+                      "_key": "k54",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "0%"
+                    }
+                  ],
+                  "markDefs": [],
+                  "style": "normal"
+                }
+              ]
+            },
+            {
+              "_key": "k55",
+              "content": [
+                {
+                  "_key": "k56",
+                  "_type": "block",
+                  "children": [
+                    {
+                      "_key": "k57",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "50ms"
+                    }
+                  ],
+                  "markDefs": [],
+                  "style": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_key": "k58",
+          "cells": [
+            {
+              "_key": "k59",
+              "content": [
+                {
+                  "_key": "k60",
+                  "_type": "block",
+                  "children": [
+                    {
+                      "_key": "k61",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "Render Delay"
+                    }
+                  ],
+                  "markDefs": [],
+                  "style": "normal"
+                }
+              ]
+            },
+            {
+              "_key": "k62",
+              "content": [
+                {
+                  "_key": "k63",
+                  "_type": "block",
+                  "children": [
+                    {
+                      "_key": "k64",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "5%"
+                    }
+                  ],
+                  "markDefs": [],
+                  "style": "normal"
+                }
+              ]
+            },
+            {
+              "_key": "k65",
+              "content": [
+                {
+                  "_key": "k66",
+                  "_type": "block",
+                  "children": [
+                    {
+                      "_key": "k67",
+                      "_type": "span",
+                      "marks": [],
+                      "text": "1,500ms"
+                    }
+                  ],
+                  "markDefs": [],
+                  "style": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "_key": "k68",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k69",
+          "_type": "span",
+          "marks": [],
+          "text": "The image was optimized and was being served through a CDN. There was nothing else on the image front that could be done.\nThis is also evident from the "
+        },
+        {
+          "_key": "k70",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Load Time"
+        },
+        {
+          "_key": "k71",
+          "_type": "span",
+          "marks": [],
+          "text": " phase, which is only 50ms."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k72",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k73",
+          "_type": "span",
+          "marks": [],
+          "text": "Now obviously, these numbers are too high and seems like most of the time is spent in the "
+        },
+        {
+          "_key": "k74",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Load Delay"
+        },
+        {
+          "_key": "k75",
+          "_type": "span",
+          "marks": [],
+          "text": " phase.\nSo, after trying to fix the problem, and failing, the next thing I did was: I asked for help."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k76",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k77",
+          "_type": "span",
+          "marks": [],
+          "text": "i'm trying to troubleshoot a LCP issue that's happening due to loading of image. In the affected site,\nmost of the time is taken by the \"load delay\". can anyone help me understand why \"load delay\" happens and\nwhat can I do to reduce it?"
+        }
+      ],
+      "markDefs": [],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k78",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k79",
+          "_type": "span",
+          "marks": [],
+          "text": "the above image is also being used as a background-image to div (instead of directly being used as an img).\nAre there different heuristics and resource priority for fetching image when it's used in this way? any\nresource will be helpful."
+        }
+      ],
+      "markDefs": [],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k80",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k81",
+          "_type": "span",
+          "marks": [],
+          "text": "- Me, on "
+        },
+        {
+          "_key": "k83",
+          "_type": "span",
+          "marks": [
+            "k82"
+          ],
+          "text": "twitter"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k82",
+          "_type": "link",
+          "href": "https://x.com/tsuki42_/status/1780190049662849454"
+        }
+      ],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k84",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k85",
+          "_type": "span",
+          "marks": [],
+          "text": "I also tagged "
+        },
+        {
+          "_key": "k87",
+          "_type": "span",
+          "marks": [
+            "k86"
+          ],
+          "text": "Jake Archibald"
+        },
+        {
+          "_key": "k88",
+          "_type": "span",
+          "marks": [],
+          "text": " and "
+        },
+        {
+          "_key": "k90",
+          "_type": "span",
+          "marks": [
+            "k89"
+          ],
+          "text": "Kevin Powell"
+        },
+        {
+          "_key": "k91",
+          "_type": "span",
+          "marks": [],
+          "text": " in the thread, hoping that they might help me out 🤞."
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k86",
+          "_type": "link",
+          "href": "https://twitter.com/jaffathecake"
+        },
+        {
+          "_key": "k89",
+          "_type": "link",
+          "href": "https://twitter.com/KevinJPowell"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k92",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k93",
+          "_type": "span",
+          "marks": [],
+          "text": "Surprisingly, both Kevin and Jake replied to my tweet (they are so nice 😊)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k94",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k95",
+          "_type": "span",
+          "marks": [],
+          "text": "While Kevin found it amusing that the load delay was so much, what Jake said was pretty interesting:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k96",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k97",
+          "_type": "span",
+          "marks": [],
+          "text": "If it's a background image, then the loading can't start until layout, so it's blocked by any resources that block layout. Eg CSS, and some forms of JS.\n<img> isn't blocked by layout unless it's loading=\"lazy\""
+        }
+      ],
+      "markDefs": [],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k98",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k99",
+          "_type": "span",
+          "marks": [],
+          "text": "- "
+        },
+        {
+          "_key": "k101",
+          "_type": "span",
+          "marks": [
+            "k100"
+          ],
+          "text": "Jake Archibald"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k100",
+          "_type": "link",
+          "href": "https://x.com/jaffathecake/status/1780216799197352303"
+        }
+      ],
+      "style": "blockquote"
+    },
+    {
+      "_key": "k102",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k103",
+          "_type": "span",
+          "marks": [],
+          "text": "Solution"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k104",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k105",
+          "_type": "span",
+          "marks": [],
+          "text": "From the above, it was clear that using the image as a background-image was not a good idea. Even though the image was loading really fast through the CDN,\nthe load delay was happening due to the layout being delayed."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k106",
+      "_type": "image",
+      "alt": "The critical rendering path",
+      "asset": {
+        "_ref": "legacy-bd2d08695cd222bb4e792aac",
+        "_type": "reference"
+      },
+      "caption": "The critical rendering path"
+    },
+    {
+      "_key": "k107",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k108",
+          "_type": "span",
+          "marks": [],
+          "text": "This meant that either we needed to change the way the image was being used,"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k109",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k110",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "OR"
+        },
+        {
+          "_key": "k111",
+          "_type": "span",
+          "marks": [],
+          "text": ", we needed someway to make sure that the image was loaded before the layout. Luckily, the browser has a way to do just that: "
+        },
+        {
+          "_key": "k113",
+          "_type": "span",
+          "marks": [
+            "k112"
+          ],
+          "text": "link preloading"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k112",
+          "_type": "link",
+          "href": "https://web.dev/articles/preload-responsive-images#preload"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k114",
+      "_type": "code",
+      "code": "<link rel=\"preload\" as=\"image\" href=\"important.png\" />",
+      "language": "html"
+    },
+    {
+      "_key": "k115",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k116",
+          "_type": "span",
+          "marks": [],
+          "text": "It also supports image "
+        },
+        {
+          "_key": "k118",
+          "_type": "span",
+          "marks": [
+            "k117"
+          ],
+          "text": "srcsets"
+        },
+        {
+          "_key": "k119",
+          "_type": "span",
+          "marks": [],
+          "text": ":"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "k117",
+          "_type": "link",
+          "href": "https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "k120",
+      "_type": "code",
+      "code": "<link\n  rel=\"preload\"\n  as=\"image\"\n  href=\"wolf.jpg\"\n  imagesrcset=\"wolf_400px.jpg 400w, wolf_800px.jpg 800w, wolf_1600px.jpg 1600w\"\n  imagesizes=\"50vw\"\n/>",
+      "language": "html"
+    },
+    {
+      "_key": "k121",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k122",
+          "_type": "span",
+          "marks": [],
+          "text": "I didn't know about this before, but now I do. And so do you! 🎉"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k123",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k124",
+          "_type": "span",
+          "marks": [],
+          "text": "In case you want to use the "
+        },
+        {
+          "_key": "k125",
+          "_type": "span",
+          "marks": [],
+          "text": "<img>"
+        },
+        {
+          "_key": "k126",
+          "_type": "span",
+          "marks": [],
+          "text": " tag, you can do so as well:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k127",
+      "_type": "code",
+      "code": "<img\n  src=\"wolf.jpg\"\n  srcset=\"wolf_400px.jpg 400w, wolf_800px.jpg 800w, wolf_1600px.jpg 1600w\"\n  sizes=\"50vw\"\n  alt=\"A rad wolf\"\n/>",
+      "language": "html"
+    },
+    {
+      "_key": "k128",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k129",
+          "_type": "span",
+          "marks": [],
+          "text": "Conclusion"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "k130",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k131",
+          "_type": "span",
+          "marks": [],
+          "text": "Sometimes, the solution to a problem might be as simple as changing\nthe way you use an image. And sometimes, it might be as simple as using a new\nfeature that you didn't know about. Web-development and browser have come a long\nway, and most of the problems that we face today have a solution that's already\nbeen implemented. Using the platform to do the heavy lifting for you is often\nthe easiest and simplest solution that can get the job done."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k132",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k133",
+          "_type": "span",
+          "marks": [],
+          "text": "Also, don't forget to ask for help. You never know who might be able to help you out."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    }
+  ],
+  "description": "Largest Contentful Paint (LCP) is a Core Web Vitals metric that measures perceived loading performance. Improving LCP can help improve user experience.",
+  "id": "post-improving-lcp",
+  "publishedAt": "2024-05-16",
+  "slug": "improving-lcp",
+  "tags": [
+    "performance",
+    "web-vitals",
+    "frontend"
+  ],
+  "title": "Improving LCP for your page"
+}

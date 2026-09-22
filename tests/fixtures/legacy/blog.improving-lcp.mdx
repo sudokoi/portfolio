@@ -1,0 +1,175 @@
+---
+title: Improving LCP for your page
+description: Largest Contentful Paint (LCP) is a Core Web Vitals metric that measures perceived loading performance. Improving LCP can help improve user experience.
+date: May 16, 2024
+tags:
+  - performance
+  - web-vitals
+  - frontend
+---
+
+import { BlogTimestamp } from "../components/blog-timestamp";
+import { BlogTags } from "../components/blog-tags";
+
+export const links = () => [
+  { rel: "preload", href: "/assets/critical-rendering-path.svg", as: "image" },
+  {
+    rel: "stylesheet",
+    href: "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css",
+  },
+];
+
+export const meta = () => [
+  { title: "Improving LCP for your page" },
+  {
+    name: "description",
+    content:
+      "Largest Contentful Paint (LCP) is a Core Web Vitals metric that measures perceived loading performance. Improving LCP can help improve user experience.",
+  },
+  { name: "date", content: "May 16, 2024" },
+  {
+    property: "og:title",
+    content: "Improving LCP for your page",
+  },
+  {
+    property: "og:description",
+    content:
+      "Largest Contentful Paint (LCP) is a Core Web Vitals metric that measures perceived loading performance. Improving LCP can help improve user experience.",
+  },
+  {
+    property: "og:type",
+    content: "article",
+  },
+  {
+    property: "og:image",
+    content: "/og/improving-lcp.jpeg",
+  },
+  {
+    name: "twitter:card",
+    content: "summary_large_image",
+  },
+  {
+    name: "twitter:title",
+    content: "Improving LCP for your page",
+  },
+  {
+    name: "twitter:description",
+    content:
+      "Largest Contentful Paint (LCP) is a Core Web Vitals metric that measures perceived loading performance. Improving LCP can help improve user experience.",
+  },
+  {
+    name: "twitter:image",
+    content: "/og/improving-lcp.jpeg",
+  },
+];
+
+<BlogTimestamp timestamp={frontmatter.date} />
+
+# {frontmatter.title}
+
+## Context
+
+> Largest Contentful Paint (LCP) is a stable Core Web Vital metric for
+> measuring perceived load speed. It marks the point in the page load timeline
+> when the page's main content has likely loaded. A fast LCP helps reassure
+> the user that the page is useful.
+>
+> <span>- [web.dev](https://web.dev/articles/lcp)</span>
+
+What this means is that we should target as small of an LCP as possible.
+
+Now, let's dive into a pretty interesting case of LCP being affected in a way that you might not expect.
+
+## The Problem
+
+So, there was a page where the LCP was pretty high. To give you the numbers, have a look at the following:
+
+| Phase        | % of LCP | Timing   |
+| :----------- | :------- | :------- |
+| TTFB         | 2%       | 610ms    |
+| Load Delay   | 93%      | 28,800ms |
+| Load Time    | 0%       | 50ms     |
+| Render Delay | 5%       | 1,500ms  |
+
+The image was optimized and was being served through a CDN. There was nothing else on the image front that could be done.
+This is also evident from the **Load Time** phase, which is only 50ms.
+
+Now obviously, these numbers are too high and seems like most of the time is spent in the **Load Delay** phase.
+So, after trying to fix the problem, and failing, the next thing I did was: I asked for help.
+
+> i'm trying to troubleshoot a LCP issue that's happening due to loading of image. In the affected site,
+> most of the time is taken by the "load delay". can anyone help me understand why "load delay" happens and
+> what can I do to reduce it?
+>
+> the above image is also being used as a background-image to div (instead of directly being used as an img).
+> Are there different heuristics and resource priority for fetching image when it's used in this way? any
+> resource will be helpful.
+>
+> <span>- Me, on [twitter](https://x.com/tsuki42_/status/1780190049662849454)</span>
+
+I also tagged [Jake Archibald](https://twitter.com/jaffathecake) and [Kevin Powell](https://twitter.com/KevinJPowell) in the thread, hoping that they might help me out 🤞.
+
+Surprisingly, both Kevin and Jake replied to my tweet (they are so nice 😊).
+
+While Kevin found it amusing that the load delay was so much, what Jake said was pretty interesting:
+
+> If it's a background image, then the loading can't start until layout, so it's blocked by any resources that block layout. Eg CSS, and some forms of JS.
+> &lt;img&gt; isn't blocked by layout unless it's loading="lazy"
+>
+> <span>- [Jake Archibald](https://x.com/jaffathecake/status/1780216799197352303)</span>
+
+## Solution
+
+From the above, it was clear that using the image as a background-image was not a good idea. Even though the image was loading really fast through the CDN,
+the load delay was happening due to the layout being delayed.
+
+<figure className="flex h-full w-full flex-col">
+  <img src="/assets/critical-rendering-path.svg" className="mx-auto w-[30rem]" />
+  <figcaption className="mx-auto">The critical rendering path</figcaption>
+</figure>
+
+This meant that either we needed to change the way the image was being used,
+
+**OR**, we needed someway to make sure that the image was loaded before the layout. Luckily, the browser has a way to do just that: [link preloading](https://web.dev/articles/preload-responsive-images#preload)
+
+```html
+<link rel="preload" as="image" href="important.png" />
+```
+
+It also supports image [srcsets](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images):
+
+```html
+<link
+  rel="preload"
+  as="image"
+  href="wolf.jpg"
+  imagesrcset="wolf_400px.jpg 400w, wolf_800px.jpg 800w, wolf_1600px.jpg 1600w"
+  imagesizes="50vw"
+/>
+```
+
+I didn't know about this before, but now I do. And so do you! 🎉
+
+In case you want to use the <span className="text-accent">&lt;img&gt;</span> tag, you can do so as well:
+
+```html
+<img
+  src="wolf.jpg"
+  srcset="wolf_400px.jpg 400w, wolf_800px.jpg 800w, wolf_1600px.jpg 1600w"
+  sizes="50vw"
+  alt="A rad wolf"
+/>
+```
+
+## Conclusion
+
+Sometimes, the solution to a problem might be as simple as changing
+the way you use an image. And sometimes, it might be as simple as using a new
+feature that you didn't know about. Web-development and browser have come a long
+way, and most of the problems that we face today have a solution that's already
+been implemented. Using the platform to do the heavy lifting for you is often
+the easiest and simplest solution that can get the job done.
+
+Also, don't forget to ask for help. You never know who might be able to help you out.
+
+<BlogTags tags={frontmatter.tags} />

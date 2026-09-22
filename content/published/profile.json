@@ -4,39 +4,50 @@
     {
       "company": "Fletch",
       "highlights": [
-        "Led frontend architecture for a multi-tenant pet insurance platform.",
-        "Built an internal form builder and shipped analytics, A/B testing, and partner widgets with Web Components."
+        "Own frontend architecture within a five-engineer team for an embedded-insurance platform serving 15+ partners.",
+        "Built the no-code UI proof of concept and led its Next.js runtime architecture, enabling supported partner launches and UI changes without frontend deployments.",
+        "Shipped SSR quote and payment journeys, configurable data transformations and analytics, and MCP-powered chat-to-form prefill."
       ],
       "href": "https://fletch.co/",
-      "period": "Dec 2022 – present",
-      "role": "Senior Software Engineer (Frontend Lead)"
+      "period": "Jan 2023 – present",
+      "role": "Senior Software Engineer"
     },
     {
       "company": "Interview Kickstart",
       "highlights": [
-        "Led i18n and built analytics and payment integrations.",
-        "Improved DX with Storybook and a monorepo, and contributed backend APIs."
+        "Built the shared react-i18next foundation for the India launch and migrated course pages from Django to Next.js.",
+        "Delivered Razorpay checkout and shared GA4 instrumentation; introduced MSW mocks, Storybook documentation, and UI-package tooling."
       ],
       "href": "https://interviewkickstart.com/",
       "period": "Nov 2021 – Nov 2022",
       "role": "Software Engineer"
     },
     {
-      "company": "Aptus Data Labs",
+      "company": "Paytm",
       "highlights": [
-        "Led analytics dashboards, implemented RBAC, and migrated to TypeScript.",
-        "Automated deployments with Docker and improved platform reliability."
+        "Contributed fixes to the AngularJS seller panel and React-based PaytmMall web application."
       ],
       "href": "https://paytm.com/",
+      "period": "Aug 2021 – Nov 2021",
+      "role": "Software Engineer, Frontend"
+    },
+    {
+      "company": "Aptus Data Labs",
+      "highlights": [
+        "Joined as an intern in January 2019, became full-time in July, and progressed from Junior Data Analyst to Frontend Lead.",
+        "Built a React supply-chain planning UI with KPI dashboards and role-based access; led the JavaScript-to-TypeScript migration.",
+        "Introduced critical-flow tests and GitHub Actions/Docker deployments, reviewed code, and mentored developers and interns."
+      ],
+      "href": "https://www.aptusdatalabs.com/",
       "period": "Jan 2019 – Aug 2021",
-      "role": "Software Development Engineer (Frontend Lead)"
+      "role": "Software Developer / Frontend Lead"
     }
   ],
   "id": "profile",
   "introduction": [
-    "Hi, I'm Sudhanshu Ranjan. I'm a senior frontend engineer with 6+ years of experience building fast, responsive, accessible products. I focus on frontend architecture, cross-browser behavior, and shipping features end-to-end with product, design, and backend teams. Outside of work, I enjoy video games, anime, and reading.",
-    "I'm currently working as a senior software engineer (frontend lead) at Fletch.",
-    "I like learning new things and sharing my knowledge with others."
+    "Hi, I'm Sudhanshu Ranjan. I'm a senior software engineer with 7+ years building JavaScript and TypeScript applications across insurance, education, and enterprise software.",
+    "At Fletch, I own frontend architecture and technical direction while staying hands-on. Outside work, I build local-first Android apps and write about the problems I run into.",
+    "Away from the keyboard, I enjoy video games, anime, and reading."
   ],
   "links": [
     {
@@ -56,38 +67,146 @@
       "label": "Instagram"
     },
     {
-      "href": "mailto:perfectsudh@gmail.com",
+      "href": "mailto:sudhanshu.ranjan.0505@gmail.com",
       "label": "Email"
     }
   ],
   "name": "Sudhanshu Ranjan",
   "projects": [
     {
-      "description": "Cross-platform expense tracker built with React Native and Expo.",
+      "description": "A local-first expense tracker that turns transaction SMS messages into draft expenses for you to review on your device.",
+      "highlights": [
+        "Native Kotlin parsing and on-device category suggestions feed a review queue. Raw messages stay on the device, and you approve what gets imported.",
+        "Manual entry, custom categories, spending analytics, and multi-currency reporting support everyday tracking.",
+        "Optional GitHub sync uses a private repository you control, with incremental transfers and conflict handling."
+      ],
       "href": "https://github.com/sudokoi/expense-buddy",
-      "name": "Expense Buddy"
+      "icon": {
+        "_type": "image",
+        "alt": "Expense Buddy app icon",
+        "asset": {
+          "_ref": "image-109429caf43acce85daeef126ec7cc0d126f6851-1024x1024-png",
+          "_type": "reference"
+        }
+      },
+      "name": "Expense Buddy",
+      "platform": "Android",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.sudokoi.expensebuddy",
+      "screenshot": {
+        "_type": "image",
+        "alt": "Expense Buddy dashboard with spending totals and recent expenses",
+        "asset": {
+          "_ref": "image-2d4d1f2b439770c3a5c8a0668f70f50734d421f5-784x1600-jpg",
+          "_type": "reference"
+        }
+      },
+      "slug": "expense-buddy",
+      "stack": [
+        "React Native",
+        "Expo",
+        "TypeScript",
+        "Kotlin",
+        "Room",
+        "MMKV",
+        "LiteRT"
+      ],
+      "status": "released"
     },
     {
-      "description": "A personal frontend journal built with Next.js, Sanity, and automatically generated OG images.",
+      "description": "A privacy-first period tracker with encrypted local storage, a calm interface, and optional background sync. No account or analytics required.",
+      "highlights": [
+        "Room and SQLCipher keep data encrypted at rest, with the database key protected by Android Keystore.",
+        "Daily logging, calendar views, and searchable history keep recorded entries close at hand.",
+        "Optional GitHub sync uses revision-based three-way merging, conflict resolution, and a native WorkManager pipeline."
+      ],
+      "href": "https://github.com/sudokoi/ritulaya",
+      "icon": {
+        "_type": "image",
+        "alt": "Ritulaya app icon",
+        "asset": {
+          "_ref": "image-9f986d372c3beb7ef39be60ab36be5512445863f-1024x1024-png",
+          "_type": "reference"
+        }
+      },
+      "name": "Ritulaya",
+      "platform": "Android",
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.sudokoi.ritulaya",
+      "slug": "ritulaya",
+      "stack": [
+        "React Native",
+        "Expo",
+        "TypeScript",
+        "Kotlin",
+        "Room",
+        "SQLCipher",
+        "WorkManager"
+      ],
+      "status": "released"
+    },
+    {
+      "description": "An offline-first app for learning everyday spoken Telugu through English, with Romanized Telugu, short lessons, and daily conversation practice.",
+      "highlights": [
+        "Practice speaking and understanding separately, with FSRS-scheduled reviews and a daily time budget.",
+        "Save personal phrases and track recall locally. Installed offline Telugu text-to-speech is optional.",
+        "File backups and optional private GitHub backup preserve learning history. The curriculum is still undergoing linguistic review."
+      ],
+      "icon": {
+        "_type": "image",
+        "alt": "Learn Telugu app icon",
+        "asset": {
+          "_ref": "image-1fed4eb58311110ef8f74ffc0ee2eb062a99971d-512x512-png",
+          "_type": "reference"
+        }
+      },
+      "name": "Learn Telugu",
+      "platform": "Android",
+      "screenshot": {
+        "_type": "image",
+        "alt": "Learn Telugu daily practice with due reviews and conversation activities",
+        "asset": {
+          "_ref": "image-b1f723d117ebcc56b86e3927f3884bb01b802ab3-1080x1920-png",
+          "_type": "reference"
+        }
+      },
+      "slug": "learn-telugu",
+      "stack": [
+        "Kotlin",
+        "Jetpack Compose",
+        "Material 3",
+        "Room",
+        "FSRS"
+      ],
+      "status": "in-development"
+    },
+    {
+      "description": "This corner of the internet: a personal engineering journal with Sanity authoring, versioned content backups, generated social images, and read-only agent access.",
       "href": "https://github.com/sudokoi/portfolio",
-      "name": "Portfolio & Blog"
+      "name": "Portfolio & Blog",
+      "platform": "Web",
+      "slug": "portfolio",
+      "stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Sanity",
+        "MCP"
+      ]
     }
   ],
   "resume": {
-    "_ref": "file-7dc4aab20f2a0f3a443a22fd2f2a2b49ac123e85-pdf",
+    "_ref": "file-963b56f28ea8b91514422a5fd843b4f48a6109c8-pdf",
     "_type": "reference"
   },
-  "role": "Senior frontend engineer",
+  "role": "Senior Software Engineer",
   "skills": [
-    "TypeScript / JavaScript",
-    "React / Next.js / Remix",
-    "React Native",
-    "Tailwind / MUI / Chakra",
-    "Node.js / Django",
-    "REST APIs / SQL",
-    "Docker / CI/CD",
-    "GTM / GA / Adobe",
-    "Accessibility / Performance",
-    "A/B Testing"
+    "JavaScript / TypeScript / React / Next.js",
+    "React Native / Expo / Kotlin",
+    "XState / JSONata / REST APIs",
+    "Vitest / Jest / Testing Library",
+    "Playwright / Property-based testing",
+    "MSW / Storybook",
+    "GitHub Actions / Docker / pnpm",
+    "AWS S3 / CloudFront",
+    "Accessibility / Frontend architecture"
   ]
 }

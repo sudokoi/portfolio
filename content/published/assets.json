@@ -1,10 +1,19 @@
 [
   {
-    "bytes": 45126,
+    "bytes": 56840,
     "mimeType": "application/pdf",
-    "path": "/media/5426c09fcef48ef6c2c5032c9cecf9c83cc141a2a993a25a5c61c54f62d47c45.pdf",
-    "sha256": "5426c09fcef48ef6c2c5032c9cecf9c83cc141a2a993a25a5c61c54f62d47c45",
-    "sourceId": "file-7dc4aab20f2a0f3a443a22fd2f2a2b49ac123e85-pdf"
+    "path": "/media/4e7a40105b98b357c194b4033b5f36fa8991c3c13e6bc8dba77c5729aa88d849.pdf",
+    "sha256": "4e7a40105b98b357c194b4033b5f36fa8991c3c13e6bc8dba77c5729aa88d849",
+    "sourceId": "file-963b56f28ea8b91514422a5fd843b4f48a6109c8-pdf"
+  },
+  {
+    "bytes": 1021529,
+    "height": 1024,
+    "mimeType": "image/png",
+    "path": "/media/191897c7724efb5df53fd7268d7063220eb44d994cb0c3eab818060122feaec1.png",
+    "sha256": "191897c7724efb5df53fd7268d7063220eb44d994cb0c3eab818060122feaec1",
+    "sourceId": "image-109429caf43acce85daeef126ec7cc0d126f6851-1024x1024-png",
+    "width": 1024
   },
   {
     "bytes": 53953,
@@ -14,6 +23,15 @@
     "sha256": "ad89d32c77b870a023fcce0642f7123ca35874293d8e4f291a6697df03c765c4",
     "sourceId": "image-1b84edb1d99758e5855ebbdf2d0e3d47f49b07be-784x1600-jpg",
     "width": 784
+  },
+  {
+    "bytes": 146363,
+    "height": 512,
+    "mimeType": "image/png",
+    "path": "/media/0ee1efb1953966d1ce7f28e06636506f0d6ba6e5b99038c339caf2b0c0490c6c.png",
+    "sha256": "0ee1efb1953966d1ce7f28e06636506f0d6ba6e5b99038c339caf2b0c0490c6c",
+    "sourceId": "image-1fed4eb58311110ef8f74ffc0ee2eb062a99971d-512x512-png",
+    "width": 512
   },
   {
     "bytes": 60671,
@@ -88,6 +106,15 @@
     "width": 406
   },
   {
+    "bytes": 1498947,
+    "height": 1024,
+    "mimeType": "image/png",
+    "path": "/media/1287f991529cab35b64d4c4602f0455626e421a41e7e7ca6675498efa2cef0e0.png",
+    "sha256": "1287f991529cab35b64d4c4602f0455626e421a41e7e7ca6675498efa2cef0e0",
+    "sourceId": "image-9f986d372c3beb7ef39be60ab36be5512445863f-1024x1024-png",
+    "width": 1024
+  },
+  {
     "bytes": 65256,
     "height": 1600,
     "mimeType": "image/jpeg",
@@ -95,6 +122,15 @@
     "sha256": "6bd9e6077ede286eee0ad8bbb0a20cc13f928f4f2bf6c8565404019dddf35836",
     "sourceId": "image-a899aa3eae09144b14ca682fdf2fbab014966561-784x1600-jpg",
     "width": 784
+  },
+  {
+    "bytes": 143057,
+    "height": 1920,
+    "mimeType": "image/png",
+    "path": "/media/6b4cc838b6ba6386136aa134d2aea194afa089f33f5c4aaf5345b62926f63192.png",
+    "sha256": "6b4cc838b6ba6386136aa134d2aea194afa089f33f5c4aaf5345b62926f63192",
+    "sourceId": "image-b1f723d117ebcc56b86e3927f3884bb01b802ab3-1080x1920-png",
+    "width": 1080
   },
   {
     "bytes": 9720,

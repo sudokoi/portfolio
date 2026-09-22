@@ -42,11 +42,20 @@ Allow direct content pushes to `main` from the configured owner token. The accep
 
 ## Sanity webhook
 
+With the local CLI logged in and `CONTENT_PUBLISH_TOKEN` saved in the root `.env.local`, configure or update the project's named webhook:
+
+```sh
+pnpm --filter portfolio-studio exec sanity exec scripts/configure-publishing.ts --with-user-token
+```
+
+This keeps credential values out of terminal output and configures only the `Portfolio published snapshot` hook. The deployed Studio is <https://sudh-portfolio.sanity.studio/>.
+
 Configure one GROQ webhook in the project API settings:
 
 - URL: `https://api.github.com/repos/sudokoi/portfolio/dispatches`
 - Method: `POST`
 - Trigger: published document create, update, and delete.
+- Filter/projection API version: `v2021-03-25` (the webhook API accepts its supported version identifiers separately from the content query API).
 - Disable draft and release-version triggers.
 - Filter:
 

@@ -34,7 +34,8 @@ These are local lab results, not deployed CDN measurements or field INP. JavaScr
 - Sanity `production` dataset imported with all six posts, the profile singleton, and 15 original assets. The dataset originally contained only reserved Sanity system documents; those were preserved.
 - Studio deployed with schema validation to <https://sudh-portfolio.sanity.studio/> (application ID `bywe25l4l1yblljr29x5mop6`).
 - A live authenticated export passed byte-size and SHA-1/SHA-256 validation with digest `aa854ddd145cd6d4fe52bc3f5687e20a0a5906219d81bf8c636dcd2cc7b4524c`. Raw asset downloads use `dlRaw`; ordinary CDN image URLs may strip original metadata.
-- GitHub publishing/author secrets and a Sanity viewer-role export token are configured. Webhook-driven publication and Vercel deployment remain to be verified.
+- GitHub publishing/author secrets and a Sanity viewer-role export token are configured. [Publication run 35698527190](https://github.com/sudokoi/portfolio/actions/runs/35698527190) exported, validated, built, and pushed snapshot commit `063ae16` with the imported Sanity asset IDs. Original media files did not change.
+- The published-only Sanity webhook is configured for create/update/delete. A semantic no-op update to the profile triggered [repository dispatch run 35698767887](https://github.com/sudokoi/portfolio/actions/runs/35698767887), which passed and reported “Published content unchanged; no commit or build needed.” The [content commit's CI run 35698623964](https://github.com/sudokoi/portfolio/actions/runs/35698623964) also passed. Vercel is not connected yet.
 
 The owner supplied Sanity project `7vbp91cq`, Umami website `9c1d80c6-2a8e-4925-b2a4-fbdbea343dae`, and the GitHub publishing credential; these are configured locally. The repository is pushed and ready for Vercel connection; the owner will perform DNS migration after deployment. Do not interpret local checks as proof of the following:
 

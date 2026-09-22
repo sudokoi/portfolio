@@ -53,7 +53,7 @@ Source baseline: `main` at `86c4bd5a0d284fd696861e027b86ecbdf3d75611`, GitHub re
 - [x] Add `publish-content.yml` for published-content dispatch, manual recovery, and daily reconciliation.
 - [x] Configure a serialized export that validates/builds before committing.
 - [x] Prevent stale pushes, partial commits, arbitrary staged files, and export recursion.
-- [ ] Configure the direct Sanity webhook to GitHub repository_dispatch for published create/update/delete.
+- [x] Configure the direct Sanity webhook to GitHub repository_dispatch for published create/update/delete.
 - [x] Configure the repository-scoped dispatch/push credentials and verified owner Git identity.
 - [ ] Connect Vercel Hobby to the NEW repository ID and `main`, with the validation build command.
 - [ ] Prove a real publish automatically reaches GitHub and Vercel without a PR.
@@ -148,8 +148,8 @@ Source baseline: `main` at `86c4bd5a0d284fd696861e027b86ecbdf3d75611`, GitHub re
 - [ ] Legacy Cloudflare deployment is disabled by the owner or verified during bootstrap.
 - [x] Sanity Free account/project/dataset and included Studio hosting are available.
 - [x] One-time Sanity import authorization is available; write credentials stay out of public delivery/export.
-- [ ] Fine-grained GitHub token(s) are scoped to the NEW repo and permit dispatch/content publication.
-- [ ] GitHub Actions and unattended content commits are permitted by repository rules.
+- [x] Fine-grained GitHub token(s) are scoped to the NEW repo and permit dispatch/content publication.
+- [x] GitHub Actions and unattended content commits are permitted by repository rules.
 - [ ] Vercel Hobby account is connected to the correct GitHub identity and NEW repository.
 - [ ] Umami Cloud Hobby website exists; public tracker ID/script URL are configured.
 - [ ] Domain/DNS access is available for Vercel cutover and Search Console/Bing verification.
